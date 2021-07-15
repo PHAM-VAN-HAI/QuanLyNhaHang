@@ -41,14 +41,13 @@ public class Welcome extends javax.swing.JFrame {
 
         Loading.setBackground(new java.awt.Color(255, 255, 255));
         Loading.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel1.add(Loading, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 813, -1));
+        jPanel1.add(Loading, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 813, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pay/icon/logo.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, -10, 440, 390));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/logo.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 290, 270));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pay/icon/Wellcome.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 400));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/Wellcome.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 830, 400));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,8 +60,9 @@ public class Welcome extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();
