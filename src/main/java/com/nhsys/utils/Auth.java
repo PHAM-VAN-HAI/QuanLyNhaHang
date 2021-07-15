@@ -1,6 +1,6 @@
 package com.nhsys.utils;
 
-import com.edusys.entity.NhanVien;
+import com.nhsys.entity.NhanVien;
 
 public class Auth {
     /**
@@ -23,6 +23,6 @@ public class Auth {
      * Kiểm tra xem có phải là trưởng phòng hay không
      */
     public static boolean isManager() {
-        return Auth.isLogin() && user.getVaiTro();
+        return Auth.isLogin() && (user.getChucVu().equalsIgnoreCase("Quản lý"));
     }
 }
