@@ -10,5 +10,7 @@ package com.nhsys.dao;
  * @author anhha
  */
 public class NhanVienDAO extends NHDAO<Object, Object>{
-    
+    public void insert(){
+        
+    };
 }
