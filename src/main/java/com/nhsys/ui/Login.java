@@ -442,18 +442,18 @@ void init(){
 void dangNhap(){
     String tendn = txtusername.getText();
     String matKhau =  new String(txtpassword.getPassword());
-        com.pay.entity.TaiKhoan TaiKhoan = dao.selectByTaiKhoan(tendn);
+//        com.pay.entity.TaiKhoan TaiKhoan = dao.selectByTaiKhoan(tendn);
 //        JOptionPane.showMessageDialog(this, TaiKhoan.getTenDN());
 //         JOptionPane.showMessageDialog(this, TaiKhoan.getMatKhau());
 //        System.out.println(""+TaiKhoan.getTenDN());
 //        System.out.println(""+TaiKhoan.getMatKhau());
-        if(TaiKhoan == null){
-            JOptionPane.showMessageDialog(this, "Sai ten dang nhap !");
-        }else if(!matKhau.equals(txtpassword.getText())){
-             JOptionPane.showMessageDialog(this, "Sai mat khau!");
-        }else{
-           JOptionPane.showMessageDialog(this, "Dang nhap thanh cong");
-          
-        }
+//        if(TaiKhoan == null){
+//            JOptionPane.showMessageDialog(this, "Sai ten dang nhap !");
+//        }else if(!matKhau.equals(txtpassword.getText())){
+//             JOptionPane.showMessageDialog(this, "Sai mat khau!");
+//        }else{
+//           JOptionPane.showMessageDialog(this, "Dang nhap thanh cong");
+//          
+//        }
 }
 }

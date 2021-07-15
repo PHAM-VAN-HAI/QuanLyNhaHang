@@ -2,19 +2,22 @@ package com.nhsys.utils;
 
 import java.awt.Image;
 import java.io.File;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class XImage {
     /**
      * Ảnh biểu tượng của ứng dụng, xuất hiện trên mọi cửa sổ
      */
     public static Image getAppIcon(){
-        String file = "/com/edusys/icon/fpt.png";
-        return new ImageIcon(XImage.class.getResource(file)).getImage();
+        URL url = XImage.class.getResource("/com/nhsys");
+        return new ImageIcon(url).getImage();
     }
     
     /**
@@ -43,5 +46,21 @@ public class XImage {
     public static ImageIcon read(String fileName){
         File path = new File("logos", fileName);
         return new ImageIcon(path.getAbsolutePath());
+    }
+    
+    public static void setHinh(Object cpn, String path, int w, int h) {
+        if (cpn.getClass().toString().equalsIgnoreCase("class javax.swing.JLabel")) {
+            JLabel lbl = (JLabel) cpn;
+            ImageIcon icon = new ImageIcon(path);
+            Image im = icon.getImage();
+            ImageIcon iconn = new ImageIcon(im.getScaledInstance(w, h, im.SCALE_SMOOTH));
+            lbl.setIcon(iconn);
+        } else if (cpn.getClass().toString().equalsIgnoreCase("class javax.swing.JButton")) {
+            JButton btn = (JButton) cpn;
+            ImageIcon icon = new ImageIcon(path);
+            Image im = icon.getImage();
+            ImageIcon iconn = new ImageIcon(im.getScaledInstance(w, h, im.SCALE_SMOOTH));
+            btn.setIcon(iconn);
+        }
     }
 }
