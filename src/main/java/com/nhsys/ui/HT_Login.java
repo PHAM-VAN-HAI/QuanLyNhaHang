@@ -6,7 +6,9 @@
 package com.nhsys.ui;
 
 import com.nhsys.dao.NhanVienDAO;
+import com.nhsys.entity.NhanVien;
 import com.nhsys.utils.Auth;
+import com.nhsys.utils.MsgBox;
 import com.nhsys.utils.XImage;
 import java.awt.Color;
 
@@ -271,7 +273,33 @@ public class HT_Login extends javax.swing.JFrame {
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         // TODO add your handling code here:
-        btnDangNhap.setText("Đang chờ kết nối...");
+         if (txtTenDangNhap.getText().equalsIgnoreCase("Tên đăng nhập")) {
+            MsgBox.alert(this, "Chưa nhập tên đăng nhập!");
+            return;
+        }
+        if (txtMatKhau.getText().equalsIgnoreCase("Mật khẩu")) {
+            MsgBox.alert(this, "Chưa nhập mật khẩu!");
+            return;
+        }
+        String maNV = txtTenDangNhap.getText();
+        String matKhau = new String(txtMatKhau.getPassword());
+        NhanVien nhanVien = dao.selectById(maNV);
+
+        if (nhanVien == null) {
+            MsgBox.alert(this, "Sai tên đăng nhập!");
+        } else if (!matKhau.equalsIgnoreCase(nhanVien.getMatKhau())) {
+            MsgBox.alert(this, "Sai mật khẩu!");
+        } else {
+            Auth.user = nhanVien;
+            if (nhanVien.getChucVu().equalsIgnoreCase("Quản Lý")) {
+                NV_ManHinhChinh manhinhchinh = new NV_ManHinhChinh();
+                manhinhchinh.setVisible(true);
+                this.dispose();
+            } else {
+                new NV_ManHinhChinh(false).setVisible(true);
+                this.dispose();
+            }
+        }
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void lblQuenMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMKMouseClicked

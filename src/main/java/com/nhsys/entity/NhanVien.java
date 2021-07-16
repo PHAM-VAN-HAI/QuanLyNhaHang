@@ -14,16 +14,14 @@ public class NhanVien {
     String MatKhau;
     String HoTen;
     String SoDT;
-    String Email;
     String ChucVu;
     boolean GioiTinh;
 
-    public NhanVien(String MaNV, String MatKhau, String HoTen, String SoDT, String Email, String ChucVu, boolean GioiTinh) {
+    public NhanVien(String MaNV, String MatKhau, String HoTen, String SoDT, String ChucVu, boolean GioiTinh) {
         this.MaNV = MaNV;
         this.MatKhau = MatKhau;
         this.HoTen = HoTen;
         this.SoDT = SoDT;
-        this.Email = Email;
         this.ChucVu = ChucVu;
         this.GioiTinh = GioiTinh;
     }
@@ -61,14 +59,6 @@ public class NhanVien {
 
     public void setSoDT(String SoDT) {
         this.SoDT = SoDT;
-    }
-
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String Email) {
-        this.Email = Email;
     }
 
     public String getChucVu() {
