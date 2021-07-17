@@ -27,11 +27,14 @@ public class HT_Login extends javax.swing.JFrame {
     public HT_Login() {
         initComponents();
         this.setLocationRelativeTo(null);
-        XImage.setHinh(lblBackground, "logos\\Wellcome.png", lblBackground.getWidth(), lblBackground.getHeight());
+        txtTenDangNhap.setText("NV01");
+        txtMatKhau.setText("123");
+        XImage.setHinh(lblBackground, "logos\\Wellcome.png", lblBackground.getWidth(), lblBackground.getHeight()); 
+        showPass();
         Auth.clear();
-//        jPanel3.setBackground(new Color(255, 255, 255, 160));
-//        txtTenDangNhap.setBackground(new Color(255, 255, 255, 0));
-//        txtMatKhau.setBackground(new Color(255, 255, 255, 0));
+        jPanel3.setBackground(new Color(255, 255, 255, 160));
+        txtTenDangNhap.setBackground(new Color(0, 0, 0, 0));
+        txtMatKhau.setBackground(new Color(0, 0, 0, 0));
     }
 
     void showPass() {
@@ -59,24 +62,25 @@ public class HT_Login extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         lblExit = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         btnDangNhap = new javax.swing.JButton();
+        lblLogoPassword = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        lblShowPass = new javax.swing.JLabel();
         lblQuenMK = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
-        lblLogoUser = new javax.swing.JLabel();
-        txtTenDangNhap = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        lblLogoPassword = new javax.swing.JLabel();
-        txtMatKhau = new javax.swing.JPasswordField();
-        lblShowPass = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
+        txtTenDangNhap = new javax.swing.JTextField();
+        lblLogoUser = new javax.swing.JLabel();
+        txtMatKhau = new javax.swing.JPasswordField();
+        jPanel3 = new javax.swing.JPanel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(null);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 51));
 
@@ -98,7 +102,7 @@ public class HT_Login extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 779, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 769, Short.MAX_VALUE)
                 .addComponent(lblExit))
         );
         jPanel2Layout.setVerticalGroup(
@@ -110,10 +114,12 @@ public class HT_Login extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 0, 960, 30);
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, -1));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("©2021 - H&T Team | Terms & Privacy | Hotline 1900 0091");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 610, 341, -1));
 
         btnDangNhap.setBackground(new java.awt.Color(255, 153, 51));
         btnDangNhap.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
@@ -125,19 +131,33 @@ public class HT_Login extends javax.swing.JFrame {
                 btnDangNhapActionPerformed(evt);
             }
         });
+        jPanel1.add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 500, 402, 43));
+
+        lblLogoPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/lock.png"))); // NOI18N
+        jPanel1.add(lblLogoPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 402, 10));
+
+        lblShowPass.setBackground(new java.awt.Color(255, 255, 255));
+        lblShowPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/eye-show.png"))); // NOI18N
+        lblShowPass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblShowPassMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lblShowPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 410, -1, -1));
 
         lblQuenMK.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        lblQuenMK.setText("Quên mật khẩu ?");
         lblQuenMK.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblQuenMKMouseClicked(evt);
             }
         });
+        jPanel1.add(lblQuenMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, -1, -1));
 
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/logo.png"))); // NOI18N
-
-        lblLogoUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/user.png"))); // NOI18N
+        jPanel1.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 468, 251));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 402, 10));
 
         txtTenDangNhap.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txtTenDangNhap.setText("Tên đăng nhập");
@@ -152,8 +172,10 @@ public class HT_Login extends javax.swing.JFrame {
                 txtTenDangNhapMouseClicked(evt);
             }
         });
+        jPanel1.add(txtTenDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 360, -1));
 
-        lblLogoPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/lock.png"))); // NOI18N
+        lblLogoUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/user.png"))); // NOI18N
+        jPanel1.add(lblLogoUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, -1, -1));
 
         txtMatKhau.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txtMatKhau.setText("Mật khẩu");
@@ -173,96 +195,14 @@ public class HT_Login extends javax.swing.JFrame {
                 txtMatKhauKeyPressed(evt);
             }
         });
+        jPanel1.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 360, -1));
 
-        lblShowPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/eye-show.png"))); // NOI18N
-        lblShowPass.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblShowPassMouseClicked(evt);
-            }
-        });
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 480, 520));
+        jPanel1.add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 960, 660));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblLogoUser)
-                    .addComponent(lblLogoPassword))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblQuenMK)
-                    .addComponent(jSeparator2)
-                    .addComponent(jSeparator1)
-                    .addComponent(btnDangNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(txtMatKhau)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblShowPass))
-                            .addComponent(txtTenDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(22, 22, 22))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtTenDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblLogoUser)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblShowPass))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblQuenMK)
-                        .addGap(39, 39, 39)
-                        .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblLogoPassword))
-                .addGap(95, 95, 95))
-        );
-
-        jPanel1.add(jPanel3);
-        jPanel3.setBounds(230, 70, 480, 520);
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("©2021 - H&T Team | Terms & Privacy | Hotline 1900 0091");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(290, 610, 350, 17);
-        jPanel1.add(lblBackground);
-        lblBackground.setBounds(0, -10, 960, 660);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 959, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -273,7 +213,7 @@ public class HT_Login extends javax.swing.JFrame {
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         // TODO add your handling code here:
-         if (txtTenDangNhap.getText().equalsIgnoreCase("Tên đăng nhập")) {
+        if (txtTenDangNhap.getText().equalsIgnoreCase("Tên đăng nhập")) {
             MsgBox.alert(this, "Chưa nhập tên đăng nhập!");
             return;
         }
@@ -303,25 +243,20 @@ public class HT_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void lblQuenMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMKMouseClicked
-        // TODO add your handling code here:
 
     }//GEN-LAST:event_lblQuenMKMouseClicked
 
     private void txtTenDangNhapFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenDangNhapFocusLost
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtTenDangNhapFocusLost
 
     private void txtTenDangNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTenDangNhapMouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtTenDangNhapMouseClicked
 
     private void txtMatKhauFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMatKhauFocusLost
-        // TODO add your handling code here:
 
     }//GEN-LAST:event_txtMatKhauFocusLost
 
     private void txtMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMatKhauMouseClicked
-        // TODO add your handling code here:
 
     }//GEN-LAST:event_txtMatKhauMouseClicked
 
