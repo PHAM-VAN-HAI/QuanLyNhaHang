@@ -103,8 +103,8 @@ public class Welcome extends javax.swing.JFrame {
         Welcome wel = new Welcome();
         wel.setVisible(true);
                 
-        Login login;
-        login = new Login();
+//        Login login;
+//        login = new Login();
         try {
             for( int i=0;i<100;i++){
                 Thread.sleep(60);
@@ -112,7 +112,8 @@ public class Welcome extends javax.swing.JFrame {
             }
         } catch (Exception e) {
         }
-        wel.setVisible(false);
+//        wel.setVisible(false);
+        HT_Login login = new HT_Login();
         login.setVisible(true);
         wel.dispose();
     }

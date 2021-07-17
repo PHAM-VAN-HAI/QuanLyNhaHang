@@ -442,15 +442,15 @@ void init(){
 void dangNhap(){
     String tendn = txtusername.getText();
     String matKhau =  new String(txtpassword.getPassword());
-<<<<<<< Updated upstream
-//        com.pay.entity.TaiKhoan TaiKhoan = dao.selectByTaiKhoan(tendn);
-=======
-<<<<<<< HEAD
-        com.nhsys.entity.TaiKhoan TaiKhoan = dao.selectByTaiKhoan(tendn);
-=======
-//        com.pay.entity.TaiKhoan TaiKhoan = dao.selectByTaiKhoan(tendn);
->>>>>>> 50add4bfdc317dfbdbd1eb9afdb525ee0804e741
->>>>>>> Stashed changes
+//<<<<<<< Updated upstream
+////        com.pay.entity.TaiKhoan TaiKhoan = dao.selectByTaiKhoan(tendn);
+//=======
+//<<<<<<< HEAD
+//        com.nhsys.entity.TaiKhoan TaiKhoan = dao.selectByTaiKhoan(tendn);
+//=======
+////        com.pay.entity.TaiKhoan TaiKhoan = dao.selectByTaiKhoan(tendn);
+//>>>>>>> 50add4bfdc317dfbdbd1eb9afdb525ee0804e741
+//>>>>>>> Stashed changes
 //        JOptionPane.showMessageDialog(this, TaiKhoan.getTenDN());
 //         JOptionPane.showMessageDialog(this, TaiKhoan.getMatKhau());
 //        System.out.println(""+TaiKhoan.getTenDN());
