@@ -16,16 +16,16 @@ public class NhanVien {
     String SoDT;
     String ChucVu;
     boolean GioiTinh;
-    String PathAvatar;
+    String Avatar;
 
-    public NhanVien(String MaNV, String MatKhau, String HoTen, String SoDT, String ChucVu, boolean GioiTinh, String PathAvatar) {
+    public NhanVien(String MaNV, String MatKhau, String HoTen, String SoDT, String ChucVu, boolean GioiTinh, String Avatar) {
         this.MaNV = MaNV;
         this.MatKhau = MatKhau;
         this.HoTen = HoTen;
         this.SoDT = SoDT;
         this.ChucVu = ChucVu;
         this.GioiTinh = GioiTinh;
-        this.PathAvatar = PathAvatar;
+        this.Avatar = Avatar;
     }
 
     public NhanVien() {
@@ -79,12 +79,12 @@ public class NhanVien {
         this.GioiTinh = GioiTinh;
     }
 
-    public String getPathAvatar() {
-        return PathAvatar;
+    public String getAvatar() {
+        return Avatar;
     }
 
-    public void setPathAvatar(String PathAvatar) {
-        this.PathAvatar = PathAvatar;
+    public void setAvatar(String Avatar) {
+        this.Avatar = Avatar;
     }
 
    

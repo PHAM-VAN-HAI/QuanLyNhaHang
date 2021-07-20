@@ -28,7 +28,7 @@ public class NhanVienDAO extends NHDAO<NhanVien, String> {
     @Override
     public void insert(NhanVien entity) {
         try {
-            XJdbc.update(INSERT_SQL, entity.getMaNV(), entity.getMatKhau(), entity.getHoTen(), entity.getSoDT(), entity.getChucVu(), entity.isGioiTinh(), entity.getPathAvatar());
+            XJdbc.update(INSERT_SQL, entity.getMaNV(), entity.getMatKhau(), entity.getHoTen(), entity.getSoDT(), entity.getChucVu(), entity.isGioiTinh(), entity.getAvatar());
         } catch (Exception ex) {
             Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -37,7 +37,7 @@ public class NhanVienDAO extends NHDAO<NhanVien, String> {
     @Override
     public void update(NhanVien entity) {
         try {
-            XJdbc.update(UPDATE_SQL, entity.getMatKhau(), entity.getHoTen(), entity.getSoDT(), entity.getChucVu(), entity.isGioiTinh(), entity.getPathAvatar(), entity.getMaNV());
+            XJdbc.update(UPDATE_SQL, entity.getMatKhau(), entity.getHoTen(), entity.getSoDT(), entity.getChucVu(), entity.isGioiTinh(), entity.getAvatar(), entity.getMaNV());
         } catch (Exception ex) {
             Logger.getLogger(HoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -79,7 +79,7 @@ public class NhanVienDAO extends NHDAO<NhanVien, String> {
                 enity.setSoDT(rs.getString("SoDT"));
                 enity.setChucVu(rs.getString("ChucVu"));
                 enity.setGioiTinh(rs.getBoolean("GioiTinh"));
-                enity.setPathAvatar(rs.getString("Avatar"));
+                enity.setAvatar(rs.getString("Avatar"));
                 list.add(enity);
             }
             rs.getStatement().getConnection().close();

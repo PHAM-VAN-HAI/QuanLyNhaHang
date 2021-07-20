@@ -6,7 +6,17 @@
 package com.nhsys.ui;
 
 import com.nhsys.dao.NhanVienDAO;
+import com.nhsys.entity.NhanVien;
+import com.nhsys.utils.Auth;
+import com.nhsys.utils.MsgBox;
+import com.nhsys.utils.XImage;
+import java.awt.Image;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,8 +24,6 @@ import javax.swing.JFileChooser;
  */
 public class QL_NhanVien extends javax.swing.JFrame {
 
-    NhanVienDAO dao = new NhanVienDAO();
-    JFileChooser fileChooser = new JFileChooser();
     /**
      * Creates new form QL_NhanVien
      */
@@ -58,7 +66,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
         btnDangKy1 = new javax.swing.JButton();
         btnDangKy2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblNhanVien = new javax.swing.JTable();
 
         jLabel3.setText("Mã NV:");
 
@@ -183,7 +191,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -194,7 +202,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
                 "MaNV", "Password", "HoTen", "SDT", "ChucVu", "GioiTinh", "Avatar"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblNhanVien);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -354,15 +362,133 @@ public class QL_NhanVien extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblAvatar;
     private javax.swing.JLabel lblExit;
     private javax.swing.JRadioButton rdoNam;
     private javax.swing.JRadioButton rdoNu;
+    private javax.swing.JTable tblNhanVien;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JTextField txtMaNV2;
     private javax.swing.JTextField txtMatKhau;
     private javax.swing.JTextField txtSDT;
     // End of variables declaration//GEN-END:variables
+    NhanVienDAO dao = new NhanVienDAO();
+    JFileChooser fileChooser = new JFileChooser();
+    int row = -1;
+
+    void init() {
+        setLocationRelativeTo(null); // đưa cửa sổ ra giữa màn hình
+//        this.fillTable(); // đổ dữ liệu nhân viên vào bảng
+//        this.updateStatus(); // cập nhật trạng thái form
+    }
+
+    void fillTable() {
+        DefaultTableModel model = (DefaultTableModel) tblNhanVien.getModel();
+        model.setRowCount(0);
+        try {
+            List<NhanVien> list = dao.selectAll();
+            for (NhanVien nv : list) {
+                Object[] row = {
+                    nv.getMaNV(),
+                    nv.getMatKhau(),
+                    nv.getHoTen(),
+                    nv.getSoDT(),
+                    nv.getChucVu(),
+                    nv.isGioiTinh() ? "Nam" : "Nữ",
+                    nv.getAvatar()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
+
+    void insert() {
+        NhanVien nv = this.getForm();
+        try {
+            dao.insert(nv); // thêm mới
+            this.fillTable(); // đỗ lại bảng
+            this.clearForm(); // xóa trắng form
+            MsgBox.alert(this, "Thêm mới thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại!");
+        }
+    }
+
+    void update() {
+        NhanVien nv = this.getForm();
+        try {
+            dao.update(nv); // cập nhật
+            this.fillTable(); // đổ lại bảng
+            MsgBox.alert(this, "Cập nhật thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Cập nhật thất bại!");
+        }
+    }
+
+    void delete() {
+        if (!Auth.isManager()) {
+            MsgBox.alert(this, "Bạn không có quyền xóa nhân viên!");
+        } else {
+            String manv = txtMaNV.getText();
+            if (manv.equals(Auth.user.getMaNV())) {
+                MsgBox.alert(this, "Bạn không được xóa chính bạn!");
+            } else if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này?")) {
+                try {
+                    dao.delete(manv);
+                    this.fillTable();
+                    this.clearForm();
+                    MsgBox.alert(this, "Xóa thành công!");
+                } catch (Exception e) {
+                    MsgBox.alert(this, "Xóa thất bại!");
+                }
+            }
+        }
+    }
+
+    void clearForm() {
+//        NhanVien nv = new NhanVien();
+//        this.setForm(nv);
+//        this.row = -1;
+//        this.updateStatus();
+    }
+
+    void setForm(NhanVien nv) {
+       
+    }
+
+    NhanVien getForm() {
+        NhanVien nv = new NhanVien();
+        nv.setMaNV(txtMaNV.getText());
+        nv.setMaNV(txtMaNV.getText());
+        nv.setHoTen(txtHoTen.getText());
+        nv.setSoDT(txtSDT.getText());
+        nv.setChucVu(cboChucVu.getSelectedItem().toString());
+        if (rdoNam.isSelected()) {
+            nv.setGioiTinh(true);
+        } else {
+            nv.setGioiTinh(false);
+        }
+        if (lblAvatar.getToolTipText() != null) {
+            nv.setAvatar(lblAvatar.getToolTipText());
+        } else {
+            nv.setAvatar("noAvatar.png");
+        }
+        return nv;
+    }
+
+    void chonAnh() {
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            XImage.save(file);
+            ImageIcon icon = XImage.read(file.getName());
+            System.out.println(icon);
+            Image im = icon.getImage();
+            ImageIcon iconn = new ImageIcon(im.getScaledInstance(lblAvatar.getWidth(), lblAvatar.getHeight(), im.SCALE_SMOOTH));
+            lblAvatar.setIcon(iconn);
+            lblAvatar.setToolTipText(file.getName());
+        }
+    }
 }
