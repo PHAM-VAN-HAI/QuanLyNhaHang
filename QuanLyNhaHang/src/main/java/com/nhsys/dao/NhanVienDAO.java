@@ -19,8 +19,8 @@ import java.util.logging.Logger;
  */
 public class NhanVienDAO extends NHDAO<NhanVien, String> {
 
-    String INSERT_SQL = "INSERT INTO NHANVIEN(MaNV, Password, HoTen, SoDT, ChucVu, GioiTinh)VALUES(?,?,?,?,?,?)";
-    String UPDATE_SQL = "UPDATE NHANVIEN SET Password=?, HoTen=?, SoDT=?, ChucVu=?, GioiTinh=? where MaNV = ?";
+    String INSERT_SQL = "INSERT INTO NHANVIEN(MaNV, Password, HoTen, SoDT, ChucVu, GioiTinh, Avatar)VALUES(?,?,?,?,?,?,?)";
+    String UPDATE_SQL = "UPDATE NHANVIEN SET Password=?, HoTen=?, SoDT=?, ChucVu=?, GioiTinh=?, Avatar=? where MaNV = ?";
     String DELETE_SQL = "DELETE FROM NHANVIEN WHERE MaNV =?";
     String SELECT_ALL_SQL = "SELECT * FROM NHANVIEN";
     String SELETE_BY_ID_SQL = "SELECT * FROM NHANVIEN WHERE MaNV =?";
@@ -28,7 +28,7 @@ public class NhanVienDAO extends NHDAO<NhanVien, String> {
     @Override
     public void insert(NhanVien entity) {
         try {
-            XJdbc.update(INSERT_SQL, entity.getMaNV(), entity.getMatKhau(), entity.getHoTen(), entity.getSoDT(), entity.getChucVu(), entity.isGioiTinh());
+            XJdbc.update(INSERT_SQL, entity.getMaNV(), entity.getMatKhau(), entity.getHoTen(), entity.getSoDT(), entity.getChucVu(), entity.isGioiTinh(), entity.getPathAvatar());
         } catch (Exception ex) {
             Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -37,7 +37,7 @@ public class NhanVienDAO extends NHDAO<NhanVien, String> {
     @Override
     public void update(NhanVien entity) {
         try {
-            XJdbc.update(UPDATE_SQL, entity.getMatKhau(), entity.getHoTen(), entity.getSoDT(), entity.getChucVu(), entity.isGioiTinh(), entity.getMaNV());
+            XJdbc.update(UPDATE_SQL, entity.getMatKhau(), entity.getHoTen(), entity.getSoDT(), entity.getChucVu(), entity.isGioiTinh(), entity.getPathAvatar(), entity.getMaNV());
         } catch (Exception ex) {
             Logger.getLogger(HoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -79,6 +79,7 @@ public class NhanVienDAO extends NHDAO<NhanVien, String> {
                 enity.setSoDT(rs.getString("SoDT"));
                 enity.setChucVu(rs.getString("ChucVu"));
                 enity.setGioiTinh(rs.getBoolean("GioiTinh"));
+                enity.setPathAvatar(rs.getString("Avatar"));
                 list.add(enity);
             }
             rs.getStatement().getConnection().close();
@@ -87,16 +88,19 @@ public class NhanVienDAO extends NHDAO<NhanVien, String> {
             throw new RuntimeException(e);
         }
     }
-     public List<NhanVien> selectByOrderD(){
+
+    public List<NhanVien> selectByOrderD() {
         String sql = "SELECT * FROM NHANVIEN ORDER BY HoTen desc";
         return this.selectBySql(sql);
-    } 
-    public List<NhanVien> selectByOrderA(){
+    }
+
+    public List<NhanVien> selectByOrderA() {
         String sql = "SELECT * FROM NHANVIEN ORDER BY HoTen ASC";
         return this.selectBySql(sql);
     }
-    public List<NhanVien> selectByPosition(String position){
+
+    public List<NhanVien> selectByPosition(String position) {
         String sql = "SELECT * FROM NHANVIEN WHERE ChucVu like ?";
-        return this.selectBySql(sql, "%"+ position +"%");
+        return this.selectBySql(sql, "%" + position + "%");
     }
 }

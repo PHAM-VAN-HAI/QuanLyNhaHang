@@ -16,14 +16,16 @@ public class NhanVien {
     String SoDT;
     String ChucVu;
     boolean GioiTinh;
+    String PathAvatar;
 
-    public NhanVien(String MaNV, String MatKhau, String HoTen, String SoDT, String ChucVu, boolean GioiTinh) {
+    public NhanVien(String MaNV, String MatKhau, String HoTen, String SoDT, String ChucVu, boolean GioiTinh, String PathAvatar) {
         this.MaNV = MaNV;
         this.MatKhau = MatKhau;
         this.HoTen = HoTen;
         this.SoDT = SoDT;
         this.ChucVu = ChucVu;
         this.GioiTinh = GioiTinh;
+        this.PathAvatar = PathAvatar;
     }
 
     public NhanVien() {
@@ -76,6 +78,16 @@ public class NhanVien {
     public void setGioiTinh(boolean GioiTinh) {
         this.GioiTinh = GioiTinh;
     }
+
+    public String getPathAvatar() {
+        return PathAvatar;
+    }
+
+    public void setPathAvatar(String PathAvatar) {
+        this.PathAvatar = PathAvatar;
+    }
+
+   
     
     
 }
