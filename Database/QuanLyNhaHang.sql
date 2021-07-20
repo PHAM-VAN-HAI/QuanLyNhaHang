@@ -14,6 +14,7 @@ CREATE TABLE [dbo].[NhanVien](
 	[SoDT] [nvarchar](15) NOT NULL,
 	[ChucVu] [nvarchar](50) NOT NULL,
 	[GioiTinh] [bit] NULL,
+	[Avatar] [nvarchar](50) NULL,
 	PRIMARY KEY (MaNV)
 )	
 GO
@@ -31,7 +32,7 @@ GO
 CREATE TABLE [dbo].[ChiTietHoaDon](
 	[MaHoaDonCT] [int] IDENTITY(1,1) NOT NULL,
 	[MaHoaDon] [int] NOT NULL,
-	[MaMonAn] [int] NOT NULL,
+	[MaThucDon] [int] NOT NULL,
 	[SoLuong] [int] Not Null,
 	[GiaTien] [money] NULL,
 	PRIMARY KEY (MaHoaDonCT)
@@ -46,19 +47,20 @@ CREATE TABLE [dbo].[KhachHang](
 )
 GO
 
-CREATE TABLE [dbo].[MonAn](
-	[MaMonAn] [int] IDENTITY(1,1) NOT NULL,
-	[TenMonAn] [nvarchar](50) NOT NULL,
+CREATE TABLE [dbo].[ThucDon](
+	[MaThucDon] [int] IDENTITY(1,1) NOT NULL,
+	[TenThucDon] [nvarchar](50) NOT NULL,
 	[GiaTien] [money] NOT NULL,
+	[HinhAnh] [nvarchar](50) NOT NULL,
 	[MaDanhMuc] [int] NOT NULL,
-	PRIMARY KEY (MaMonAn)
+	PRIMARY KEY (MaThucDon)
 )
 GO
 
 CREATE TABLE [dbo].[DanhMuc](
 	[MaDanhMuc] [int] IDENTITY(1,1) NOT NULL,
-	[TenDanhMuc] [nchar](20) NULL,
-	[MoTa] [nchar](50) NULL,
+	[TenDanhMuc] [nvarchar](50) NOT NULL,
+	[MoTa] [nvarchar](50) NULL,
 	PRIMARY KEY (MaDanhMuc)
 )
 GO
@@ -66,6 +68,7 @@ GO
 CREATE TABLE [dbo].[DanhSachBan](
 	[MaBan] [nvarchar](10) NOT NULL,
 	[LoaiBan] [int] NOT NULL,
+	[TrangThai] [nvarchar](50) NOT NULL,
 	[GhiChu] [nvarchar](50) NULL,
 	PRIMARY KEY (MaBan)
 )
@@ -76,7 +79,7 @@ CREATE TABLE [dbo].[DatBan](
 	[MaBan] [nvarchar](10) NOT NULL,
 	[MaKH] [int] NOT NULL,
 	[NgayDatBan] [date] NOT NULL,
-	[SoLuongKhach] [int] NOT NULL,
+	[SoNguoi] [int] NOT NULL,
 	[GhiChu] [nvarchar](50) NULL,
 	PRIMARY KEY (MaDatBan)
 )
@@ -99,11 +102,11 @@ ADD CONSTRAINT FK_HoaDonCTHD
 FOREIGN KEY (MaHoaDon) REFERENCES HoaDon(MaHoaDon);
 
 ALTER TABLE ChiTietHoaDon
-ADD CONSTRAINT FK_MonAnCTHD
-FOREIGN KEY (MaMonAn) REFERENCES MonAn(MaMonAn);
+ADD CONSTRAINT FK_ThucDonCTHD
+FOREIGN KEY (MaThucDon) REFERENCES ThucDon(MaThucDon);
 
-ALTER TABLE MonAn
-ADD CONSTRAINT FK_DanhMucMonAn
+ALTER TABLE ThucDon
+ADD CONSTRAINT FK_DanhMucThucDon
 FOREIGN KEY (MaDanhMuc) REFERENCES DanhMuc(MaDanhMuc);
 
 ALTER TABLE DatBan
