@@ -232,11 +232,11 @@ public class HT_Login extends javax.swing.JFrame {
         } else {
             Auth.user = nhanVien;
             if (nhanVien.getChucVu().equalsIgnoreCase("Quản Lý")) {
-                NV_ManHinhChinh manhinhchinh = new NV_ManHinhChinh();
+                HT_ManHinhChinh manhinhchinh = new HT_ManHinhChinh();
                 manhinhchinh.setVisible(true);
                 this.dispose();
             } else {
-                new NV_ManHinhChinh(false).setVisible(true);
+                new HT_ManHinhChinh(false).setVisible(true);
                 this.dispose();
             }
         }
