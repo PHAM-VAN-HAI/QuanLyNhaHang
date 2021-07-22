@@ -71,6 +71,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
         jLabel3.setText("Mã NV:");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         lblAvatar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAvatar.setText("NO Image");
@@ -283,6 +284,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMouseClicked
