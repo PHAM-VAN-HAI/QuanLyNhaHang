@@ -25,6 +25,7 @@ CREATE TABLE [dbo].[HoaDon](
 	[MaKH] [int] NOT NULL,
 	[MaNV] [nvarchar](50) NOT NULL,
 	[MaBan] [nvarchar](10) NOT NULL,
+	[ThanhTien] [money] NULL,
 	PRIMARY KEY (MaHoaDon)
 )
 GO
@@ -34,7 +35,6 @@ CREATE TABLE [dbo].[ChiTietHoaDon](
 	[MaHoaDon] [int] NOT NULL,
 	[MaThucDon] [int] NOT NULL,
 	[SoLuong] [int] Not Null,
-	[GiaTien] [money] NULL,
 	PRIMARY KEY (MaHoaDonCT)
 )
 GO
