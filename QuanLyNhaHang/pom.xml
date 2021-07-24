@@ -10,6 +10,7 @@
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
             <version>9.2.1.jre15</version>
+            <type>jar</type>
         </dependency>
         <!-- https://mvnrepository.com/artifact/javax.activation/activation -->
         <dependency>
