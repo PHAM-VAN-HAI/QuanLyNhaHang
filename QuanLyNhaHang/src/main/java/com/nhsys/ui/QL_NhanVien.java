@@ -458,7 +458,21 @@ public class QL_NhanVien extends javax.swing.JFrame {
     }
 
     void setForm(NhanVien nv) {
-       
+
+        txtMaNV.setText(nv.getMaNV());
+        txtMatKhau.setText(nv.getMatKhau());
+        txtHoTen.setText(nv.getHoTen());
+        txtSDT.setText(nv.getSoDT());
+        cboChucVu.setSelectedItem(nv.getChucVu());
+        rdoNam.setSelected(nv.isGioiTinh());
+        rdoNu.setSelected(!nv.isGioiTinh());
+        String FileAnh = nv.getAvatar();
+        if (nv.getAvatar() == null) {
+            lblAvatar.setIcon(null);
+        } else {
+            lblAvatar.setIcon(new ImageIcon(XImage.read(FileAnh).getImage().getScaledInstance(270, 220, java.awt.Image.SCALE_SMOOTH)));
+            lblAvatar.setToolTipText(FileAnh); 
+       }
     }
 
     NhanVien getForm() {
