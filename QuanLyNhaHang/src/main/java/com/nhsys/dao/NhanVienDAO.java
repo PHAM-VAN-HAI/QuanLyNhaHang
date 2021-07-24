@@ -104,4 +104,9 @@ public class NhanVienDAO extends NHDAO<NhanVien, String> {
         String sql = "SELECT * FROM NHANVIEN WHERE ChucVu like ?";
         return this.selectBySql(sql, "%" + position + "%");
     }
+
+    public List<NhanVien> timNhanVienTheoTenNV(String TenNhanVien) {
+        String sql = "SELECT * FROM NhanVien WHERE HoTen LIKE N'%" + TenNhanVien + "%' ";
+        return this.selectBySql(sql);
+    }
 }
