@@ -52,6 +52,7 @@ public class Load extends javax.swing.JFrame implements Runnable {
         getContentPane().add(lblLoading, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 230, -1));
 
         Loading.setForeground(new java.awt.Color(51, 51, 255));
+        Loading.setPreferredSize(new java.awt.Dimension(146, 15));
         getContentPane().add(Loading, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 840, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/logo.png"))); // NOI18N
