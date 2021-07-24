@@ -30,7 +30,8 @@ public class NhanVienDAO extends NHDAO<NhanVien, String> {
         try {
             XJdbc.update(INSERT_SQL, entity.getMaNV(), entity.getMatKhau(), entity.getHoTen(), entity.getSoDT(), entity.getChucVu(), entity.isGioiTinh(), entity.getAvatar());
         } catch (Exception ex) {
-            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+//            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -39,7 +40,7 @@ public class NhanVienDAO extends NHDAO<NhanVien, String> {
         try {
             XJdbc.update(UPDATE_SQL, entity.getMatKhau(), entity.getHoTen(), entity.getSoDT(), entity.getChucVu(), entity.isGioiTinh(), entity.getAvatar(), entity.getMaNV());
         } catch (Exception ex) {
-            Logger.getLogger(HoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
 
@@ -48,7 +49,7 @@ public class NhanVienDAO extends NHDAO<NhanVien, String> {
         try {
             XJdbc.update(DELETE_SQL, id);
         } catch (Exception ex) {
-            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
 
