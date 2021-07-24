@@ -869,8 +869,8 @@ public class QL_NhanVien extends javax.swing.JFrame {
             lblAvatar.setIcon(null);
         } else {
             lblAvatar.setIcon(new ImageIcon(XImage.read(FileAnh).getImage().getScaledInstance(270, 220, java.awt.Image.SCALE_SMOOTH)));
-            lblAvatar.setToolTipText(FileAnh);
-        }
+            lblAvatar.setToolTipText(FileAnh); 
+       }
     }
 
     NhanVien getForm() {
