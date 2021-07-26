@@ -10,6 +10,7 @@ import com.nhsys.entity.NhanVien;
 import com.nhsys.utils.Auth;
 import com.nhsys.utils.MsgBox;
 import com.nhsys.utils.XImage;
+import com.nhsys.utils.mouseEvent;
 import java.awt.Color;
 
 /**
@@ -27,14 +28,12 @@ public class HT_Login extends javax.swing.JFrame {
     public HT_Login() {
         initComponents();
         this.setLocationRelativeTo(null);
-        txtTenDangNhap.setText("NV01");
-        txtMatKhau.setText("123");
-        XImage.setHinh(lblBackground, "logos\\Wellcome.png", lblBackground.getWidth(), lblBackground.getHeight()); 
-        showPass();
+        XImage.setHinh(lblBackground, "logos\\Wellcome.png", lblBackground.getWidth(), lblBackground.getHeight());
         Auth.clear();
         jPanel3.setBackground(new Color(255, 255, 255, 160));
         txtTenDangNhap.setBackground(new Color(0, 0, 0, 0));
         txtMatKhau.setBackground(new Color(0, 0, 0, 0));
+        showPass();
     }
 
     void showPass() {
@@ -206,17 +205,19 @@ public class HT_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_lblQuenMKMouseClicked
 
     private void txtTenDangNhapFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenDangNhapFocusLost
+        new mouseEvent().clear_text_exit(txtTenDangNhap, "Tên Đăng Nhập");
     }//GEN-LAST:event_txtTenDangNhapFocusLost
 
     private void txtTenDangNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTenDangNhapMouseClicked
+        new mouseEvent().clear_text_click(txtTenDangNhap, "Tên Đăng Nhập");
     }//GEN-LAST:event_txtTenDangNhapMouseClicked
 
     private void txtMatKhauFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMatKhauFocusLost
-
+        new mouseEvent().clear_text_exit(txtMatKhau, "Mật Khẩu");
     }//GEN-LAST:event_txtMatKhauFocusLost
 
     private void txtMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMatKhauMouseClicked
-
+        new mouseEvent().clear_text_click(txtMatKhau, "Mật Khẩu");
     }//GEN-LAST:event_txtMatKhauMouseClicked
 
     private void lblShowPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblShowPassMouseClicked

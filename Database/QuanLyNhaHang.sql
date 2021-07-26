@@ -8,7 +8,7 @@ USE [QuanLyNhaHang]
 GO
 
 CREATE TABLE [dbo].[NhanVien](
-	[MaNV] [nvarchar](50) NOT NULL,
+	[MaNV] [nvarchar](5) NOT NULL,
 	[Password] [nvarchar](50) NOT NULL,
 	[HoTen] [nvarchar](50) NOT NULL,
 	[SoDT] [nvarchar](15) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE [dbo].[HoaDon](
 	[MaHoaDon] [int] IDENTITY(1,1) NOT NULL,
 	[NgayXuat] [date] NULL,
 	[MaKH] [int] NOT NULL,
-	[MaNV] [nvarchar](50) NOT NULL,
+	[MaNV] [nvarchar](5) NOT NULL,
 	[MaBan] [nvarchar](10) NOT NULL,
 	PRIMARY KEY (MaHoaDon)
 )
@@ -32,7 +32,7 @@ GO
 CREATE TABLE [dbo].[ChiTietHoaDon](
 	[MaHoaDonCT] [int] IDENTITY(1,1) NOT NULL,
 	[MaHoaDon] [int] NOT NULL,
-	[MaThucDon] [int] NOT NULL,
+	[MaMon] [int] NOT NULL,
 	[SoLuong] [int] Not Null,
 	[GiaTien] [money] NULL,
 	PRIMARY KEY (MaHoaDonCT)
@@ -48,12 +48,12 @@ CREATE TABLE [dbo].[KhachHang](
 GO
 
 CREATE TABLE [dbo].[ThucDon](
-	[MaThucDon] [int] IDENTITY(1,1) NOT NULL,
-	[TenThucDon] [nvarchar](50) NOT NULL,
+	[MaMon] [int] IDENTITY(1,1) NOT NULL,
+	[TenMon] [nvarchar](50) NOT NULL,
 	[GiaTien] [money] NOT NULL,
 	[HinhAnh] [nvarchar](50) NOT NULL,
 	[MaDanhMuc] [int] NOT NULL,
-	PRIMARY KEY (MaThucDon)
+	PRIMARY KEY (MaMon)
 )
 GO
 
@@ -103,7 +103,7 @@ FOREIGN KEY (MaHoaDon) REFERENCES HoaDon(MaHoaDon);
 
 ALTER TABLE ChiTietHoaDon
 ADD CONSTRAINT FK_ThucDonCTHD
-FOREIGN KEY (MaThucDon) REFERENCES ThucDon(MaThucDon);
+FOREIGN KEY (MaMon) REFERENCES ThucDon(MaMon);
 
 ALTER TABLE ThucDon
 ADD CONSTRAINT FK_DanhMucThucDon

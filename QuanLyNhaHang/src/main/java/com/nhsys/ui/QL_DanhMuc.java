@@ -8,6 +8,7 @@ package com.nhsys.ui;
 import com.nhsys.dao.DanhMucDAO;
 import com.nhsys.entity.DanhMuc;
 import com.nhsys.utils.MsgBox;
+import com.nhsys.utils.mouseEvent;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +23,7 @@ public class QL_DanhMuc extends javax.swing.JFrame {
      */
     public QL_DanhMuc() {
         initComponents();
+        init();
     }
 
     /**
@@ -46,10 +48,10 @@ public class QL_DanhMuc extends javax.swing.JFrame {
         btnMoi = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDanhMuc = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnFirst = new javax.swing.JButton();
+        btnPrev = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
+        btnLast = new javax.swing.JButton();
         txtTimtheotendm = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -87,6 +89,11 @@ public class QL_DanhMuc extends javax.swing.JFrame {
         jPanel1.add(btnSua);
 
         btnMoi.setText("Mới");
+        btnMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoiActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnMoi);
 
         tblDanhMuc.setModel(new javax.swing.table.DefaultTableModel(
@@ -107,15 +114,25 @@ public class QL_DanhMuc extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblDanhMuc);
 
-        jButton4.setText("|<");
+        btnFirst.setText("|<");
 
-        jButton5.setText("<<");
+        btnPrev.setText("<<");
 
-        jButton6.setText(">>");
+        btnNext.setText(">>");
 
-        jButton7.setText(">|");
+        btnLast.setText(">|");
 
-        txtTimtheotendm.setText("Search by Ten DM");
+        txtTimtheotendm.setText("Nhập tên danh mục cần tìm");
+        txtTimtheotendm.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTimtheotendmFocusLost(evt);
+            }
+        });
+        txtTimtheotendm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTimtheotendmMouseClicked(evt);
+            }
+        });
         txtTimtheotendm.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtTimtheotendmKeyPressed(evt);
@@ -142,17 +159,17 @@ public class QL_DanhMuc extends javax.swing.JFrame {
                             .addComponent(txtMota, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(125, 125, 125)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtTimtheotendm)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -174,10 +191,10 @@ public class QL_DanhMuc extends javax.swing.JFrame {
                             .addComponent(txtMota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton4)
-                            .addComponent(jButton5)
-                            .addComponent(jButton6)
-                            .addComponent(jButton7)))
+                            .addComponent(btnFirst)
+                            .addComponent(btnPrev)
+                            .addComponent(btnNext)
+                            .addComponent(btnLast)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(21, 21, 21)
                 .addComponent(txtTimtheotendm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,7 +208,7 @@ public class QL_DanhMuc extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        if(!checkVal()){
+        if (!checkVal()) {
             return;
         }
         insert();
@@ -209,7 +226,7 @@ public class QL_DanhMuc extends javax.swing.JFrame {
 
     private void tblDanhMucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhMucMouseClicked
         // TODO add your handling code here:
-          if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 2) {
             this.row = tblDanhMuc.getSelectedRow();
             this.edit();
         }
@@ -219,6 +236,21 @@ public class QL_DanhMuc extends javax.swing.JFrame {
         // TODO add your handling code here:
         fillTableByName();
     }//GEN-LAST:event_txtTimtheotendmKeyPressed
+
+    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+        // TODO add your handling code here:
+        clearForm();
+    }//GEN-LAST:event_btnMoiActionPerformed
+
+    private void txtTimtheotendmFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimtheotendmFocusLost
+        // TODO add your handling code here:
+        new mouseEvent().clear_text_exit(txtTimtheotendm, "Nhập tên danh mục cần tìm");
+    }//GEN-LAST:event_txtTimtheotendmFocusLost
+
+    private void txtTimtheotendmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTimtheotendmMouseClicked
+        // TODO add your handling code here:
+        new mouseEvent().clear_text_click(txtTimtheotendm, "Nhập tên danh mục cần tìm");
+    }//GEN-LAST:event_txtTimtheotendmMouseClicked
 
     /**
      * @param args the command line arguments
@@ -256,14 +288,14 @@ public class QL_DanhMuc extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFirst;
+    private javax.swing.JButton btnLast;
     private javax.swing.JButton btnMoi;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnPrev;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -295,12 +327,13 @@ public class QL_DanhMuc extends javax.swing.JFrame {
         btnThem.setEnabled(!edit);
         btnSua.setEnabled(edit);
         btnXoa.setEnabled(edit);
+        btnMoi.setEnabled(edit);
 
 //        // Trạng thái điều hướng
-//        btnFirst.setEnabled(edit && !first);
-//        btnPrev.setEnabled(edit && !first);
-//        btnNext.setEnabled(edit && !last);
-//        btnLast.setEnabled(edit && !last);
+        btnFirst.setEnabled(edit && !first);
+        btnPrev.setEnabled(edit && !first);
+        btnNext.setEnabled(edit && !last);
+        btnLast.setEnabled(edit && !last);
     }
 
     void fillTable() {
@@ -410,7 +443,7 @@ public class QL_DanhMuc extends javax.swing.JFrame {
     }
 
     void delete() {
-        String madm = txtMadanhmuc.getText();
+        int madm = Integer.parseInt(txtMadanhmuc.getText());
         try {
             dao.delete(madm);
             this.fillTable();
@@ -423,10 +456,9 @@ public class QL_DanhMuc extends javax.swing.JFrame {
     }
 
     void edit() {
-        String madm = (String) tblDanhMuc.getValueAt(this.row, 0);
+        int madm = (int) tblDanhMuc.getValueAt(this.row, 0);
         DanhMuc dm = dao.selectById(madm);
         this.setForm(dm);
-//        tabs.setSelectedIndex(0);
         this.updateStatus();
     }
 
@@ -469,7 +501,7 @@ public class QL_DanhMuc extends javax.swing.JFrame {
 
     DanhMuc getForm() {
         DanhMuc dm = new DanhMuc();
-        dm.setMaDanhmuc(Integer.parseInt(txtMadanhmuc.getText()));
+        dm.setMaDanhmuc(dm.getMaDanhmuc());
         dm.setTenDanhmuc(txtTendanhmuc.getText());
         dm.setMoTa(txtMota.getText());
         return dm;

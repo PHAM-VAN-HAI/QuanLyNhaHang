@@ -6,7 +6,6 @@
 package com.nhsys.dao;
 
 import com.nhsys.entity.DanhMuc;
-import com.nhsys.entity.NhanVien;
 import com.nhsys.utils.XJdbc;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import java.util.List;
  *
  * @author anhha
  */
-public class DanhMucDAO extends NHDAO<DanhMuc, String> {
+public class DanhMucDAO extends NHDAO<DanhMuc, Integer> {
 
     String INSERT_SQL = "INSERT INTO DanhMuc(MaDanhMuc, TenDanhMuc, MoTa)VALUES(?,?,?)";
     String UPDATE_SQL = "UPDATE DanhMuc SET TenDanhMuc=?, MoTa=? where MaDanhMuc = ?";
@@ -34,6 +33,15 @@ public class DanhMucDAO extends NHDAO<DanhMuc, String> {
     }
 
     @Override
+    public void delete(Integer id) {
+        try {
+            XJdbc.update(DELETE_SQL, id);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @Override
     public void update(DanhMuc entity) {
         try {
             XJdbc.update(UPDATE_SQL, entity.getTenDanhmuc(), entity.getMoTa(), entity.getMaDanhmuc());
@@ -43,16 +51,7 @@ public class DanhMucDAO extends NHDAO<DanhMuc, String> {
     }
 
     @Override
-    public void delete(String id) {
-        try {
-            XJdbc.update(DELETE_SQL, id);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    @Override
-    public DanhMuc selectById(String id) {
+    public DanhMuc selectById(Integer id) {
         List<DanhMuc> list = this.selectBySql(SELETE_BY_ID_SQL, id);
         if (list.isEmpty()) {
             return null;
@@ -67,7 +66,7 @@ public class DanhMucDAO extends NHDAO<DanhMuc, String> {
 
     @Override
     protected List<DanhMuc> selectBySql(String sql, Object... args) {
-         List<DanhMuc> list = new ArrayList<DanhMuc>();
+        List<DanhMuc> list = new ArrayList<DanhMuc>();
         try {
             ResultSet rs = XJdbc.query(sql, args);
             while (rs.next()) {
@@ -93,9 +92,10 @@ public class DanhMucDAO extends NHDAO<DanhMuc, String> {
         String sql = "SELECT * FROM DanhMuc ORDER BY TenDanhMuc ASC";
         return this.selectBySql(sql);
     }
-    
+
     public List<DanhMuc> timNhanVienTheoTenDM(String TenDanhMuc) {
         String sql = "SELECT * FROM NhanVien WHERE DanhMuc LIKE N'%" + TenDanhMuc + "%' ";
         return this.selectBySql(sql);
     }
+
 }
