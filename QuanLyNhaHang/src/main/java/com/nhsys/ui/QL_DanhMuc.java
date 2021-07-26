@@ -63,12 +63,27 @@ public class QL_DanhMuc extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.GridLayout(4, 1));
 
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnThem);
 
         btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnXoa);
 
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnSua);
 
         btnMoi.setText("Mới");
@@ -85,6 +100,11 @@ public class QL_DanhMuc extends javax.swing.JFrame {
                 "MaDanhMuc", "TenDanhMuc", "MoTa"
             }
         ));
+        tblDanhMuc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDanhMucMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDanhMuc);
 
         jButton4.setText("|<");
@@ -96,6 +116,11 @@ public class QL_DanhMuc extends javax.swing.JFrame {
         jButton7.setText(">|");
 
         txtTimtheotendm.setText("Search by Ten DM");
+        txtTimtheotendm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTimtheotendmKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,6 +189,37 @@ public class QL_DanhMuc extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+        if(!checkVal()){
+            return;
+        }
+        insert();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        delete();
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        update();
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void tblDanhMucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhMucMouseClicked
+        // TODO add your handling code here:
+          if (evt.getClickCount() == 2) {
+            this.row = tblDanhMuc.getSelectedRow();
+            this.edit();
+        }
+    }//GEN-LAST:event_tblDanhMucMouseClicked
+
+    private void txtTimtheotendmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimtheotendmKeyPressed
+        // TODO add your handling code here:
+        fillTableByName();
+    }//GEN-LAST:event_txtTimtheotendmKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -229,8 +285,8 @@ public class QL_DanhMuc extends javax.swing.JFrame {
         this.fillTable(); // đổ dữ liệu nhân viên vào bảng
         this.updateStatus(); // cập nhật trạng thái form
     }
-    
-     void updateStatus() {
+
+    void updateStatus() {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblDanhMuc.getRowCount() - 1);
@@ -321,6 +377,101 @@ public class QL_DanhMuc extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
-    
+
+    boolean checkVal() {
+        if (txtTendanhmuc.getText().isEmpty() || txtTendanhmuc.getText().equalsIgnoreCase("")) {
+            MsgBox.alert(this, "Bạn chưa nhập tên danh mục!");
+            return false;
+        }
+        return true;
+    }
+
+    void insert() {
+        DanhMuc dm = this.getForm();
+        try {
+            dao.insert(dm); // thêm mới
+            this.fillTable(); // đỗ lại bảng
+            this.clearForm(); // xóa trắng form
+            MsgBox.alert(this, "Thêm mới thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại!");
+        }
+    }
+
+    void update() {
+        DanhMuc dm = this.getForm();
+        try {
+            dao.update(dm); // cập nhật
+            this.fillTable(); // đổ lại bảng
+            MsgBox.alert(this, "Cập nhật thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Cập nhật thất bại!");
+        }
+    }
+
+    void delete() {
+        String madm = txtMadanhmuc.getText();
+        try {
+            dao.delete(madm);
+            this.fillTable();
+            this.clearForm();
+            MsgBox.alert(this, "Xóa thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Xóa thất bại!");
+        }
+
+    }
+
+    void edit() {
+        String madm = (String) tblDanhMuc.getValueAt(this.row, 0);
+        DanhMuc dm = dao.selectById(madm);
+        this.setForm(dm);
+//        tabs.setSelectedIndex(0);
+        this.updateStatus();
+    }
+
+    void first() {
+        this.row = 0;
+        this.edit();
+    }
+
+    void prev() {
+        if (this.row > 0) {
+            this.row--;
+            this.edit();
+        }
+    }
+
+    void next() {
+        if (this.row < tblDanhMuc.getRowCount() - 1) {
+            this.row++;
+            this.edit();
+        }
+    }
+
+    void last() {
+        this.row = tblDanhMuc.getRowCount() - 1;
+        this.edit();
+    }
+
+    void clearForm() {
+        DanhMuc dm = new DanhMuc();
+        this.setForm(dm);
+        this.row = -1;
+        this.updateStatus();
+    }
+
+    void setForm(DanhMuc dm) {
+        txtMadanhmuc.setText(dm.getMaDanhmuc() + "");
+        txtTendanhmuc.setText(dm.getTenDanhmuc());
+        txtMota.setText(dm.getMoTa());
+    }
+
+    DanhMuc getForm() {
+        DanhMuc dm = new DanhMuc();
+        dm.setMaDanhmuc(Integer.parseInt(txtMadanhmuc.getText()));
+        dm.setTenDanhmuc(txtTendanhmuc.getText());
+        dm.setMoTa(txtMota.getText());
+        return dm;
+    }
 }
