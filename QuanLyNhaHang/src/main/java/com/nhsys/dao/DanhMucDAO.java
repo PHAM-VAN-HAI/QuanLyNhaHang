@@ -6,6 +6,7 @@
 package com.nhsys.dao;
 
 import com.nhsys.entity.DanhMuc;
+import com.nhsys.entity.NhanVien;
 import com.nhsys.utils.XJdbc;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -92,9 +93,9 @@ public class DanhMucDAO extends NHDAO<DanhMuc, String> {
         String sql = "SELECT * FROM DanhMuc ORDER BY TenDanhMuc ASC";
         return this.selectBySql(sql);
     }
-
-    public List<DanhMuc> selectByPosition(String position) {
-        String sql = "SELECT * FROM DanhMuc WHERE TenDanhMuc like ?";
-        return this.selectBySql(sql, "%" + position + "%");
+    
+    public List<DanhMuc> timNhanVienTheoTenDM(String TenDanhMuc) {
+        String sql = "SELECT * FROM NhanVien WHERE DanhMuc LIKE N'%" + TenDanhMuc + "%' ";
+        return this.selectBySql(sql);
     }
 }

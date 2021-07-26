@@ -5,6 +5,12 @@
  */
 package com.nhsys.ui;
 
+import com.nhsys.dao.DanhMucDAO;
+import com.nhsys.entity.DanhMuc;
+import com.nhsys.utils.MsgBox;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author anhha
@@ -44,6 +50,7 @@ public class QL_DanhMuc extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        txtTimtheotendm = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,11 +95,13 @@ public class QL_DanhMuc extends javax.swing.JFrame {
 
         jButton7.setText(">|");
 
+        txtTimtheotendm.setText("Search by Ten DM");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -116,8 +125,10 @@ public class QL_DanhMuc extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtTimtheotendm)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +154,9 @@ public class QL_DanhMuc extends javax.swing.JFrame {
                             .addComponent(jButton6)
                             .addComponent(jButton7)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(61, 61, 61)
+                .addGap(21, 21, 21)
+                .addComponent(txtTimtheotendm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -204,5 +217,110 @@ public class QL_DanhMuc extends javax.swing.JFrame {
     private javax.swing.JTextField txtMadanhmuc;
     private javax.swing.JTextField txtMota;
     private javax.swing.JTextField txtTendanhmuc;
+    private javax.swing.JTextField txtTimtheotendm;
     // End of variables declaration//GEN-END:variables
+
+    DanhMucDAO dao = new DanhMucDAO();
+    int row = -1;
+
+    void init() {
+        setLocationRelativeTo(null); // đưa cửa sổ ra giữa màn hình
+        tblDanhMuc.setDefaultEditor(Object.class, null);
+        this.fillTable(); // đổ dữ liệu nhân viên vào bảng
+        this.updateStatus(); // cập nhật trạng thái form
+    }
+    
+     void updateStatus() {
+        boolean edit = (this.row >= 0);
+        boolean first = (this.row == 0);
+        boolean last = (this.row == tblDanhMuc.getRowCount() - 1);
+        // Trạng thái form
+        txtMadanhmuc.setEditable(!edit);
+        btnThem.setEnabled(!edit);
+        btnSua.setEnabled(edit);
+        btnXoa.setEnabled(edit);
+
+//        // Trạng thái điều hướng
+//        btnFirst.setEnabled(edit && !first);
+//        btnPrev.setEnabled(edit && !first);
+//        btnNext.setEnabled(edit && !last);
+//        btnLast.setEnabled(edit && !last);
+    }
+
+    void fillTable() {
+        DefaultTableModel model = (DefaultTableModel) tblDanhMuc.getModel();
+        model.setRowCount(0);
+        try {
+            List<DanhMuc> list = dao.selectAll();
+            for (DanhMuc dm : list) {
+                Object[] row = {
+                    dm.getMaDanhmuc(),
+                    dm.getTenDanhmuc(),
+                    dm.getMoTa()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
+
+    void fillTableByName() {
+        String Chuoitimkiem = txtTimtheotendm.getText();
+        DefaultTableModel model = (DefaultTableModel) tblDanhMuc.getModel();
+        model.setRowCount(0);
+        try {
+            List<DanhMuc> list = dao.timNhanVienTheoTenDM(Chuoitimkiem);
+            for (DanhMuc dm : list) {
+                Object[] row = {
+                    dm.getMaDanhmuc(),
+                    dm.getTenDanhmuc(),
+                    dm.getMoTa()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
+
+    void fillTableOrderA() {
+        DefaultTableModel model = (DefaultTableModel) tblDanhMuc.getModel();
+        model.setRowCount(0);
+        try {
+            List<DanhMuc> list = dao.selectByOrderA();
+            for (DanhMuc dm : list) {
+                Object[] row = {
+                    dm.getMaDanhmuc(),
+                    dm.getTenDanhmuc(),
+                    dm.getMoTa()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
+    }
+
+    void fillTableOrderD() {
+        DefaultTableModel model = (DefaultTableModel) tblDanhMuc.getModel();
+        model.setRowCount(0);
+        try {
+            List<DanhMuc> list = dao.selectByOrderD();
+            for (DanhMuc dm : list) {
+                Object[] row = {
+                    dm.getMaDanhmuc(),
+                    dm.getTenDanhmuc(),
+                    dm.getMoTa()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
+    }
+    
+    
 }
