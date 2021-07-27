@@ -99,6 +99,7 @@ public class NV_ManHinhChinh1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1290, 621));
 
         jPanel3.setBackground(new java.awt.Color(153, 255, 255));
 
@@ -155,20 +156,24 @@ public class NV_ManHinhChinh1 extends javax.swing.JFrame {
         Center.setPreferredSize(new java.awt.Dimension(250, 250));
         Center.setLayout(new java.awt.CardLayout());
 
+        SoDoPanel.setPreferredSize(new java.awt.Dimension(1100, 450));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/12.png"))); // NOI18N
 
         javax.swing.GroupLayout SoDoPanelLayout = new javax.swing.GroupLayout(SoDoPanel);
         SoDoPanel.setLayout(SoDoPanelLayout);
         SoDoPanelLayout.setHorizontalGroup(
             SoDoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(SoDoPanelLayout.createSequentialGroup()
+                .addComponent(jLabel3)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         SoDoPanelLayout.setVerticalGroup(
             SoDoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SoDoPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7))
+                .addGap(0, 0, 0))
         );
 
         Center.add(SoDoPanel, "card2");
@@ -199,9 +204,9 @@ public class NV_ManHinhChinh1 extends javax.swing.JFrame {
         );
         DanhSachMon1Layout.setVerticalGroup(
             DanhSachMon1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DanhSachMon1Layout.createSequentialGroup()
-                .addComponent(DSmonan1)
-                .addContainerGap())
+            .addGroup(DanhSachMon1Layout.createSequentialGroup()
+                .addComponent(DSmonan1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 45, Short.MAX_VALUE))
         );
 
         jPanel8.setBackground(new java.awt.Color(255, 153, 51));
@@ -218,7 +223,7 @@ public class NV_ManHinhChinh1 extends javax.swing.JFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(120, 120, 120))
         );
@@ -250,27 +255,23 @@ public class NV_ManHinhChinh1 extends javax.swing.JFrame {
             .addGroup(OrderPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(DanhSachMon1, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(OrderPanelLayout.createSequentialGroup()
-                        .addGap(401, 401, 401)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(OrderPanelLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OrderPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         OrderPanelLayout.setVerticalGroup(
             OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(OrderPanelLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(OrderPanelLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(DanhSachMon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(DanhSachMon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         Center.add(OrderPanel, "card3");
@@ -283,7 +284,7 @@ public class NV_ManHinhChinh1 extends javax.swing.JFrame {
         );
         qlNVLayout.setVerticalGroup(
             qlNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 711, Short.MAX_VALUE)
+            .addGap(0, 589, Short.MAX_VALUE)
         );
 
         Center.add(qlNV, "card4");
@@ -479,7 +480,8 @@ public class NV_ManHinhChinh1 extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addComponent(Panel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(Panel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Panel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(264, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout QLNVLayout = new javax.swing.GroupLayout(QLNV);
@@ -495,7 +497,9 @@ public class NV_ManHinhChinh1 extends javax.swing.JFrame {
         QLNVLayout.setVerticalGroup(
             QLNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Center, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(ChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
+            .addGroup(QLNVLayout.createSequentialGroup()
+                .addComponent(ChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel2.add(QLNV, "card2");
@@ -512,7 +516,7 @@ public class NV_ManHinhChinh1 extends javax.swing.JFrame {
         );
         PLNVPanelLayout.setVerticalGroup(
             PLNVPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 701, Short.MAX_VALUE)
+            .addGap(0, 579, Short.MAX_VALUE)
         );
 
         Center2.add(PLNVPanel, "card2");
@@ -669,7 +673,7 @@ public class NV_ManHinhChinh1 extends javax.swing.JFrame {
             QLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, QLLayout.createSequentialGroup()
                 .addGroup(QLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ChucNang2, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
+                    .addComponent(ChucNang2, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
                     .addComponent(Center2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -681,19 +685,17 @@ public class NV_ManHinhChinh1 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -815,20 +817,20 @@ public class NV_ManHinhChinh1 extends javax.swing.JFrame {
     }
     List<ThucDon> DSTD = new ArrayList<>();
 
-    public void fillMonAn() {
+    public void fillMonAn(JPanel Danhsachthucdon) {
         int hMonAn = 0;
         DSmonan.removeAll();
         DSTD = new MonAnDAO().selectAll();
         if (DSTD != null) {
             for (int i = 0; i < DSTD.size(); i++) {
-                JPanel panelMonAn = new MonAnPanel("logos\\" + DSTD.get(i).getHinhanh(), DSTD.get(i).getTenMon().split("_")[0]);
+                JPanel panelMonAn = new MonAnPanel("logos\\" + DSTD.get(i).getHinhAnh(), DSTD.get(i).getTenMon().split("_")[0]);
                 //  panelMonAn.addMouseListener(new CustomMouseListener(panelMonAn, DSTD.get(i)));
-                DSmonan.add(panelMonAn);
+                Danhsachthucdon.add(panelMonAn);
                 hMonAn += 80;
             }
         }
-        DSmonan.setPreferredSize(new Dimension(200, hMonAn));
-        DSmonan.validate();
+        Danhsachthucdon.setPreferredSize(new Dimension(200, hMonAn));
+        Danhsachthucdon.validate();
         DSmonan.repaint();
         DSmonan1.repaint();
         DSmonan1.validate();

@@ -1,6 +1,6 @@
 package com.nhsys.ui;
 
-import utils.XImage;
+import com.nhsys.utils.XImage;
 
 public class MonAnPanel extends javax.swing.JPanel {
 
