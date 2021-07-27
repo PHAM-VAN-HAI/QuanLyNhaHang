@@ -17,16 +17,17 @@ import java.util.List;
  */
 public class DanhMucDAO extends NHDAO<DanhMuc, Integer> {
 
-    String INSERT_SQL = "INSERT INTO DanhMuc(MaDanhMuc, TenDanhMuc, MoTa)VALUES(?,?,?)";
+    //String INSERT_SQL = "INSERT INTO DanhMuc(MaDanhMuc, TenDanhMuc, MoTa)VALUES(? ,? ,?)";
+    String INSERT_SQL = "INSERT INTO DanhMuc(TenDanhMuc, MoTa)VALUES(? ,?)";
     String UPDATE_SQL = "UPDATE DanhMuc SET TenDanhMuc=?, MoTa=? where MaDanhMuc = ?";
-    String DELETE_SQL = "DELETE FROM DanhMuc WHERE MaDanhMuc =?";
+    String DELETE_SQL = "DELETE FROM DanhMuc WHERE MaDanhMuc = ?";
     String SELECT_ALL_SQL = "SELECT * FROM DanhMuc";
-    String SELETE_BY_ID_SQL = "SELECT * FROM DanhMuc WHERE MaDanhMuc =?";
+    String SELETE_BY_ID_SQL = "SELECT * FROM DanhMuc WHERE MaDanhMuc = ?";
 
     @Override
     public void insert(DanhMuc entity) {
         try {
-            XJdbc.update(INSERT_SQL, entity.getMaDanhmuc(), entity.getTenDanhmuc(), entity.getMoTa());
+            XJdbc.update(INSERT_SQL, entity.getTenDanhmuc(), entity.getMoTa());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -94,7 +95,7 @@ public class DanhMucDAO extends NHDAO<DanhMuc, Integer> {
     }
 
     public List<DanhMuc> timNhanVienTheoTenDM(String TenDanhMuc) {
-        String sql = "SELECT * FROM NhanVien WHERE DanhMuc LIKE N'%" + TenDanhMuc + "%' ";
+        String sql = "SELECT * FROM DanhMuc WHERE TenDanhMuc LIKE N'%" + TenDanhMuc + "%' ";
         return this.selectBySql(sql);
     }
 
