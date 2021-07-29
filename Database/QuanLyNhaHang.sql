@@ -25,6 +25,7 @@ CREATE TABLE [dbo].[HoaDon](
 	[MaKH] [int] NOT NULL,
 	[MaNV] [nvarchar](5) NOT NULL,
 	[MaBan] [nvarchar](10) NOT NULL,
+	[GiaTien] [money] NULL,
 	PRIMARY KEY (MaHoaDon)
 )
 GO
@@ -34,7 +35,6 @@ CREATE TABLE [dbo].[ChiTietHoaDon](
 	[MaHoaDon] [int] NOT NULL,
 	[MaMon] [int] NOT NULL,
 	[SoLuong] [int] Not Null,
-	[GiaTien] [money] NULL,
 	PRIMARY KEY (MaHoaDonCT)
 )
 GO
@@ -79,9 +79,21 @@ CREATE TABLE [dbo].[DatBan](
 	[MaBan] [nvarchar](10) NOT NULL,
 	[MaKH] [int] NOT NULL,
 	[NgayDatBan] [date] NOT NULL,
+	[GioDat] [nvarchar](10) NULL,
 	[SoNguoi] [int] NOT NULL,
 	[GhiChu] [nvarchar](50) NULL,
 	PRIMARY KEY (MaDatBan)
+)
+GO
+
+CREATE TABLE [dbo].[KhoHang](
+	[MaHangHoa] [nvarchar](10) NOT NULL,
+	[TenHangHoa] [nvarchar](50) NOT NULL,
+	[DonVi] [nvarchar](50) NOT NULL,
+	[SoLuong] [date] NOT NULL,
+	[ChiPhi] [int] NOT NULL,
+	[TongChiPhi] [int] NULL,
+	PRIMARY KEY (MaHangHoa)
 )
 GO
 

@@ -212,7 +212,6 @@ public class NV_ManHinhChinh1 extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 153, 51));
 
         txtTongTien.setEditable(false);
-        txtTongTien.setBackground(new java.awt.Color(255, 255, 255));
         txtTongTien.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         txtTongTien.setForeground(new java.awt.Color(255, 153, 51));
         txtTongTien.setText(" TỔNG TIỀN: ");
