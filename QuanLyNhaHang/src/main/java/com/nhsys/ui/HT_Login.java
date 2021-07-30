@@ -30,7 +30,7 @@ public class HT_Login extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         XImage.setHinh(lblBackground, "logos\\Wellcome.png", lblBackground.getWidth(), lblBackground.getHeight());
         Auth.clear();
-        jPanel3.setBackground(new Color(255, 255, 255, 160));
+        pnlBackgroundOpacity.setBackground(new Color(255, 255, 255, 160));
         txtTenDangNhap.setBackground(new Color(0, 0, 0, 0));
         txtMatKhau.setBackground(new Color(0, 0, 0, 0));
         showPass();
@@ -69,7 +69,7 @@ public class HT_Login extends javax.swing.JFrame {
         txtTenDangNhap = new javax.swing.JTextField();
         lblLogoUser = new javax.swing.JLabel();
         txtMatKhau = new javax.swing.JPasswordField();
-        jPanel3 = new javax.swing.JPanel();
+        pnlBackgroundOpacity = new javax.swing.JPanel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -159,18 +159,19 @@ public class HT_Login extends javax.swing.JFrame {
         });
         jPanel1.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 360, -1));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 480, 520));
+        pnlBackgroundOpacity.setBackground(new java.awt.Color(255, 255, 255));
+        pnlBackgroundOpacity.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(pnlBackgroundOpacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 480, 520));
         jPanel1.add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 960, 660));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+//    ManHinhChinh manhinhchinh = new ManHinhChinh();
 
-    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-        // TODO add your handling code here:
+    public void dangNhap() {
         if (txtTenDangNhap.getText().equalsIgnoreCase("Tên đăng nhập")) {
             MsgBox.alert(this, "Chưa nhập tên đăng nhập!");
             return;
@@ -189,15 +190,18 @@ public class HT_Login extends javax.swing.JFrame {
             MsgBox.alert(this, "Sai mật khẩu!");
         } else {
             Auth.user = nhanVien;
-            if (nhanVien.getChucVu().equalsIgnoreCase("Quản Lý")) {
-                NV_ManHinhChinh1 manhinhchinh = new NV_ManHinhChinh1();
-                manhinhchinh.setVisible(true);
+            if (nhanVien.getChucVu().equalsIgnoreCase("Quản lý")) {
+//                manhinhchinh.setVisible(true);
                 this.dispose();
             } else {
-                new NV_ManHinhChinh1(false).setVisible(true);
+//                manhinhchinh.setVisible(true);
                 this.dispose();
             }
         }
+    }
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        // TODO add your handling code here:
+        dangNhap();
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void lblQuenMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMKMouseClicked
@@ -275,7 +279,6 @@ public class HT_Login extends javax.swing.JFrame {
     private javax.swing.JButton btnDangNhap;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblBackground;
@@ -284,6 +287,7 @@ public class HT_Login extends javax.swing.JFrame {
     private javax.swing.JLabel lblLogoUser;
     private javax.swing.JLabel lblQuenMK;
     private javax.swing.JLabel lblShowPass;
+    private javax.swing.JPanel pnlBackgroundOpacity;
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtTenDangNhap;
     // End of variables declaration//GEN-END:variables

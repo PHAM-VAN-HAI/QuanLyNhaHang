@@ -12,7 +12,6 @@
             <version>9.2.1.jre15</version>
             <type>jar</type>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.activation/activation -->
         <dependency>
             <groupId>javax.activation</groupId>
             <artifactId>activation</artifactId>
@@ -28,7 +27,6 @@
             <artifactId>AbsoluteLayout</artifactId>
             <version>RELEASE122</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
         <dependency>
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
@@ -39,13 +37,11 @@
             <artifactId>poi</artifactId>
             <version>5.0.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports-fonts -->
         <dependency>
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports-fonts</artifactId>
             <version>6.17.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.toedter/jcalendar -->
         <dependency>
             <groupId>com.toedter</groupId>
             <artifactId>jcalendar</artifactId>
@@ -54,7 +50,7 @@
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>15</maven.compiler.source>
+        <maven.compiler.target>15</maven.compiler.target>
     </properties>
 </project>

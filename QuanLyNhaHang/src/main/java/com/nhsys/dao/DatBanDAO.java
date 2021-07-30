@@ -10,8 +10,6 @@ import com.nhsys.utils.XJdbc;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -19,8 +17,8 @@ import java.util.logging.Logger;
  */
 public class DatBanDAO extends NHDAO<DatBan, String> {
 
-    String INSERT_SQL = "INSERT INTO DatBan(MaDatBan, MaBan, MaKH, NgayDatBan, GioDat,SoNguoi, GhiChu)VALUES(?,?,?,?,?,?)";
-    String UPDATE_SQL = "UPDATE DatBan SET MaBan= ?, MaKH= ?, NgayDatBan= ?,GioDat = ?, SoNguoi= ?, GhiChu= ? where MaDatBan= ?";
+    String INSERT_SQL = "INSERT INTO DatBan(MaDatBan, HoTenKH, SDTKH, NgayDatBan, GioDat, SoNguoi, GhiChu, MaNV)VALUES(?,?,?,?,?,?,?,?)";
+    String UPDATE_SQL = "UPDATE DatBan SET HoTenKH=?, SDTKH=?, NgayDatBan=?, GioDat=?, SoNguoi=?, GhiChu=?, MaNV= ? where MaDatBan= ?";
     String DELETE_SQL = "DELETE FROM DatBan WHERE MaDatBan =?";
     String SELECT_ALL_SQL = "SELECT * FROM DatBan";
     String SELETE_BY_ID_SQL = "SELECT * FROM DatBan WHERE MaDatBan =?";
@@ -28,19 +26,20 @@ public class DatBanDAO extends NHDAO<DatBan, String> {
     @Override
     public void insert(DatBan entity) {
         try {
-            XJdbc.update(INSERT_SQL, entity.getMaDatBan(), entity.getMaban(), entity.getMaKH(), entity.getNgayDatBan(), entity.getGioDat(), entity.getSoNguoi(), entity.getGhiChu());
+            XJdbc.update(INSERT_SQL, entity.getMaDatBan(), entity.getHoTenKH(), entity.getSDTKH(), entity.getNgayDatBan(), entity.getGioDat(), entity.getSoNguoi(), entity.getGhiChu(), entity.getMaNV());
         } catch (Exception ex) {
-//            Logger.getLogger(BanAnDAO.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
+            System.out.println("Lỗi:" + ex);
         }
     }
 
     @Override
     public void update(DatBan entity) {
         try {
-            XJdbc.update(UPDATE_SQL, entity.getMaban(), entity.getMaKH(), entity.getNgayDatBan(), entity.getGioDat(), entity.getSoNguoi(), entity.getGhiChu(), entity.getMaDatBan());
+            XJdbc.update(UPDATE_SQL, entity.getHoTenKH(), entity.getSDTKH(), entity.getNgayDatBan(), entity.getGioDat(), entity.getSoNguoi(), entity.getGhiChu(), entity.getMaNV(), entity.getMaDatBan());
         } catch (Exception ex) {
-//            Logger.getLogger(BanAnDAO.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+            System.out.println("Lỗi:" + ex);
         }
     }
 
@@ -49,8 +48,8 @@ public class DatBanDAO extends NHDAO<DatBan, String> {
         try {
             XJdbc.update(DELETE_SQL, id);
         } catch (Exception ex) {
-//            Logger.getLogger(BanAnDAO.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
+            System.out.println("Lỗi:" + ex);
         }
     }
 
@@ -75,13 +74,14 @@ public class DatBanDAO extends NHDAO<DatBan, String> {
             ResultSet rs = XJdbc.query(sql, args);
             while (rs.next()) {
                 DatBan entity = new DatBan();
-                entity.setMaDatBan(rs.getInt("MaDatBan"));
-                entity.setMaban(rs.getString("MaBan"));
-                entity.setMaKH(rs.getInt("MaKH"));
+                entity.setMaDatBan(rs.getString("MaDatBan"));
+                entity.setHoTenKH(rs.getString("HoTenKH"));
+                entity.setSDTKH(rs.getString("SDTKH"));
                 entity.setNgayDatBan(rs.getString("NgayDatBan"));
                 entity.setGioDat(rs.getString("GioDat"));
                 entity.setSoNguoi(rs.getInt("SoNguoi"));
                 entity.setGhiChu(rs.getString("GhiChu"));
+                entity.setMaNV(rs.getString("MaNV"));
                 list.add(entity);
             }
             rs.getStatement().getConnection().close();

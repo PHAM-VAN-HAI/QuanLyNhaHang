@@ -15,10 +15,10 @@ import java.util.List;
  *
  * @author anhha
  */
-public class DanhMucDAO extends NHDAO<DanhMuc, Integer> {
+public class DanhMucDAO extends NHDAO<DanhMuc, String> {
 
     //String INSERT_SQL = "INSERT INTO DanhMuc(MaDanhMuc, TenDanhMuc, MoTa)VALUES(? ,? ,?)";
-    String INSERT_SQL = "INSERT INTO DanhMuc(TenDanhMuc, MoTa)VALUES(? ,?)";
+    String INSERT_SQL = "INSERT INTO DanhMuc(MaDanhMuc, TenDanhMuc, MoTa)VALUES(?, ?, ?)";
     String UPDATE_SQL = "UPDATE DanhMuc SET TenDanhMuc=?, MoTa=? where MaDanhMuc = ?";
     String DELETE_SQL = "DELETE FROM DanhMuc WHERE MaDanhMuc = ?";
     String SELECT_ALL_SQL = "SELECT * FROM DanhMuc";
@@ -27,14 +27,14 @@ public class DanhMucDAO extends NHDAO<DanhMuc, Integer> {
     @Override
     public void insert(DanhMuc entity) {
         try {
-            XJdbc.update(INSERT_SQL, entity.getTenDanhmuc(), entity.getMoTa());
+            XJdbc.update(INSERT_SQL, entity.getMaDanhmuc(), entity.getTenDanhmuc(), entity.getMoTa());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
         try {
             XJdbc.update(DELETE_SQL, id);
         } catch (Exception ex) {
@@ -52,7 +52,7 @@ public class DanhMucDAO extends NHDAO<DanhMuc, Integer> {
     }
 
     @Override
-    public DanhMuc selectById(Integer id) {
+    public DanhMuc selectById(String id) {
         List<DanhMuc> list = this.selectBySql(SELETE_BY_ID_SQL, id);
         if (list.isEmpty()) {
             return null;
@@ -72,7 +72,7 @@ public class DanhMucDAO extends NHDAO<DanhMuc, Integer> {
             ResultSet rs = XJdbc.query(sql, args);
             while (rs.next()) {
                 DanhMuc enity = new DanhMuc();
-                enity.setMaDanhmuc(rs.getInt("MaDanhMuc"));
+                enity.setMaDanhmuc(rs.getString("MaDanhMuc"));
                 enity.setTenDanhmuc(rs.getString("TenDanhMuc"));
                 enity.setMoTa(rs.getString("MoTa"));
                 list.add(enity);

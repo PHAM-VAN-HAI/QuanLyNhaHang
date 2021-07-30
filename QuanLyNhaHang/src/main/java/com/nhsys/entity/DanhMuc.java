@@ -10,11 +10,12 @@ package com.nhsys.entity;
  * @author anhha
  */
 public class DanhMuc {
-    int MaDanhmuc;
+
+    String MaDanhmuc;
     String TenDanhmuc;
     String MoTa;
 
-    public DanhMuc(int MaDanhmuc, String TenDanhmuc, String MoTa) {
+    public DanhMuc(String MaDanhmuc, String TenDanhmuc, String MoTa) {
         this.MaDanhmuc = MaDanhmuc;
         this.TenDanhmuc = TenDanhmuc;
         this.MoTa = MoTa;
@@ -23,11 +24,11 @@ public class DanhMuc {
     public DanhMuc() {
     }
 
-    public int getMaDanhmuc() {
+    public String getMaDanhmuc() {
         return MaDanhmuc;
     }
 
-    public void setMaDanhmuc(int MaDanhmuc) {
+    public void setMaDanhmuc(String MaDanhmuc) {
         this.MaDanhmuc = MaDanhmuc;
     }
 
@@ -46,6 +47,4 @@ public class DanhMuc {
     public void setMoTa(String MoTa) {
         this.MoTa = MoTa;
     }
-    
-    
 }

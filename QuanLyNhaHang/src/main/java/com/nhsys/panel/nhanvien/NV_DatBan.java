@@ -6,6 +6,7 @@ import com.nhsys.utils.Auth;
 import com.nhsys.utils.MsgBox;
 import com.nhsys.utils.XDate;
 import com.nhsys.utils.mouseEvent;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JLabel;
@@ -14,169 +15,12 @@ import javax.swing.table.DefaultTableModel;
 
 public class NV_DatBan extends javax.swing.JPanel {
 
-    //Biến
-    DatBanDAO dao = new DatBanDAO();
-
     public NV_DatBan() {
         initComponents();
-        fillToTable();
+        init();
     }
 
-    //Hàm    
-    void fillToTable() {
-        DefaultTableModel model = (DefaultTableModel) tblDanhSach.getModel();
-        model.setRowCount(0);
-        try {
-            List<DatBan> list;
-            if (cboNgayDat.getSelectedIndex() == 0) {
-                list = dao.selectAll();
-                for (DatBan db : list) {
-                    Object[] row = {
-                        db.getMaDatBan(),
-                        db.getMaban(),
-                        db.getMaKH(),
-                        XDate.formatDate(db.getNgayDatBan()),
-                        db.getGioDat(),
-                        db.getSoNguoi(),
-                        db.getGhiChu(),};
-                    model.addRow(row);
-                }
-            } else if (cboNgayDat.getSelectedIndex() == 1) {
-                list = dao.selectByTang();
-                for (DatBan db : list) {
-                    Object[] row = {
-                        db.getMaDatBan(),
-                        db.getMaban(),
-                        db.getMaKH(),
-                        XDate.formatDate(db.getNgayDatBan()),
-                        db.getGioDat(),
-                        db.getSoNguoi(),
-                        db.getGhiChu(),};
-                    model.addRow(row);
-                }
-            } else {
-                list = dao.selectByGiam();
-                for (DatBan db : list) {
-                    Object[] row = {
-                        db.getMaDatBan(),
-                        db.getMaban(),
-                        db.getMaKH(),
-                        XDate.formatDate(db.getNgayDatBan()),
-                        db.getGioDat(),
-                        db.getSoNguoi(),
-                        db.getGhiChu(),};
-                    model.addRow(row);
-                }
-
-            }
-        } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
-            e.printStackTrace();
-        }
-    }
-
-    void delete() {
-        if (!Auth.isManager()) {
-            MsgBox.alert(this, "Bạn không thể xóa đặt bàn!");
-        } else if (MsgBox.confirm(this, "Bạn thực sự muốn xóa đặt bàn này?")) {
-            int[] rows = tblDanhSach.getSelectedRows();
-            if (rows.length > 0) {
-                for (int row : rows) {
-                    String madb = tblDanhSach.getValueAt(row, 0).toString();
-                    dao.delete(madb);
-                }
-                this.fillToTable();
-            }
-        }
-    }
-
-    void edit() {
-        if (checkVal()) {
-            try {
-                for (int i = 0; i < tblDanhSach.getRowCount(); i++) {
-                    String madb = (String) tblDanhSach.getValueAt(i, 0);
-                    DatBan db = dao.selectById(madb);
-                    db.setMaDatBan(Integer.valueOf(String.valueOf(tblDanhSach.getValueAt(i, 0))));
-                    db.setMaban(String.valueOf(tblDanhSach.getValueAt(i, 1)));
-                    db.setMaKH(Integer.valueOf(String.valueOf(tblDanhSach.getValueAt(i, 2))));
-                    String ar[] = String.valueOf(tblDanhSach.getValueAt(i, 3)).split("-");
-                    String date = ar[2] + "-" + ar[1] + "-" + ar[0];
-                    db.setNgayDatBan(date);
-                    db.setGioDat(String.valueOf(tblDanhSach.getValueAt(i, 4)));
-                    db.setSoNguoi(Integer.valueOf(String.valueOf(tblDanhSach.getValueAt(i, 5))));
-                    db.setGhiChu(String.valueOf(tblDanhSach.getValueAt(i, 6)));
-                    dao.update(db);
-                }
-                MsgBox.alert(this, "Cập nhật đặt bàn thành công!");
-            } catch (Exception e) {
-//            MsgBox.alert(this, "Lỗi định dạng dữ liệu. Vui lòng kiểm tra lại!");
-                e.printStackTrace();
-            }
-        }
-    }
-
-    boolean checkVal() {
-        Date ngayHT = XDate.toDate(java.time.LocalDate.now().toString(), "yyyy-MM-dd");
-        for (int i = 0; i < tblDanhSach.getRowCount(); i++) {
-            Date ngayNhap = XDate.toDate(tblDanhSach.getValueAt(i, 2).toString(), "dd-MM-yyyy");
-
-            if (tblDanhSach.getValueAt(i, 1).toString().isEmpty()) {
-                MsgBox.alert(this, "Bạn chưa nhập họ và tên!");
-                return false;
-            }
-            if (tblDanhSach.getValueAt(i, 0).toString().isEmpty()) {
-                MsgBox.alert(this, "Bạn chưa nhập mã đặt bàn!");
-                return false;
-            } else if (tblDanhSach.getValueAt(i, 0).toString().length() > 10) {
-                MsgBox.alert(this, "Mã thành đặt bàn tối đa chỉ 10 ký tự!");
-                return false;
-            }
-            if (!ngayNhap.before(ngayHT)) {
-                MsgBox.alert(this, "Ngày đăng ký không được lớn hơn ngày hiện tại!");
-                return false;
-            }
-            if (tblDanhSach.getValueAt(i, 3).toString().isEmpty()) {
-                MsgBox.alert(this, "Bạn chưa nhập giờ đặt!");
-                return false;
-            }
-            if (!tblDanhSach.getValueAt(i, 3).toString().matches("\\d{1,2}:\\d{1,2}")) {
-                MsgBox.alert(this, "Thời gian không đúng định dạng MM:ss!");
-                return false;
-            }
-            String[] parts = tblDanhSach.getValueAt(i, 3).toString().split(":");
-            String part1 = parts[0];
-            String part2 = parts[1];
-            try {
-                if (Integer.valueOf(part1) < 0 || Integer.valueOf(part2) < 0 || Integer.valueOf(part1) > 24 || Integer.valueOf(part2) > 60) {
-                    MsgBox.alert(this, "Thời gian không đúng định dạng hh:MM!");
-                    return false;
-                }
-            } catch (Exception e) {
-                MsgBox.alert(this, "Thời gian không đúng định dạng hh:MM!");
-                return false;
-            }
-            if (tblDanhSach.getValueAt(i, 4).toString().length() > 12) {
-                MsgBox.alert(this, "Số điện thoại không đúng định dạng!");
-                return false;
-            }
-            try {
-                Integer.valueOf(tblDanhSach.getValueAt(i, 4).toString());
-
-            } catch (Exception e) {
-                MsgBox.alert(this, "Số điện thoại không đúng định dạng!");
-                return false;
-            }
-
-            if (tblDanhSach.getValueAt(i, 5).toString().isEmpty()) {
-                MsgBox.alert(this, "Bạn chưa nhập số lượng người!");
-                return false;
-            }
-        }
-        return true;
-
-    }
     //end
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -189,13 +33,9 @@ public class NV_DatBan extends javax.swing.JPanel {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        btnDatBan = new javax.swing.JButton();
-        btnXoa = new javax.swing.JButton();
-        btnSuaDatBan = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        txtName = new javax.swing.JTextField();
+        txtTenKH = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         txtSDT = new javax.swing.JTextField();
@@ -216,87 +56,52 @@ public class NV_DatBan extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtGhiChu = new javax.swing.JTextArea();
         cldNgayDat = new com.toedter.calendar.JDateChooser();
+        btnThem = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         cboNgayDat = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDanhSach = new javax.swing.JTable();
+        tblDatBan = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new java.awt.Color(255, 153, 51));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("THÔNG TIN ĐẶT BÀN");
+        lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("THÔNG TIN ĐẶT BÀN");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
         );
-
-        jPanel4.setLayout(new java.awt.GridLayout(3, 1, 0, 10));
-
-        btnDatBan.setBackground(new java.awt.Color(255, 153, 51));
-        btnDatBan.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnDatBan.setForeground(new java.awt.Color(255, 255, 255));
-        btnDatBan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/addD.png"))); // NOI18N
-        btnDatBan.setText("ĐẶT BÀN MỚI");
-        btnDatBan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDatBanActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnDatBan);
-
-        btnXoa.setBackground(new java.awt.Color(255, 153, 51));
-        btnXoa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnXoa.setForeground(new java.awt.Color(255, 255, 255));
-        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/deletez.png"))); // NOI18N
-        btnXoa.setText("XÓA ĐẶT BÀN");
-        btnXoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnXoa);
-
-        btnSuaDatBan.setBackground(new java.awt.Color(255, 153, 51));
-        btnSuaDatBan.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnSuaDatBan.setForeground(new java.awt.Color(255, 255, 255));
-        btnSuaDatBan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/addD.png"))); // NOI18N
-        btnSuaDatBan.setText("SỬA ĐẶT BÀN");
-        btnSuaDatBan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuaDatBanActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnSuaDatBan);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtName.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        txtName.setText("Mã Khách Hàng");
-        txtName.setBorder(null);
-        txtName.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtTenKH.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txtTenKH.setText("Tên Khách Hàng");
+        txtTenKH.setBorder(null);
+        txtTenKH.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNameFocusLost(evt);
+                txtTenKHFocusLost(evt);
             }
         });
-        txtName.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtTenKH.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtNameMouseClicked(evt);
+                txtTenKHMouseClicked(evt);
             }
         });
-        txtName.addActionListener(new java.awt.event.ActionListener() {
+        txtTenKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
+                txtTenKHActionPerformed(evt);
             }
         });
 
@@ -404,6 +209,39 @@ public class NV_DatBan extends javax.swing.JPanel {
         cldNgayDat.setDateFormatString("dd-MM-yyyy");
         cldNgayDat.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
+        btnThem.setBackground(new java.awt.Color(255, 153, 51));
+        btnThem.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnThem.setForeground(new java.awt.Color(255, 255, 255));
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/addD.png"))); // NOI18N
+        btnThem.setText("ĐẶT BÀN MỚI");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+
+        btnXoa.setBackground(new java.awt.Color(255, 153, 51));
+        btnXoa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnXoa.setForeground(new java.awt.Color(255, 255, 255));
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/deletez.png"))); // NOI18N
+        btnXoa.setText("XÓA ĐẶT BÀN");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
+
+        btnSua.setBackground(new java.awt.Color(255, 153, 51));
+        btnSua.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnSua.setForeground(new java.awt.Color(255, 255, 255));
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/addD.png"))); // NOI18N
+        btnSua.setText("SỬA ĐẶT BÀN");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -416,7 +254,7 @@ public class NV_DatBan extends javax.swing.JPanel {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
@@ -454,7 +292,15 @@ public class NV_DatBan extends javax.swing.JPanel {
                                         .addComponent(txtGioDat, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(txtName6)
-                    .addComponent(jScrollPane2))
+                    .addComponent(jScrollPane2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnThem)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnXoa)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSua)
+                        .addGap(122, 122, 122)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -465,13 +311,13 @@ public class NV_DatBan extends javax.swing.JPanel {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cldNgayDat, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                            .addComponent(cldNgayDat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -504,11 +350,16 @@ public class NV_DatBan extends javax.swing.JPanel {
                                     .addComponent(txtSoNguoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(txtName6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnThem)
+                    .addComponent(btnXoa)
+                    .addComponent(btnSua))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -519,8 +370,6 @@ public class NV_DatBan extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -528,10 +377,8 @@ public class NV_DatBan extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Cập Nhật", jPanel1);
@@ -547,8 +394,8 @@ public class NV_DatBan extends javax.swing.JPanel {
             }
         });
 
-        tblDanhSach.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        tblDanhSach.setModel(new javax.swing.table.DefaultTableModel(
+        tblDatBan.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        tblDatBan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -559,16 +406,21 @@ public class NV_DatBan extends javax.swing.JPanel {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
         for(int x=0;x<8;x++){
-            tblDanhSach.getColumnModel().getColumn(x).setCellRenderer( centerRenderer );
+            tblDatBan.getColumnModel().getColumn(x).setCellRenderer( centerRenderer );
         }
 
-        tblDanhSach.setRowHeight(30);
+        tblDatBan.setRowHeight(30);
 
-        tblDanhSach.getColumnModel().getColumn(0).setPreferredWidth(3);
-        tblDanhSach.getColumnModel().getColumn(3).setPreferredWidth(3);
-        tblDanhSach.getColumnModel().getColumn(5).setPreferredWidth(3);
-        tblDanhSach.getColumnModel().getColumn(7).setPreferredWidth(3);
-        jScrollPane1.setViewportView(tblDanhSach);
+        tblDatBan.getColumnModel().getColumn(0).setPreferredWidth(3);
+        tblDatBan.getColumnModel().getColumn(3).setPreferredWidth(3);
+        tblDatBan.getColumnModel().getColumn(5).setPreferredWidth(3);
+        tblDatBan.getColumnModel().getColumn(7).setPreferredWidth(3);
+        tblDatBan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDatBanMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblDatBan);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -577,7 +429,7 @@ public class NV_DatBan extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 959, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 767, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(cboNgayDat, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -589,7 +441,7 @@ public class NV_DatBan extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(cboNgayDat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Danh Sách", jPanel2);
@@ -602,46 +454,41 @@ public class NV_DatBan extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void cboNgayDatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNgayDatActionPerformed
         // TODO add your handling code here:
-        fillToTable();
     }//GEN-LAST:event_cboNgayDatActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        // TODO add your handling code here:
         delete();
     }//GEN-LAST:event_btnXoaActionPerformed
 
-    private void btnDatBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatBanActionPerformed
-        // TODO add your handling code here:
-        try {
-//            new NV_DatBanMoi().setVisible(true);
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_btnDatBanActionPerformed
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        insert();
+    }//GEN-LAST:event_btnThemActionPerformed
 
-    private void btnSuaDatBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaDatBanActionPerformed
-        // TODO add your handling code here:
-        edit();
-    }//GEN-LAST:event_btnSuaDatBanActionPerformed
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        update();
+    }//GEN-LAST:event_btnSuaActionPerformed
 
-    private void txtNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusLost
+    private void txtTenKHFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenKHFocusLost
         // TODO add your handling code here:
-        new mouseEvent().clear_text_exit(txtName, "Họ và tên");
-    }//GEN-LAST:event_txtNameFocusLost
+        new mouseEvent().clear_text_exit(txtTenKH, "Họ và tên");
+    }//GEN-LAST:event_txtTenKHFocusLost
 
-    private void txtNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNameMouseClicked
+    private void txtTenKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTenKHMouseClicked
         // TODO add your handling code here:
-        new mouseEvent().clear_text_click(txtName, "Họ và tên");
-    }//GEN-LAST:event_txtNameMouseClicked
+        new mouseEvent().clear_text_click(txtTenKH, "Họ và tên");
+    }//GEN-LAST:event_txtTenKHMouseClicked
 
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+    private void txtTenKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenKHActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
+    }//GEN-LAST:event_txtTenKHActionPerformed
 
     private void txtSDTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSDTFocusLost
         // TODO add your handling code here:
@@ -703,14 +550,21 @@ public class NV_DatBan extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtName6ActionPerformed
 
+    private void tblDatBanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatBanMouseClicked
+        // TODO add your handling code here:
+          if (evt.getClickCount() == 2) {
+            this.row = tblDatBan.getSelectedRow();
+            this.edit();
+        }
+    }//GEN-LAST:event_tblDatBanMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDatBan;
-    private javax.swing.JButton btnSuaDatBan;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<String> cboNgayDat;
     private com.toedter.calendar.JDateChooser cldNgayDat;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -720,7 +574,6 @@ public class NV_DatBan extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -731,13 +584,222 @@ public class NV_DatBan extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable tblDanhSach;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JTable tblDatBan;
     private javax.swing.JTextArea txtGhiChu;
     private javax.swing.JTextField txtGioDat;
     private javax.swing.JTextField txtMaDatBan;
-    private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtName6;
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtSoNguoi;
+    private javax.swing.JTextField txtTenKH;
     // End of variables declaration//GEN-END:variables
+    DatBanDAO dao = new DatBanDAO();
+    int row = -1;
+
+    void init() {
+        tblDatBan.setDefaultEditor(Object.class, null);
+        this.fillTable(); // đổ dữ liệu nhân viên vào bảng
+        this.updateStatus(); // cập nhật trạng thái form
+        clearForm();
+    }
+
+    void updateStatus() {
+        boolean edit = (this.row >= 0);
+        boolean first = (this.row == 0);
+        boolean last = (this.row == tblDatBan.getRowCount() - 1);
+
+        btnThem.setEnabled(!edit);
+        btnSua.setEnabled(edit);
+        btnXoa.setEnabled(edit);
+    }
+
+    void fillTable() {
+        DefaultTableModel model = (DefaultTableModel) tblDatBan.getModel();
+        model.setRowCount(0);
+        try {
+            List<DatBan> list;
+            if (cboNgayDat.getSelectedIndex() == 0) {
+                list = dao.selectAll();
+                for (DatBan db : list) {
+                    Object[] row = {
+                        db.getMaDatBan(),
+                        db.getHoTenKH(),
+                        db.getSDTKH(),
+                        XDate.formatDate(db.getNgayDatBan()),
+                        db.getGioDat(),
+                        db.getSoNguoi(),
+                        db.getGhiChu(),
+                        db.getMaNV(),};
+                    model.addRow(row);
+                }
+            } else if (cboNgayDat.getSelectedIndex() == 1) {
+                list = dao.selectByTang();
+                for (DatBan db : list) {
+                    Object[] row = {
+                        db.getMaDatBan(),
+                        db.getHoTenKH(),
+                        db.getSDTKH(),
+                        XDate.formatDate(db.getNgayDatBan()),
+                        db.getGioDat(),
+                        db.getSoNguoi(),
+                        db.getGhiChu(),
+                        db.getMaNV(),};
+                    model.addRow(row);
+                }
+            } else {
+                list = dao.selectByGiam();
+                for (DatBan db : list) {
+                    Object[] row = {
+                        db.getMaDatBan(),
+                        db.getHoTenKH(),
+                        db.getSDTKH(),
+                        XDate.formatDate(db.getNgayDatBan()),
+                        db.getGioDat(),
+                        db.getSoNguoi(),
+                        db.getGhiChu(),
+                        db.getMaNV(),};
+                    model.addRow(row);
+                }
+
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
+    }
+
+    boolean checkVal() {
+        Date ngayHT = XDate.toDate(java.time.LocalDate.now().toString(), "yyyy-MM-dd");
+        for (int i = 0; i < tblDatBan.getRowCount(); i++) {
+            Date ngayNhap = XDate.toDate(tblDatBan.getValueAt(i, 2).toString(), "dd-MM-yyyy");
+
+            if (tblDatBan.getValueAt(i, 1).toString().isEmpty()) {
+                MsgBox.alert(this, "Bạn chưa nhập họ và tên!");
+                return false;
+            }
+            if (tblDatBan.getValueAt(i, 0).toString().isEmpty()) {
+                MsgBox.alert(this, "Bạn chưa nhập mã đặt bàn!");
+                return false;
+            } else if (tblDatBan.getValueAt(i, 0).toString().length() > 10) {
+                MsgBox.alert(this, "Mã thành đặt bàn tối đa chỉ 10 ký tự!");
+                return false;
+            }
+            if (!ngayNhap.before(ngayHT)) {
+                MsgBox.alert(this, "Ngày đăng ký không được lớn hơn ngày hiện tại!");
+                return false;
+            }
+            if (tblDatBan.getValueAt(i, 3).toString().isEmpty()) {
+                MsgBox.alert(this, "Bạn chưa nhập giờ đặt!");
+                return false;
+            }
+            if (!tblDatBan.getValueAt(i, 3).toString().matches("\\d{1,2}:\\d{1,2}")) {
+                MsgBox.alert(this, "Thời gian không đúng định dạng MM:ss!");
+                return false;
+            }
+            String[] parts = tblDatBan.getValueAt(i, 3).toString().split(":");
+            String part1 = parts[0];
+            String part2 = parts[1];
+            try {
+                if (Integer.valueOf(part1) < 0 || Integer.valueOf(part2) < 0 || Integer.valueOf(part1) > 24 || Integer.valueOf(part2) > 60) {
+                    MsgBox.alert(this, "Thời gian không đúng định dạng hh:MM!");
+                    return false;
+                }
+            } catch (Exception e) {
+                MsgBox.alert(this, "Thời gian không đúng định dạng hh:MM!");
+                return false;
+            }
+            if (tblDatBan.getValueAt(i, 4).toString().length() > 12) {
+                MsgBox.alert(this, "Số điện thoại không đúng định dạng!");
+                return false;
+            }
+            try {
+                Integer.valueOf(tblDatBan.getValueAt(i, 4).toString());
+
+            } catch (Exception e) {
+                MsgBox.alert(this, "Số điện thoại không đúng định dạng!");
+                return false;
+            }
+
+            if (tblDatBan.getValueAt(i, 5).toString().isEmpty()) {
+                MsgBox.alert(this, "Bạn chưa nhập số lượng người!");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    void insert() {
+        DatBan db = this.getForm();
+        try {
+            dao.insert(db); // thêm mới
+            this.fillTable(); // đỗ lại bảng
+            this.clearForm(); // xóa trắng form
+            MsgBox.alert(this, "Thêm mới thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại!");
+        }
+    }
+
+    void update() {
+        DatBan db = this.getForm();
+        try {
+            dao.update(db); // cập nhật
+            this.fillTable(); // đổ lại bảng
+            MsgBox.alert(this, "Cập nhật thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Cập nhật thất bại!");
+        }
+    }
+
+    void delete() {
+        String madm = txtMaDatBan.getText();
+        try {
+            dao.delete(madm);
+            this.fillTable();
+            this.clearForm();
+            MsgBox.alert(this, "Xóa thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Xóa thất bại!");
+        }
+    }
+
+    void edit() {
+        String madm = (String) tblDatBan.getValueAt(this.row, 0);
+        DatBan db = dao.selectById(madm);
+        this.setForm(db);
+        this.updateStatus();
+    }
+
+    void clearForm() {
+        DatBan db = new DatBan();
+        this.setForm(db);
+        this.row = -1;
+        this.updateStatus();
+    }
+
+    void setForm(DatBan db) {
+        txtMaDatBan.setText(db.getMaDatBan());
+        txtTenKH.setText(db.getHoTenKH());
+        txtSDT.setText(db.getSDTKH());
+        cldNgayDat.setDate(new Date());
+        txtGioDat.setText(db.getGioDat());
+        txtSoNguoi.setText(String.valueOf(db.getSoNguoi()));
+        txtGhiChu.setText(db.getGhiChu());
+    }
+
+    DatBan getForm() {
+        DatBan db = new DatBan();
+        db.setMaDatBan(txtMaDatBan.getText());
+        db.setHoTenKH(txtTenKH.getText());
+        db.setSDTKH(txtSDT.getText());
+        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
+//        System.out.println(dt1.format(cldNgaySinh.getDate()));
+        db.setNgayDatBan(dt1.format(cldNgayDat.getDate()));
+        db.setGioDat(txtGioDat.getText());
+        db.setSoNguoi(Integer.valueOf(txtSoNguoi.getText()));
+        db.setGhiChu(txtGhiChu.getText());
+        db.setMaNV(Auth.user.getMaNV());
+        return db;
+    }
 }

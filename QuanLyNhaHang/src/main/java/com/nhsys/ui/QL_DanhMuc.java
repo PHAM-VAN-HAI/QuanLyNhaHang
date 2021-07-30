@@ -38,7 +38,6 @@ public class QL_DanhMuc extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtMadanhmuc = new javax.swing.JTextField();
         txtTendanhmuc = new javax.swing.JTextField();
         txtMota = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
@@ -54,6 +53,7 @@ public class QL_DanhMuc extends javax.swing.JFrame {
         btnLast = new javax.swing.JButton();
         txtTimtheotendm = new javax.swing.JTextField();
         cboSXtheoten = new javax.swing.JComboBox<>();
+        txtMadanhmuc = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -182,9 +182,9 @@ public class QL_DanhMuc extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMadanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTendanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMota, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtMota, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMadanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -208,7 +208,7 @@ public class QL_DanhMuc extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -228,7 +228,7 @@ public class QL_DanhMuc extends javax.swing.JFrame {
                             .addComponent(btnPrev)
                             .addComponent(btnNext)
                             .addComponent(btnLast)))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTimtheotendm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -391,7 +391,6 @@ public class QL_DanhMuc extends javax.swing.JFrame {
         boolean first = (this.row == 0);
         boolean last = (this.row == tblDanhMuc.getRowCount() - 1);
         // Trạng thái form
-        txtMadanhmuc.setEditable(false);
         btnThem.setEnabled(!edit);
         btnSua.setEnabled(edit);
         btnXoa.setEnabled(edit);
@@ -483,6 +482,12 @@ public class QL_DanhMuc extends javax.swing.JFrame {
         if (txtTendanhmuc.getText().isEmpty() || txtTendanhmuc.getText().equalsIgnoreCase("")) {
             MsgBox.alert(this, "Bạn chưa nhập tên danh mục!");
             return false;
+        } else if (txtMadanhmuc.getText().length() > 15) {
+            return false;
+        }
+        if (txtTendanhmuc.getText().isEmpty() || txtTendanhmuc.getText().equalsIgnoreCase("")) {
+            MsgBox.alert(this, "Bạn chưa nhập tên danh mục!");
+            return false;
         }
         return true;
     }
@@ -511,7 +516,7 @@ public class QL_DanhMuc extends javax.swing.JFrame {
     }
 
     void delete() {
-        int madm = Integer.parseInt(txtMadanhmuc.getText());
+        String madm = txtMadanhmuc.getText();
         try {
             dao.delete(madm);
             this.fillTable();
@@ -520,11 +525,10 @@ public class QL_DanhMuc extends javax.swing.JFrame {
         } catch (Exception e) {
             MsgBox.alert(this, "Xóa thất bại!");
         }
-
     }
 
     void edit() {
-        int madm = (int) tblDanhMuc.getValueAt(this.row, 0);
+        String madm = (String) tblDanhMuc.getValueAt(this.row, 0);
         DanhMuc dm = dao.selectById(madm);
         this.setForm(dm);
         this.updateStatus();
@@ -562,14 +566,14 @@ public class QL_DanhMuc extends javax.swing.JFrame {
     }
 
     void setForm(DanhMuc dm) {
-        txtMadanhmuc.setText(String.valueOf(dm.getMaDanhmuc()));
+        txtMadanhmuc.setText(dm.getMaDanhmuc());
         txtTendanhmuc.setText(dm.getTenDanhmuc());
         txtMota.setText(dm.getMoTa());
     }
 
     DanhMuc getForm() {
         DanhMuc dm = new DanhMuc();
-        dm.setMaDanhmuc(Integer.parseInt(txtMadanhmuc.getText()));
+        dm.setMaDanhmuc(txtMadanhmuc.getText());
         dm.setTenDanhmuc(txtTendanhmuc.getText());
         dm.setMoTa(txtMota.getText());
         return dm;

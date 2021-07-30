@@ -11,49 +11,51 @@ package com.nhsys.entity;
  */
 public class DatBan {
 
-    int MaDatBan;
-    String Maban;
-    int MaKH;
+    String MaDatBan;
+    String HoTenKH;
+    String SDTKH;
     String NgayDatBan;
     String GioDat;
     int SoNguoi;
     String GhiChu;
+    String MaNV;
 
-    public DatBan(int MaDatBan, String Maban, int MaKH, String NgayDatBan, String GioDat, int SoNguoi, String GhiChu) {
+    public DatBan(String MaDatBan, String HoTenKH, String SDTKH, String NgayDatBan, String GioDat, int SoNguoi, String GhiChu, String MaNV) {
         this.MaDatBan = MaDatBan;
-        this.Maban = Maban;
-        this.MaKH = MaKH;
+        this.HoTenKH = HoTenKH;
+        this.SDTKH = SDTKH;
         this.NgayDatBan = NgayDatBan;
         this.GioDat = GioDat;
         this.SoNguoi = SoNguoi;
         this.GhiChu = GhiChu;
+        this.MaNV = MaNV;
     }
 
     public DatBan() {
     }
 
-    public int getMaDatBan() {
+    public String getMaDatBan() {
         return MaDatBan;
     }
 
-    public void setMaDatBan(int MaDatBan) {
+    public void setMaDatBan(String MaDatBan) {
         this.MaDatBan = MaDatBan;
     }
 
-    public String getMaban() {
-        return Maban;
+    public String getHoTenKH() {
+        return HoTenKH;
     }
 
-    public void setMaban(String Maban) {
-        this.Maban = Maban;
+    public void setHoTenKH(String HoTenKH) {
+        this.HoTenKH = HoTenKH;
     }
 
-    public int getMaKH() {
-        return MaKH;
+    public String getSDTKH() {
+        return SDTKH;
     }
 
-    public void setMaKH(int MaKH) {
-        this.MaKH = MaKH;
+    public void setSDTKH(String SDTKH) {
+        this.SDTKH = SDTKH;
     }
 
     public String getNgayDatBan() {
@@ -87,6 +89,15 @@ public class DatBan {
     public void setGhiChu(String GhiChu) {
         this.GhiChu = GhiChu;
     }
-    
+
+    public String getMaNV() {
+        return MaNV;
+    }
+
+    public void setMaNV(String MaNV) {
+        this.MaNV = MaNV;
+    }
+
+   
 
 }
