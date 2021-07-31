@@ -257,7 +257,6 @@ public class NV_Menu extends javax.swing.JPanel {
     private void lblDoanhThuQLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDoanhThuQLMouseClicked
         // TODO add your handling code here:
         lblTieuDe.setText("DANH SÁCH HÓA ĐƠN");
-
     }//GEN-LAST:event_lblDoanhThuQLMouseClicked
 
     private void jpnDoanhThuQLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnDoanhThuQLMouseClicked
@@ -276,7 +275,7 @@ public class NV_Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_lblDatBanQLMouseClicked
 
     private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
-
+        
     }//GEN-LAST:event_jPanel10MouseClicked
 
     private void lblDoiMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDoiMatKhauMouseClicked
@@ -284,6 +283,8 @@ public class NV_Menu extends javax.swing.JPanel {
         try {
             new HT_DoiMatKhau().setVisible(true);
         } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Lỗi:"+e);
         }
     }//GEN-LAST:event_lblDoiMatKhauMouseClicked
 

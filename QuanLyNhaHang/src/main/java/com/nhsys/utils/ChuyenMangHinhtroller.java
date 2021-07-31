@@ -8,6 +8,7 @@ package com.nhsys.utils;
 import com.nhsys.entity.DanhMucBean;
 import com.nhsys.panel.nhanvien.NV_DatBan;
 import com.nhsys.panel.nhanvien.NV_SoDoBan;
+import com.nhsys.ui.QL_DanhMucJPN;
 import com.nhsys.ui.QL_NhanVien;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -95,13 +96,15 @@ public class ChuyenMangHinhtroller {
                 case "DoanhThu":
 //                    node = new QL_DoanhThuThang();
                     break;
+                case "DanhMuc":
+                    node = new QL_DanhMucJPN();
+                    break;
                 case "ThucDon":
 //                    node = new QL_ThucDon();
                     break;
                 case "HangHoa":
 //                    node = new QL_HangHoa();
                     break;
-
             }
             root.removeAll();
             root.setLayout(new BorderLayout());

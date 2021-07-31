@@ -5,11 +5,9 @@
  */
 package com.nhsys.panel.quanly;
 
+
 import com.nhsys.ui.ManHinhChinh;
 import static com.nhsys.ui.ManHinhChinh.lblTieuDe;
-
-
-
 
 /**
  *
@@ -38,15 +36,17 @@ public class QL_Menu extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jpnNhanVienCN = new javax.swing.JPanel();
         lblNhanVienCN = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
         jpnThucDonCN = new javax.swing.JPanel();
         lblThucDonCN = new javax.swing.JLabel();
+        jpnDanhMucCN = new javax.swing.JPanel();
+        lblDanhMucCN = new javax.swing.JLabel();
         jpnHangHoaCN = new javax.swing.JPanel();
         lblHangHoaCN = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jpnDoanhThuCN.setBackground(new java.awt.Color(204, 204, 204));
-        jpnDoanhThuCN.setPreferredSize(new java.awt.Dimension(262, 70));
         jpnDoanhThuCN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpnDoanhThuCNMouseClicked(evt);
@@ -67,7 +67,7 @@ public class QL_Menu extends javax.swing.JPanel {
         jpnDoanhThuCN.setLayout(jpnDoanhThuCNLayout);
         jpnDoanhThuCNLayout.setHorizontalGroup(
             jpnDoanhThuCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblDoanhThuCN, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+            .addComponent(lblDoanhThuCN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
         );
         jpnDoanhThuCNLayout.setVerticalGroup(
             jpnDoanhThuCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,7 +85,6 @@ public class QL_Menu extends javax.swing.JPanel {
         });
 
         jpnNhanVienCN.setBackground(new java.awt.Color(204, 204, 204));
-        jpnNhanVienCN.setPreferredSize(new java.awt.Dimension(262, 70));
 
         lblNhanVienCN.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblNhanVienCN.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,17 +100,16 @@ public class QL_Menu extends javax.swing.JPanel {
         jpnNhanVienCN.setLayout(jpnNhanVienCNLayout);
         jpnNhanVienCNLayout.setHorizontalGroup(
             jpnNhanVienCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnNhanVienCNLayout.createSequentialGroup()
-                .addComponent(lblNhanVienCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(lblNhanVienCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpnNhanVienCNLayout.setVerticalGroup(
             jpnNhanVienCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblNhanVienCN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+
         jpnThucDonCN.setBackground(new java.awt.Color(204, 204, 204));
-        jpnThucDonCN.setPreferredSize(new java.awt.Dimension(262, 70));
         jpnThucDonCN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpnThucDonCNMouseClicked(evt);
@@ -140,8 +138,36 @@ public class QL_Menu extends javax.swing.JPanel {
             .addComponent(lblThucDonCN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
+        jpnDanhMucCN.setBackground(new java.awt.Color(204, 204, 204));
+        jpnDanhMucCN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpnDanhMucCNMouseClicked(evt);
+            }
+        });
+
+        lblDanhMucCN.setBackground(new java.awt.Color(204, 204, 204));
+        lblDanhMucCN.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblDanhMucCN.setForeground(new java.awt.Color(255, 255, 255));
+        lblDanhMucCN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDanhMucCN.setText("DANH MỤC");
+        lblDanhMucCN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDanhMucCNMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpnDanhMucCNLayout = new javax.swing.GroupLayout(jpnDanhMucCN);
+        jpnDanhMucCN.setLayout(jpnDanhMucCNLayout);
+        jpnDanhMucCNLayout.setHorizontalGroup(
+            jpnDanhMucCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblDanhMucCN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jpnDanhMucCNLayout.setVerticalGroup(
+            jpnDanhMucCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblDanhMucCN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+        );
+
         jpnHangHoaCN.setBackground(new java.awt.Color(204, 204, 204));
-        jpnHangHoaCN.setPreferredSize(new java.awt.Dimension(262, 70));
         jpnHangHoaCN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpnHangHoaCNMouseClicked(evt);
@@ -164,7 +190,7 @@ public class QL_Menu extends javax.swing.JPanel {
             jpnHangHoaCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jpnHangHoaCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblHangHoaCN, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE))
+                .addComponent(lblHangHoaCN, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
         );
         jpnHangHoaCNLayout.setVerticalGroup(
             jpnHangHoaCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,18 +199,37 @@ public class QL_Menu extends javax.swing.JPanel {
                 .addComponent(lblHangHoaCN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jpnThucDonCN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpnDanhMucCN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpnHangHoaCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jpnDanhMucCN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpnThucDonCN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpnHangHoaCN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpnHangHoaCN, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-            .addComponent(jpnThucDonCN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-            .addComponent(jpnDoanhThuCN, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-            .addComponent(jpnNhanVienCN, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+            .addComponent(jpnDoanhThuCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(jpnNhanVienCN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,11 +239,8 @@ public class QL_Menu extends javax.swing.JPanel {
                 .addComponent(jpnNhanVienCN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpnDoanhThuCN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnThucDonCN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnHangHoaCN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addGap(6, 6, 6)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -232,6 +274,15 @@ public class QL_Menu extends javax.swing.JPanel {
         //        new QLDanhSachChucNang().setVisible(true);
     }//GEN-LAST:event_jpnThucDonCNMouseClicked
 
+    private void lblDanhMucCNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDanhMucCNMouseClicked
+        // TODO add your handling code here:
+        lblTieuDe.setText("DANH SÁCH DANH MỤC");
+    }//GEN-LAST:event_lblDanhMucCNMouseClicked
+
+    private void jpnDanhMucCNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnDanhMucCNMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpnDanhMucCNMouseClicked
+
     private void lblHangHoaCNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHangHoaCNMouseClicked
         lblTieuDe.setText("DANH SÁCH HÀNG HÓA");
     }//GEN-LAST:event_lblHangHoaCNMouseClicked
@@ -243,10 +294,13 @@ public class QL_Menu extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel9;
+    public static javax.swing.JPanel jpnDanhMucCN;
     public static javax.swing.JPanel jpnDoanhThuCN;
     public static javax.swing.JPanel jpnHangHoaCN;
     public static javax.swing.JPanel jpnNhanVienCN;
     public static javax.swing.JPanel jpnThucDonCN;
+    public static javax.swing.JLabel lblDanhMucCN;
     public static javax.swing.JLabel lblDoanhThuCN;
     public static javax.swing.JLabel lblHangHoaCN;
     public static javax.swing.JLabel lblNhanVienCN;

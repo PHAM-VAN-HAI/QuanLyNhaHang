@@ -13,6 +13,7 @@ import static com.nhsys.panel.quanly.QL_Menu.jpnDoanhThuCN;
 import static com.nhsys.panel.quanly.QL_Menu.jpnHangHoaCN;
 import static com.nhsys.panel.quanly.QL_Menu.jpnNhanVienCN;
 import static com.nhsys.panel.quanly.QL_Menu.jpnThucDonCN;
+import static com.nhsys.panel.quanly.QL_Menu.lblDanhMucCN;
 import static com.nhsys.panel.quanly.QL_Menu.lblDoanhThuCN;
 import static com.nhsys.panel.quanly.QL_Menu.lblHangHoaCN;
 import static com.nhsys.panel.quanly.QL_Menu.lblNhanVienCN;
@@ -23,6 +24,7 @@ import java.awt.Dimension;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.Timer;
+import static com.nhsys.panel.quanly.QL_Menu.jpnDanhMucCN;
 
 public class ManHinhChinh extends javax.swing.JFrame {
 
@@ -38,11 +40,11 @@ public class ManHinhChinh extends javax.swing.JFrame {
     public void initQL() {
         jpnMenubar.removeAll();
         JPanel menuPanel = new NV_Menu(this);
-        menuPanel.setSize(260, 663);
+        menuPanel.setSize(250, 663);
         menuPanel.repaint();
         menuPanel.validate();
         jpnMenubar.add(menuPanel);
-        jpnMenubar.setPreferredSize(new Dimension(260, 663));
+        jpnMenubar.setPreferredSize(new Dimension(250, 663));
         jpnMenubar.repaint();
         jpnMenubar.validate();
         controller = new ChuyenMangHinhtroller(jpnMain);
@@ -66,11 +68,12 @@ public class ManHinhChinh extends javax.swing.JFrame {
         jpnMenubar.repaint();
         jpnMenubar.validate();
         controller = new ChuyenMangHinhtroller(jpnMain);
-        controller.setView(jpnNhanVienCN, lblNhanVienCN, "CN");
+        controller.setView(jpnNhanVienCN, lblNhanVienCN, "QL");
         List<DanhMucBean> listItem = new ArrayList<>();
         listItem.add(new DanhMucBean("NhanVien", jpnNhanVienCN, lblNhanVienCN));
         listItem.add(new DanhMucBean("DoanhThu", jpnDoanhThuCN, lblDoanhThuCN));
         listItem.add(new DanhMucBean("ThucDon", jpnThucDonCN, lblThucDonCN));
+        listItem.add(new DanhMucBean("DanhMuc", jpnDanhMucCN, lblDanhMucCN));
         listItem.add(new DanhMucBean("HangHoa", jpnHangHoaCN, lblHangHoaCN));
         controller.setEvent(listItem);
     }
@@ -138,6 +141,7 @@ public class ManHinhChinh extends javax.swing.JFrame {
 
         btnNV.setBackground(new java.awt.Color(255, 255, 255));
         btnNV.setForeground(new java.awt.Color(255, 51, 0));
+        btnNV.setText("Home");
         btnNV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNVActionPerformed(evt);
@@ -145,6 +149,7 @@ public class ManHinhChinh extends javax.swing.JFrame {
         });
 
         btnQL.setBackground(new java.awt.Color(255, 255, 255));
+        btnQL.setText("Quản Lý");
         btnQL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnQLActionPerformed(evt);
@@ -159,8 +164,8 @@ public class ManHinhChinh extends javax.swing.JFrame {
                 .addGap(83, 83, 83)
                 .addComponent(btnNV, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnQL, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 575, Short.MAX_VALUE)
+                .addComponent(btnQL)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addGap(567, 567, 567)
                 .addComponent(jLabel11))
@@ -205,7 +210,7 @@ public class ManHinhChinh extends javax.swing.JFrame {
         jpnMenubar.setLayout(jpnMenubarLayout);
         jpnMenubarLayout.setHorizontalGroup(
             jpnMenubarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 252, Short.MAX_VALUE)
         );
         jpnMenubarLayout.setVerticalGroup(
             jpnMenubarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
