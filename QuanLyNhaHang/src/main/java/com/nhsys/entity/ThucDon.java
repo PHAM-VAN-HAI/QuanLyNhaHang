@@ -1,64 +1,73 @@
 package com.nhsys.entity;
 
 public class ThucDon {
-    private String MaMon;
-    private String TenMon;
-    private double GiaTien;
-    private String HinhAnh;
-    private String MaDanhMuc;
-
-    public ThucDon(String MaMon, String TenMon, double GiaTien, String HinhAnh, String MaDanhMuc) {
-        this.MaMon = MaMon;
-        this.TenMon = TenMon;
-        this.GiaTien = GiaTien;
-        this.HinhAnh = HinhAnh;
-        this.MaDanhMuc = MaDanhMuc;
-    }
+    private String maTD;
+    private String TenTD;
+    private double giaTien;
+    private String loai;
+    private String hinhAnh;
+    private String tgCheBien;
 
     public ThucDon() {
     }
 
-    public String getMaMon() {
-        return MaMon;
+    
+    public ThucDon(String maTD, String TenTD, double giaTien, String loai, String hinhAnh, String tgCheBien) {
+        this.maTD = maTD;
+        this.TenTD = TenTD;
+        this.giaTien = giaTien;
+        this.loai = loai;
+        this.hinhAnh = hinhAnh;
+        this.tgCheBien = tgCheBien;
     }
 
-    public void setMaMon(String MaMon) {
-        this.MaMon = MaMon;
+    public String getMaTD() {
+        return maTD;
     }
 
-    public String getTenMon() {
-        return TenMon;
+    public void setMaTD(String maTD) {
+        this.maTD = maTD;
     }
 
-    public void setTenMon(String TenMon) {
-        this.TenMon = TenMon;
+    public String getTenTD() {
+        return TenTD;
+    }
+
+    public void setTenTD(String TenTD) {
+        this.TenTD = TenTD;
     }
 
     public double getGiaTien() {
-        return GiaTien;
+        return giaTien;
     }
 
-    public void setGiaTien(double GiaTien) {
-        this.GiaTien = GiaTien;
+    public void setGiaTien(double giaTien) {
+        this.giaTien = giaTien;
+    }
+
+    public String getLoai() {
+        return loai;
+    }
+
+    public void setLoai(String loai) {
+        this.loai = loai;
     }
 
     public String getHinhAnh() {
-        return HinhAnh;
+        return hinhAnh;
     }
 
-    public void setHinhAnh(String HinhAnh) {
-        this.HinhAnh = HinhAnh;
+    public void setHinhAnh(String hinhAnh) {
+        this.hinhAnh = hinhAnh;
     }
 
-    public String getMaDanhMuc() {
-        return MaDanhMuc;
+    public String getTgCheBien() {
+        return tgCheBien;
     }
 
-    public void setMaDanhMuc(String MaDanhMuc) {
-        this.MaDanhMuc = MaDanhMuc;
+    public void setTgCheBien(String tgCheBien) {
+        this.tgCheBien = tgCheBien;
     }
-
-   
     
     
 }
