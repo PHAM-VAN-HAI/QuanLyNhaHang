@@ -13,7 +13,6 @@ import static com.nhsys.panel.quanly.QL_Menu.jpnDoanhThuCN;
 import static com.nhsys.panel.quanly.QL_Menu.jpnHangHoaCN;
 import static com.nhsys.panel.quanly.QL_Menu.jpnNhanVienCN;
 import static com.nhsys.panel.quanly.QL_Menu.jpnThucDonCN;
-import static com.nhsys.panel.quanly.QL_Menu.lblDanhMucCN;
 import static com.nhsys.panel.quanly.QL_Menu.lblDoanhThuCN;
 import static com.nhsys.panel.quanly.QL_Menu.lblHangHoaCN;
 import static com.nhsys.panel.quanly.QL_Menu.lblNhanVienCN;
@@ -24,7 +23,6 @@ import java.awt.Dimension;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.Timer;
-import static com.nhsys.panel.quanly.QL_Menu.jpnDanhMucCN;
 
 public class ManHinhChinh extends javax.swing.JFrame {
 
@@ -73,7 +71,6 @@ public class ManHinhChinh extends javax.swing.JFrame {
         listItem.add(new DanhMucBean("NhanVien", jpnNhanVienCN, lblNhanVienCN));
         listItem.add(new DanhMucBean("DoanhThu", jpnDoanhThuCN, lblDoanhThuCN));
         listItem.add(new DanhMucBean("ThucDon", jpnThucDonCN, lblThucDonCN));
-        listItem.add(new DanhMucBean("DanhMuc", jpnDanhMucCN, lblDanhMucCN));
         listItem.add(new DanhMucBean("HangHoa", jpnHangHoaCN, lblHangHoaCN));
         controller.setEvent(listItem);
     }

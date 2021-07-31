@@ -5,14 +5,14 @@ public class ThucDon {
     private String TenMon;
     private double GiaTien;
     private String HinhAnh;
-    private String MaDanhMuc;
+    private String Loai;
 
-    public ThucDon(String MaMon, String TenMon, double GiaTien, String HinhAnh, String MaDanhMuc) {
+    public ThucDon(String MaMon, String TenMon, double GiaTien, String HinhAnh, String Loai) {
         this.MaMon = MaMon;
         this.TenMon = TenMon;
         this.GiaTien = GiaTien;
         this.HinhAnh = HinhAnh;
-        this.MaDanhMuc = MaDanhMuc;
+        this.Loai = Loai;
     }
 
     public ThucDon() {
@@ -50,15 +50,13 @@ public class ThucDon {
         this.HinhAnh = HinhAnh;
     }
 
-    public String getMaDanhMuc() {
-        return MaDanhMuc;
+    public String getLoai() {
+        return Loai;
     }
 
-    public void setMaDanhMuc(String MaDanhMuc) {
-        this.MaDanhMuc = MaDanhMuc;
+    public void setLoai(String Loai) {
+        this.Loai = Loai;
     }
-
-   
     
     
 }
