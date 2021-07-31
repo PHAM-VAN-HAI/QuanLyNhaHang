@@ -5,11 +5,11 @@
  */
 package com.nhsys.panel.nhanvien;
 
+import com.nhsys.ui.HT_DoiMatKhau;
 import com.nhsys.ui.HT_Login;
 import com.nhsys.ui.ManHinhChinh;
 import static com.nhsys.ui.ManHinhChinh.lblTieuDe;
 import com.nhsys.utils.MsgBox;
-
 
 /**
  *
@@ -59,7 +59,6 @@ public class NV_Menu extends javax.swing.JPanel {
         lblDoanhThuQL.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDoanhThuQL.setForeground(new java.awt.Color(255, 255, 255));
         lblDoanhThuQL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDoanhThuQL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/money-bag.png"))); // NOI18N
         lblDoanhThuQL.setText("DOANH THU");
         lblDoanhThuQL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -71,16 +70,17 @@ public class NV_Menu extends javax.swing.JPanel {
         jpnDoanhThuQL.setLayout(jpnDoanhThuQLLayout);
         jpnDoanhThuQLLayout.setHorizontalGroup(
             jpnDoanhThuQLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblDoanhThuQL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+            .addComponent(lblDoanhThuQL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
         );
         jpnDoanhThuQLLayout.setVerticalGroup(
             jpnDoanhThuQLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblDoanhThuQL, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logoBig.png"))); // NOI18N
-        jLabel9.setMaximumSize(new java.awt.Dimension(200, 200));
-        jLabel9.setMinimumSize(new java.awt.Dimension(200, 200));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/logo.png"))); // NOI18N
+        jLabel9.setMaximumSize(new java.awt.Dimension(250, 250));
+        jLabel9.setMinimumSize(new java.awt.Dimension(250, 250));
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel9MouseClicked(evt);
@@ -92,7 +92,6 @@ public class NV_Menu extends javax.swing.JPanel {
         lblSoDoBanQL.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblSoDoBanQL.setForeground(new java.awt.Color(255, 255, 255));
         lblSoDoBanQL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSoDoBanQL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Table.png"))); // NOI18N
         lblSoDoBanQL.setText("SƠ ĐỒ BÀN");
         lblSoDoBanQL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -126,7 +125,6 @@ public class NV_Menu extends javax.swing.JPanel {
         lblDoiMatKhau.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDoiMatKhau.setForeground(new java.awt.Color(255, 255, 255));
         lblDoiMatKhau.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/refresha.png"))); // NOI18N
         lblDoiMatKhau.setText("  ĐỔI MẬT KHẨU");
         lblDoiMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -160,7 +158,6 @@ public class NV_Menu extends javax.swing.JPanel {
         lblDatBanQL.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDatBanQL.setForeground(new java.awt.Color(255, 255, 255));
         lblDatBanQL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDatBanQL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/CalendarG.png"))); // NOI18N
         lblDatBanQL.setText("ĐẶT BÀN");
         lblDatBanQL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -189,7 +186,6 @@ public class NV_Menu extends javax.swing.JPanel {
         lblDangXuat.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDangXuat.setForeground(new java.awt.Color(255, 255, 255));
         lblDangXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/arrow.png"))); // NOI18N
         lblDangXuat.setText("  ĐĂNG XUẤT");
         lblDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -237,17 +233,17 @@ public class NV_Menu extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jpnDoanhThuQL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addComponent(jpnSoDoBanQL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jpnSoDoBanQL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -272,7 +268,6 @@ public class NV_Menu extends javax.swing.JPanel {
     private void lblSoDoBanQLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSoDoBanQLMouseClicked
         // TODO add your handling code here:
         lblTieuDe.setText("SƠ ĐỒ BÀN");
-
     }//GEN-LAST:event_lblSoDoBanQLMouseClicked
     public static ManHinhChinh fr;
 
@@ -287,7 +282,7 @@ public class NV_Menu extends javax.swing.JPanel {
     private void lblDoiMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDoiMatKhauMouseClicked
         // TODO add your handling code here:
         try {
-//            new HT_oiMatKhau().setVisible(true);
+            new HT_DoiMatKhau().setVisible(true);
         } catch (Exception e) {
         }
     }//GEN-LAST:event_lblDoiMatKhauMouseClicked
@@ -300,8 +295,8 @@ public class NV_Menu extends javax.swing.JPanel {
         // TODO add your handling code here:
         try {
             if (MsgBox.confirm(this, "Bạn có muốn đăng xuất ?")) {
-                fr.dispose();
                 new HT_Login().setVisible(true);
+                fr.dispose();
             }
 
         } catch (Exception e) {

@@ -168,8 +168,6 @@ public class HT_Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-//    ManHinhChinh manhinhchinh = new ManHinhChinh();
 
     public void dangNhap() {
         if (txtTenDangNhap.getText().equalsIgnoreCase("Tên đăng nhập")) {
@@ -191,10 +189,10 @@ public class HT_Login extends javax.swing.JFrame {
         } else {
             Auth.user = nhanVien;
             if (nhanVien.getChucVu().equalsIgnoreCase("Quản lý")) {
-//                manhinhchinh.setVisible(true);
+                new ManHinhChinh(true).setVisible(true);
                 this.dispose();
             } else {
-//                manhinhchinh.setVisible(true);
+                new ManHinhChinh(false).setVisible(true);
                 this.dispose();
             }
         }

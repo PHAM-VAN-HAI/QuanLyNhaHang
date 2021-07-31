@@ -212,7 +212,6 @@ public class NV_DatBan extends javax.swing.JPanel {
         btnThem.setBackground(new java.awt.Color(255, 153, 51));
         btnThem.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnThem.setForeground(new java.awt.Color(255, 255, 255));
-        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/addD.png"))); // NOI18N
         btnThem.setText("ĐẶT BÀN MỚI");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,7 +222,6 @@ public class NV_DatBan extends javax.swing.JPanel {
         btnXoa.setBackground(new java.awt.Color(255, 153, 51));
         btnXoa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnXoa.setForeground(new java.awt.Color(255, 255, 255));
-        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/deletez.png"))); // NOI18N
         btnXoa.setText("XÓA ĐẶT BÀN");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,7 +232,6 @@ public class NV_DatBan extends javax.swing.JPanel {
         btnSua.setBackground(new java.awt.Color(255, 153, 51));
         btnSua.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnSua.setForeground(new java.awt.Color(255, 255, 255));
-        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/addD.png"))); // NOI18N
         btnSua.setText("SỬA ĐẶT BÀN");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -400,7 +397,7 @@ public class NV_DatBan extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã đặt bàn", "Mã Bàn", "Mã Khách Hàng", "Ngày Đặt", "Giờ Đặt", "Số người", "Ghi chú"
+                "Mã đặt bàn", "Mã Bàn", "Mã Khách Hàng", "Ngày Đặt", "Giờ Đặt", "Số người", "Ghi chú", "Mã NV"
             }
         ));
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();

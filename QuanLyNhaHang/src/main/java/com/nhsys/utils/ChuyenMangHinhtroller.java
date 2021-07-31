@@ -6,6 +6,9 @@
 package com.nhsys.utils;
 
 import com.nhsys.entity.DanhMucBean;
+import com.nhsys.panel.nhanvien.NV_DatBan;
+import com.nhsys.panel.nhanvien.NV_SoDoBan;
+import com.nhsys.ui.QL_NhanVien;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -16,7 +19,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 
 /**
  *
@@ -34,16 +36,16 @@ public class ChuyenMangHinhtroller {
     }
 
     public void setView(JPanel jpnItem, JLabel jlbItem, String MHC) {
-        if(MHC.equals("NV")){
-        kindSelected = "SoDoBan";            
-        }else{
-        kindSelected = "NhanVien";                        
+        if (MHC.equals("NV")) {
+            kindSelected = "SoDoBan";
+        } else {
+            kindSelected = "NhanVien";
         }
         jpnItem.setBackground(new Color(255, 153, 51));
 
         root.removeAll();
         root.setLayout(new BorderLayout());
-//        root.add(new NV_SoDoBan());
+        root.add(new NV_SoDoBan());
         root.validate();
         root.repaint();
     }
@@ -74,37 +76,32 @@ public class ChuyenMangHinhtroller {
         public void mouseClicked(MouseEvent e) {
             switch (kind) {
                 case "SoDoBan":
-//                    node = new NV_SoDoBan();
+                    node = new NV_SoDoBan();
                     break;
-                case "KhoaSo": 
+                case "KhoaSo": {
+//                    try {
+//                        node =new NV_DoanhThuNgay();
+//                    } catch (ParseException ex) {
+//                        Logger.getLogger(ChuyenMangHinhtroller.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+                }
                 break;
-
-//
-//                case "ThanhVien":
-//                    node = new NV_ThanhVien();
-//                    break;
-//                case "DatBan":
-//                    node = new NV_DatBan();
-//                    break;
-//                case "NhanVien":
+                case "DatBan":
+                    node = new NV_DatBan();
+                    break;
+                case "NhanVien":
 //                    node = new QL_NhanVien();
-//                    break;
-//                case "ChamCong":
-//                    node = new QL_ChamCong();
-//                    break;                    
-//                case "XepLich":
-//                    node = new QL_XepLich();
-//                    break;
-//                case "ThucDon":
-//                    node = new QL_ThucDon();
-//                    break;
-//                case "HangHoa":
-//                    node = new QL_HangHoaMHC();
-//                    break;
-//                case "DoanhThu":
+                    break;
+                case "DoanhThu":
 //                    node = new QL_DoanhThuThang();
-//                    break;
-                    
+                    break;
+                case "ThucDon":
+//                    node = new QL_ThucDon();
+                    break;
+                case "HangHoa":
+//                    node = new QL_HangHoa();
+                    break;
+
             }
             root.removeAll();
             root.setLayout(new BorderLayout());

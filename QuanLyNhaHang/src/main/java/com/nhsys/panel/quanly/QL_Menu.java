@@ -46,6 +46,7 @@ public class QL_Menu extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         jpnDoanhThuCN.setBackground(new java.awt.Color(204, 204, 204));
+        jpnDoanhThuCN.setPreferredSize(new java.awt.Dimension(262, 70));
         jpnDoanhThuCN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpnDoanhThuCNMouseClicked(evt);
@@ -55,7 +56,6 @@ public class QL_Menu extends javax.swing.JPanel {
         lblDoanhThuCN.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDoanhThuCN.setForeground(new java.awt.Color(255, 255, 255));
         lblDoanhThuCN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDoanhThuCN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/CashG.png"))); // NOI18N
         lblDoanhThuCN.setText("DOANH THU");
         lblDoanhThuCN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -67,16 +67,17 @@ public class QL_Menu extends javax.swing.JPanel {
         jpnDoanhThuCN.setLayout(jpnDoanhThuCNLayout);
         jpnDoanhThuCNLayout.setHorizontalGroup(
             jpnDoanhThuCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblDoanhThuCN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+            .addComponent(lblDoanhThuCN, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
         );
         jpnDoanhThuCNLayout.setVerticalGroup(
             jpnDoanhThuCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblDoanhThuCN, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logoBig.png"))); // NOI18N
-        jLabel9.setMaximumSize(new java.awt.Dimension(200, 200));
-        jLabel9.setMinimumSize(new java.awt.Dimension(200, 200));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/logo.png"))); // NOI18N
+        jLabel9.setMaximumSize(new java.awt.Dimension(250, 250));
+        jLabel9.setMinimumSize(new java.awt.Dimension(250, 250));
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel9MouseClicked(evt);
@@ -84,11 +85,11 @@ public class QL_Menu extends javax.swing.JPanel {
         });
 
         jpnNhanVienCN.setBackground(new java.awt.Color(204, 204, 204));
+        jpnNhanVienCN.setPreferredSize(new java.awt.Dimension(262, 70));
 
         lblNhanVienCN.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblNhanVienCN.setForeground(new java.awt.Color(255, 255, 255));
         lblNhanVienCN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNhanVienCN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/UserG.png"))); // NOI18N
         lblNhanVienCN.setText("NHÂN VIÊN");
         lblNhanVienCN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -100,7 +101,9 @@ public class QL_Menu extends javax.swing.JPanel {
         jpnNhanVienCN.setLayout(jpnNhanVienCNLayout);
         jpnNhanVienCNLayout.setHorizontalGroup(
             jpnNhanVienCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblNhanVienCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jpnNhanVienCNLayout.createSequentialGroup()
+                .addComponent(lblNhanVienCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jpnNhanVienCNLayout.setVerticalGroup(
             jpnNhanVienCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,6 +111,7 @@ public class QL_Menu extends javax.swing.JPanel {
         );
 
         jpnThucDonCN.setBackground(new java.awt.Color(204, 204, 204));
+        jpnThucDonCN.setPreferredSize(new java.awt.Dimension(262, 70));
         jpnThucDonCN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpnThucDonCNMouseClicked(evt);
@@ -118,7 +122,6 @@ public class QL_Menu extends javax.swing.JPanel {
         lblThucDonCN.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblThucDonCN.setForeground(new java.awt.Color(255, 255, 255));
         lblThucDonCN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblThucDonCN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/FoodG.png"))); // NOI18N
         lblThucDonCN.setText("THỰC ĐƠN");
         lblThucDonCN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -138,6 +141,7 @@ public class QL_Menu extends javax.swing.JPanel {
         );
 
         jpnHangHoaCN.setBackground(new java.awt.Color(204, 204, 204));
+        jpnHangHoaCN.setPreferredSize(new java.awt.Dimension(262, 70));
         jpnHangHoaCN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpnHangHoaCNMouseClicked(evt);
@@ -147,7 +151,6 @@ public class QL_Menu extends javax.swing.JPanel {
         lblHangHoaCN.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblHangHoaCN.setForeground(new java.awt.Color(255, 255, 255));
         lblHangHoaCN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHangHoaCN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/HangHoaG.png"))); // NOI18N
         lblHangHoaCN.setText("HÀNG HÓA");
         lblHangHoaCN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -161,7 +164,7 @@ public class QL_Menu extends javax.swing.JPanel {
             jpnHangHoaCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jpnHangHoaCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblHangHoaCN, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
+                .addComponent(lblHangHoaCN, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE))
         );
         jpnHangHoaCNLayout.setVerticalGroup(
             jpnHangHoaCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,19 +177,19 @@ public class QL_Menu extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpnDoanhThuCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpnHangHoaCN, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+            .addComponent(jpnThucDonCN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+            .addComponent(jpnDoanhThuCN, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+            .addComponent(jpnNhanVienCN, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jpnNhanVienCN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jpnThucDonCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jpnHangHoaCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jpnNhanVienCN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
