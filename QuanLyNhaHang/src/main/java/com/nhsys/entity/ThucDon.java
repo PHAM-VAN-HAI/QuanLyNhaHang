@@ -1,6 +1,7 @@
 package com.nhsys.entity;
 
 public class ThucDon {
+<<<<<<< HEAD
     private String maTD;
     private String TenTD;
     private double giaTien;
@@ -9,6 +10,20 @@ public class ThucDon {
     private String tgCheBien;
 
     public ThucDon() {
+=======
+    private String MaMon;
+    private String TenMon;
+    private double GiaTien;
+    private String HinhAnh;
+    private String Loai;
+
+    public ThucDon(String MaMon, String TenMon, double GiaTien, String HinhAnh, String Loai) {
+        this.MaMon = MaMon;
+        this.TenMon = TenMon;
+        this.GiaTien = GiaTien;
+        this.HinhAnh = HinhAnh;
+        this.Loai = Loai;
+>>>>>>> 61add7f252915e51d3f40000dd468d5e2e64d542
     }
 
     
@@ -53,6 +68,7 @@ public class ThucDon {
         this.loai = loai;
     }
 
+<<<<<<< HEAD
     public String getHinhAnh() {
         return hinhAnh;
     }
@@ -68,6 +84,15 @@ public class ThucDon {
     public void setTgCheBien(String tgCheBien) {
         this.tgCheBien = tgCheBien;
     }
+=======
+    public String getLoai() {
+        return Loai;
+    }
+
+    public void setLoai(String Loai) {
+        this.Loai = Loai;
+    }
+>>>>>>> 61add7f252915e51d3f40000dd468d5e2e64d542
     
     
 }

@@ -24,7 +24,7 @@ public class MonAnDAO extends NHDAO<ThucDon, String>{
     @Override
     public void insert(ThucDon entity) {
          try { 
-            XJdbc.update(INSERT_SQL, entity.getMaMon(), entity.getTenMon(), entity.getGiaTien(), entity.getHinhAnh(), entity.getMaDanhMuc());
+//            XJdbc.update(INSERT_SQL, entity.getMaMon(), entity.getTenMon(), entity.getGiaTien(), entity.getHinhAnh(), entity.getMaDanhMuc());
         } catch (Exception ex) {
 //            Logger.getLogger(ThanhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
