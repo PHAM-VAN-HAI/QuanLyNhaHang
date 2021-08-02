@@ -45,7 +45,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
         txtMaNV2 = new javax.swing.JTextField();
         btngGioiTinh = new javax.swing.ButtonGroup();
         lblAvatar = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnRemoveAvatar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtMaNV = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -89,10 +89,10 @@ public class QL_NhanVien extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Gỡ Ảnh");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRemoveAvatar.setText("Gỡ Ảnh");
+        btnRemoveAvatar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRemoveAvatarActionPerformed(evt);
             }
         });
 
@@ -304,7 +304,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
                             .addComponent(lblAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnRemoveAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
@@ -339,7 +339,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1))
+                        .addComponent(btnRemoveAvatar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -385,10 +385,10 @@ public class QL_NhanVien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRemoveAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveAvatarActionPerformed
         // TODO add your handling code here:
         lblAvatar.setIcon(null);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRemoveAvatarActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         if (!checkVal()) {
@@ -535,6 +535,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
     private javax.swing.JButton btnMoi;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrev;
+    private javax.swing.JButton btnRemoveAvatar;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
@@ -542,7 +543,6 @@ public class QL_NhanVien extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboChucVu;
     private javax.swing.JComboBox<String> cboLoctheochucvu;
     private javax.swing.JComboBox<String> cboLoctheoten;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

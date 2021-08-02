@@ -9,6 +9,7 @@ import com.nhsys.entity.DanhMucBean;
 import com.nhsys.panel.nhanvien.NV_DatBan;
 import com.nhsys.panel.nhanvien.NV_SoDoBan;
 import com.nhsys.panel.quanly.QL_NhanVien;
+import com.nhsys.panel.quanly.QL_NhanVienJPN;
 import com.nhsys.panel.quanly.QL_ThucDon;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -91,7 +92,7 @@ public class ChuyenMangHinhtroller {
                     node = new NV_DatBan();
                     break;
                 case "NhanVien":
-//                    node = new QL_NhanVien();
+                    node = new QL_NhanVienJPN();
                     break;
                 case "DoanhThu":
 //                    node = new QL_DoanhThuThang();
