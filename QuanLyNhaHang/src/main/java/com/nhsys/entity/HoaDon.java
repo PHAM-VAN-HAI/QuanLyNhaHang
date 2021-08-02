@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,14 +11,15 @@ package com.nhsys.entity;
  * @author anhha
  */
 public class HoaDon {
+
     int MaHD;
     String NgayTao;
     String TenKH;
     String MaNV;
-    String MaBan;
+    int MaBan;
     float TongTien;
 
-    public HoaDon(int MaHD, String NgayTao, String TenKH, String MaNV, String MaBan, float TongTien) {
+    public HoaDon(int MaHD, String NgayTao, String TenKH, String MaNV, int MaBan, float TongTien) {
         this.MaHD = MaHD;
         this.NgayTao = NgayTao;
         this.TenKH = TenKH;
@@ -61,11 +63,11 @@ public class HoaDon {
         this.MaNV = MaNV;
     }
 
-    public String getMaBan() {
+    public int getMaBan() {
         return MaBan;
     }
 
-    public void setMaBan(String MaBan) {
+    public void setMaBan(int MaBan) {
         this.MaBan = MaBan;
     }
 
@@ -76,6 +78,4 @@ public class HoaDon {
     public void setTongTien(float TongTien) {
         this.TongTien = TongTien;
     }
-    
-    
 }

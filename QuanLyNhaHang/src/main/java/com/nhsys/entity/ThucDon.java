@@ -1,6 +1,16 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.nhsys.entity;
 
+/**
+ *
+ * @author VU
+ */
 public class ThucDon {
+
     private String MaMon;
     private String TenMon;
     private double GiaTien;
@@ -16,6 +26,7 @@ public class ThucDon {
     }
 
     public ThucDon() {
+      
     }
 
     public String getMaMon() {
@@ -58,5 +69,5 @@ public class ThucDon {
         this.Loai = Loai;
     }
     
-    
+
 }

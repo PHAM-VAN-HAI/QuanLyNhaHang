@@ -77,7 +77,7 @@ public class HoaDonDAO extends NHDAO<HoaDon, Integer> {
                 enity.setNgayTao(rs.getString("NgayTao"));
                 enity.setTenKH(rs.getString("TenKhachHang"));
                 enity.setMaNV(rs.getString("MaNV"));
-                enity.setMaBan(rs.getString("MaBan"));
+                enity.setMaBan(rs.getInt("MaBan"));
                 enity.setTongTien(rs.getFloat("TongTien"));
                 list.add(enity);
             }
