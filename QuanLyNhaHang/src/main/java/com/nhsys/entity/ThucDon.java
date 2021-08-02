@@ -25,6 +25,10 @@ public class ThucDon {
         this.Loai = Loai;
     }
 
+    public ThucDon() {
+      
+    }
+
     public String getMaMon() {
         return MaMon;
     }
