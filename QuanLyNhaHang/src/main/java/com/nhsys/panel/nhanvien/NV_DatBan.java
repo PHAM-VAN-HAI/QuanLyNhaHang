@@ -30,7 +30,7 @@ public class NV_DatBan extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         txtTenKH = new javax.swing.JTextField();
@@ -52,10 +52,10 @@ public class NV_DatBan extends javax.swing.JPanel {
         txtName6 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtGhiChu = new javax.swing.JTextArea();
-        cldNgayDat = new com.toedter.calendar.JDateChooser();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
+        cldNgayDat = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         cboNgayDat = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -187,9 +187,6 @@ public class NV_DatBan extends javax.swing.JPanel {
         txtGhiChu.setRows(5);
         jScrollPane2.setViewportView(txtGhiChu);
 
-        cldNgayDat.setDateFormatString("dd-MM-yyyy");
-        cldNgayDat.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-
         btnThem.setBackground(new java.awt.Color(255, 153, 51));
         btnThem.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnThem.setForeground(new java.awt.Color(255, 255, 255));
@@ -220,6 +217,10 @@ public class NV_DatBan extends javax.swing.JPanel {
             }
         });
 
+        cldNgayDat.setDate(new Date());
+        cldNgayDat.setDateFormatString("dd-MM-yyyy");
+        cldNgayDat.setOpaque(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -233,8 +234,7 @@ public class NV_DatBan extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnXoa)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSua)
-                        .addGap(163, 163, 163))
+                        .addComponent(btnSua))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -254,12 +254,12 @@ public class NV_DatBan extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtMaDatBan, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel6)
-                                    .addGap(18, 18, 18)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(cldNgayDat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(46, 46, 46)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -271,8 +271,7 @@ public class NV_DatBan extends javax.swing.JPanel {
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtGioDat, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtName6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(181, Short.MAX_VALUE))
@@ -280,7 +279,7 @@ public class NV_DatBan extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(70, Short.MAX_VALUE)
+                .addContainerGap(117, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -289,9 +288,9 @@ public class NV_DatBan extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cldNgayDat, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cldNgayDat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -336,7 +335,7 @@ public class NV_DatBan extends javax.swing.JPanel {
                 .addGap(43, 43, 43))
         );
 
-        jTabbedPane1.addTab("Cập Nhật", jPanel1);
+        tabs.addTab("Cập Nhật", jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(247, 239, 239));
 
@@ -396,22 +395,20 @@ public class NV_DatBan extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(cboNgayDat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Danh Sách", jPanel2);
+        tabs.addTab("Danh Sách", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tabs)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -421,7 +418,7 @@ public class NV_DatBan extends javax.swing.JPanel {
 
     private void tblDatBanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatBanMouseClicked
         // TODO add your handling code here:
-          if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 2) {
             this.row = tblDatBan.getSelectedRow();
             this.edit();
         }
@@ -436,6 +433,9 @@ public class NV_DatBan extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        if (!checkVal()) {
+            return;
+        }
         insert();
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -536,7 +536,7 @@ public class NV_DatBan extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblDatBan;
     private javax.swing.JTextArea txtGhiChu;
     private javax.swing.JTextField txtGioDat;
@@ -577,7 +577,7 @@ public class NV_DatBan extends javax.swing.JPanel {
                         db.getMaDatBan(),
                         db.getHoTenKH(),
                         db.getSDTKH(),
-                        XDate.formatDate(db.getNgayDatBan()),
+                        db.getNgayDatBan(),
                         db.getGioDat(),
                         db.getSoNguoi(),
                         db.getGhiChu(),
@@ -591,7 +591,7 @@ public class NV_DatBan extends javax.swing.JPanel {
                         db.getMaDatBan(),
                         db.getHoTenKH(),
                         db.getSDTKH(),
-                        XDate.formatDate(db.getNgayDatBan()),
+                        db.getNgayDatBan(),
                         db.getGioDat(),
                         db.getSoNguoi(),
                         db.getGhiChu(),
@@ -605,7 +605,7 @@ public class NV_DatBan extends javax.swing.JPanel {
                         db.getMaDatBan(),
                         db.getHoTenKH(),
                         db.getSDTKH(),
-                        XDate.formatDate(db.getNgayDatBan()),
+                        db.getNgayDatBan(),
                         db.getGioDat(),
                         db.getSoNguoi(),
                         db.getGhiChu(),
@@ -622,60 +622,62 @@ public class NV_DatBan extends javax.swing.JPanel {
 
     boolean checkVal() {
         Date ngayHT = XDate.toDate(java.time.LocalDate.now().toString(), "yyyy-MM-dd");
-        for (int i = 0; i < tblDatBan.getRowCount(); i++) {
-            Date ngayNhap = XDate.toDate(tblDatBan.getValueAt(i, 2).toString(), "dd-MM-yyyy");
-
-            if (tblDatBan.getValueAt(i, 1).toString().isEmpty()) {
-                MsgBox.alert(this, "Bạn chưa nhập họ và tên!");
+        Date ngayNhap = cldNgayDat.getDate();
+        if (txtMaDatBan.getText().isEmpty() || txtMaDatBan.getText().equalsIgnoreCase("")) {
+            MsgBox.alert(this, "Bạn chưa nhập mã đặt bàn!");
+            return false;
+        }
+        if (txtTenKH.getText().isEmpty() || txtTenKH.getText().equalsIgnoreCase("")) {
+            MsgBox.alert(this, "Bạn chưa nhập tên khách hàng!");
+            return false;
+        }
+        if (txtSDT.getText().isEmpty() || txtSDT.getText().equalsIgnoreCase("")) {
+            MsgBox.alert(this, "Bạn chưa nhập số điện thoại khách hàng!");
+            return false;
+        }
+        try {
+            Integer.valueOf(txtSDT.getText());
+            if (txtSDT.getText().length() > 15) {
+                MsgBox.alert(this, "Số điện thoại không hợp lệ!");
                 return false;
             }
-            if (tblDatBan.getValueAt(i, 0).toString().isEmpty()) {
-                MsgBox.alert(this, "Bạn chưa nhập mã đặt bàn!");
-                return false;
-            } else if (tblDatBan.getValueAt(i, 0).toString().length() > 10) {
-                MsgBox.alert(this, "Mã thành đặt bàn tối đa chỉ 10 ký tự!");
-                return false;
-            }
-            if (!ngayNhap.before(ngayHT)) {
-                MsgBox.alert(this, "Ngày đăng ký không được lớn hơn ngày hiện tại!");
-                return false;
-            }
-            if (tblDatBan.getValueAt(i, 3).toString().isEmpty()) {
-                MsgBox.alert(this, "Bạn chưa nhập giờ đặt!");
-                return false;
-            }
-            if (!tblDatBan.getValueAt(i, 3).toString().matches("\\d{1,2}:\\d{1,2}")) {
-                MsgBox.alert(this, "Thời gian không đúng định dạng MM:ss!");
-                return false;
-            }
-            String[] parts = tblDatBan.getValueAt(i, 3).toString().split(":");
-            String part1 = parts[0];
-            String part2 = parts[1];
-            try {
-                if (Integer.valueOf(part1) < 0 || Integer.valueOf(part2) < 0 || Integer.valueOf(part1) > 24 || Integer.valueOf(part2) > 60) {
-                    MsgBox.alert(this, "Thời gian không đúng định dạng hh:MM!");
-                    return false;
-                }
-            } catch (Exception e) {
+        } catch (Exception e) {
+            MsgBox.alert(this, "Số điện thoại không hợp lệ!");
+            e.printStackTrace();
+        }
+        if (!ngayNhap.before(ngayHT)) {
+            MsgBox.alert(this, "Ngày đăng ký không được lớn hơn ngày hiện tại!");
+            return false;
+        }
+        if (txtGioDat.getText().isEmpty() || txtGioDat.getText().equalsIgnoreCase("")) {
+            MsgBox.alert(this, "Bạn chưa nhập giờ đặt!");
+            return false;
+        } else if (!txtGioDat.getText().matches("\\d{1,2}:\\d{1,2}")) {
+            MsgBox.alert(this, "Thời gian không đúng định dạng MM:ss!");
+            return false;
+        }
+        String[] parts = txtGioDat.getText().toString().split(":");
+        String part1 = parts[0];
+        String part2 = parts[1];
+        try {
+            if (Integer.valueOf(part1) < 0 || Integer.valueOf(part2) < 0 || Integer.valueOf(part1) > 24 || Integer.valueOf(part2) > 60) {
                 MsgBox.alert(this, "Thời gian không đúng định dạng hh:MM!");
                 return false;
             }
-            if (tblDatBan.getValueAt(i, 4).toString().length() > 12) {
-                MsgBox.alert(this, "Số điện thoại không đúng định dạng!");
-                return false;
-            }
-            try {
-                Integer.valueOf(tblDatBan.getValueAt(i, 4).toString());
-
-            } catch (Exception e) {
-                MsgBox.alert(this, "Số điện thoại không đúng định dạng!");
-                return false;
-            }
-
-            if (tblDatBan.getValueAt(i, 5).toString().isEmpty()) {
-                MsgBox.alert(this, "Bạn chưa nhập số lượng người!");
-                return false;
-            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thời gian không đúng định dạng hh:MM!");
+            return false;
+        }
+        if (txtSoNguoi.getText().isEmpty() || txtSoNguoi.getText().equalsIgnoreCase("")) {
+            MsgBox.alert(this, "Bạn chưa nhập số lượng người!");
+            return false;
+        }
+        try {
+            Integer.valueOf(txtSoNguoi.getText());
+        } catch (Exception e) {
+            e.printStackTrace();
+            MsgBox.alert(this, "Số lượng người phải là số tự nhiên");
+            return false;
         }
         return true;
     }
@@ -720,6 +722,7 @@ public class NV_DatBan extends javax.swing.JPanel {
         DatBan db = dao.selectById(madm);
         this.setForm(db);
         this.updateStatus();
+        tabs.setSelectedIndex(0);
     }
 
     void clearForm() {
@@ -733,7 +736,8 @@ public class NV_DatBan extends javax.swing.JPanel {
         txtMaDatBan.setText(db.getMaDatBan());
         txtTenKH.setText(db.getHoTenKH());
         txtSDT.setText(db.getSDTKH());
-        cldNgayDat.setDate(new Date());
+        System.out.println(db.getNgayDatBan());
+        cldNgayDat.setDate(db.getNgayDatBan());
         txtGioDat.setText(db.getGioDat());
         txtSoNguoi.setText(String.valueOf(db.getSoNguoi()));
         txtGhiChu.setText(db.getGhiChu());
@@ -744,9 +748,9 @@ public class NV_DatBan extends javax.swing.JPanel {
         db.setMaDatBan(txtMaDatBan.getText());
         db.setHoTenKH(txtTenKH.getText());
         db.setSDTKH(txtSDT.getText());
-        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dt1 = new SimpleDateFormat("dd-MM-yyyy");
 //        System.out.println(dt1.format(cldNgaySinh.getDate()));
-        db.setNgayDatBan(dt1.format(cldNgayDat.getDate()));
+        db.setNgayDatBan(cldNgayDat.getDate());
         db.setGioDat(txtGioDat.getText());
         db.setSoNguoi(Integer.valueOf(txtSoNguoi.getText()));
         db.setGhiChu(txtGhiChu.getText());

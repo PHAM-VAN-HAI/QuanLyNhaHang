@@ -5,22 +5,12 @@
  */
 package com.nhsys.panel.nhanvien;
 
-import com.nhsys.dao.BanAnDAO;
 import com.nhsys.dao.HoaDonDAO;
-import com.nhsys.entity.BanAn;
 import com.nhsys.entity.HoaDon;
 import com.nhsys.panel.quanly.NV_XemMon;
-<<<<<<< HEAD
-import com.nhsys.utils.XImage;
-=======
-import com.nhsys.ui.MHC;
-import java.awt.BorderLayout;
->>>>>>> 5d476523e5bd51089cbb14dfc492592bba09d0cf
+
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.util.ArrayList;
 import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -29,91 +19,82 @@ import javax.swing.JButton;
  */
 public class NV_SoDoBan extends javax.swing.JPanel {
 
-    BanAnDAO BaDao = new BanAnDAO();
-
-    List<BanAn> ban = new ArrayList<>();
-    int i;
-
-    void xemMon(int MaBAn, JButton bt) {
-
-        QL_FillMonAn monan;
-        monan = new QL_FillMonAn(MaBAn);
-        jPanel3.removeAll();
-        jPanel3.setLayout(new BorderLayout());
-        jPanel3.add(monan);
-        jPanel3.updateUI();
+    void xemMon(String soBan, JButton bt) {
         //khi click vào nút bàn trên giao diện -> lấy text của button -> truyền qua form xemMon
+        if (bt.getBackground().getRGB() != -1) {
+            new NV_XemMon(soBan).setVisible(true);
+        }
+
     }
 
     public NV_SoDoBan() {
         initComponents();
-        XImage.setHinh(lblBackground, "logos\\Sodoban.jpg", lblBackground.getWidth(), lblBackground.getHeight());
-//        fillButtonBan();
+        fillButtonBan();
     }
 
     public static void fillButtonBan() {
         //dshd = danh sách hóa đơn
-        List<HoaDon> DSHD = new HoaDonDAO().selectAll();
-        for (HoaDon hd : DSHD) {
-            switch (hd.getMaBan()) {
-                case 1:
-                    btnB01.setBackground(new Color(255, 153, 51));
-                    btnB01.setForeground(Color.white);
-                    break;
-                case 2:
-                    btnB02.setBackground(new Color(255, 153, 51));
-                    btnB02.setForeground(Color.white);
-                    break;
-                case 3:
-                    btnB03.setBackground(new Color(255, 153, 51));
-                    btnB03.setForeground(Color.white);
-                    break;
-                case 4:
-                    btnB04.setBackground(new Color(255, 153, 51));
-                    btnB04.setForeground(Color.white);
-                    break;
-                case 5:
-                    btnB05.setBackground(new Color(255, 153, 51));
-                    btnB05.setForeground(Color.white);
-                    break;
-                case 6:
-                    btnB06.setBackground(new Color(255, 153, 51));
-                    btnB06.setForeground(Color.white);
-                    break;
-                case 7:
-                    btnB07.setBackground(new Color(255, 153, 51));
-                    btnB07.setForeground(Color.white);
-                    break;
-                case 8:
-                    btnB08.setBackground(new Color(255, 153, 51));
-                    btnB08.setForeground(Color.white);
-                    break;
-                case 9:
-                    btnB09.setBackground(new Color(255, 153, 51));
-                    btnB09.setForeground(Color.white);
-                    break;
-                case 10:
-                    btnB10.setBackground(new Color(255, 153, 51));
-                    btnB10.setForeground(Color.white);
-                    break;
-                case 11:
-                    btnB11.setBackground(new Color(255, 153, 51));
-                    btnB11.setForeground(Color.white);
-                    break;
-                case 12:
-                    btnB12.setBackground(new Color(255, 153, 51));
-                    btnB12.setForeground(Color.white);
-                    break;
-                case 13:
-                    btnB13.setBackground(new Color(255, 153, 51));
-                    btnB13.setForeground(Color.white);
-                    break;
-                case 14:
-                    btnB14.setBackground(new Color(255, 153, 51));
-                    btnB14.setForeground(Color.white);
-                    break;
-            }
-        }
+//        List<HoaDon> DSHD = new HoaDonDAO().selectAllProc("Chưa Thanh toán");
+//        for (HoaDon hd : DSHD) {
+//            switch (hd.getSoBan()) {
+//                case "B01":
+//                    btnB01.setBackground(new Color(255, 153, 51));
+//                    btnB01.setForeground(Color.white);
+//                    break;
+//                case "B02":
+//                    btnB02.setBackground(new Color(255, 153, 51));
+//                    btnB02.setForeground(Color.white);
+//                    break;
+//                case "B03":
+//                    btnB03.setBackground(new Color(255, 153, 51));
+//                    btnB03.setForeground(Color.white);
+//                    break;
+//                case "B04":
+//                    btnB04.setBackground(new Color(255, 153, 51));
+//                    btnB04.setForeground(Color.white);
+//                    break;
+//                case "B05":
+//                    btnB05.setBackground(new Color(255, 153, 51));
+//                    btnB05.setForeground(Color.white);
+//                    break;
+//                case "B06":
+//                    btnB06.setBackground(new Color(255, 153, 51));
+//                    btnB06.setForeground(Color.white);
+//                    break;
+//                case "B07":
+//                    btnB07.setBackground(new Color(255, 153, 51));
+//                    btnB07.setForeground(Color.white);
+//                    break;
+//                case "B08":
+//                    btnB08.setBackground(new Color(255, 153, 51));
+//                    btnB08.setForeground(Color.white);
+//                    break;
+//                case "B09":
+//                    btnB09.setBackground(new Color(255, 153, 51));
+//                    btnB09.setForeground(Color.white);
+//                    break;
+//                case "B10":
+//                    btnB10.setBackground(new Color(255, 153, 51));
+//                    btnB10.setForeground(Color.white);
+//                    break;
+//                case "B11":
+//                    btnB11.setBackground(new Color(255, 153, 51));
+//                    btnB11.setForeground(Color.white);
+//                    break;
+//                case "B12":
+//                    btnB12.setBackground(new Color(255, 153, 51));
+//                    btnB12.setForeground(Color.white);
+//                    break;
+//                case "B13":
+//                    btnB13.setBackground(new Color(255, 153, 51));
+//                    btnB13.setForeground(Color.white);
+//                    break;
+//                case "B14":
+//                    btnB14.setBackground(new Color(255, 153, 51));
+//                    btnB14.setForeground(Color.white);
+//                    break;
+//            }
+//        }
     }
 
     /**
@@ -125,68 +106,20 @@ public class NV_SoDoBan extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        btnB01 = new javax.swing.JButton();
-        lblBackground = new javax.swing.JLabel();
-        btnB2 = new javax.swing.JButton();
-
-        jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel3.setLayout(null);
-
-        btnB01.setBackground(new java.awt.Color(255, 255, 255));
-        btnB01.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnB01.setForeground(new java.awt.Color(255, 153, 0));
-        btnB01.setText("B01");
-        btnB01.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnB01.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnB01.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnB01ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnB01);
-        btnB01.setBounds(40, 180, 90, 80);
-        jPanel3.add(lblBackground);
-        lblBackground.setBounds(-9, -4, 1140, 620);
-
-        btnB2.setBackground(new java.awt.Color(255, 255, 255));
-        btnB2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnB2.setForeground(new java.awt.Color(255, 153, 0));
-        btnB2.setText("B01");
-        btnB2.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnB2.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnB2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnB2ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnB2);
-        btnB2.setBounds(40, 40, 90, 80);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1120, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
-        );
-    }// </editor-fold>//GEN-END:initComponents
-
-=======
             .addGap(0, 1104, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1104, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,118 +129,11 @@ public class NV_SoDoBan extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnB09ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB09ActionPerformed
-        // TODO add your handling code here:
-        xemMon(9, btnB09);
-
-    }//GEN-LAST:event_btnB09ActionPerformed
-
-    private void btnB04ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB04ActionPerformed
-        // TODO add your handling code here:
-
-        xemMon(4, btnB04);
-    }//GEN-LAST:event_btnB04ActionPerformed
-
->>>>>>> 5d476523e5bd51089cbb14dfc492592bba09d0cf
-    private void btnB01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB01ActionPerformed
-        // TODO add your handling code here:
-        xemMon(1, btnB01);
-    }//GEN-LAST:event_btnB01ActionPerformed
-
-<<<<<<< HEAD
-    private void btnB2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnB2ActionPerformed
-=======
-    private void btnB02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB02ActionPerformed
-        // TODO add your handling code here:
-        xemMon(2, btnB01);
-    }//GEN-LAST:event_btnB02ActionPerformed
-
-    private void btnB03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB03ActionPerformed
-        // TODO add your handling code here:
-        xemMon(3, btnB01);
-    }//GEN-LAST:event_btnB03ActionPerformed
-
-    private void btnB11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB11ActionPerformed
-        // TODO add your handling code here:
-        xemMon(11, btnB01);
-    }//GEN-LAST:event_btnB11ActionPerformed
-
-    private void btnB10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB10ActionPerformed
-        // TODO add your handling code here:
-        xemMon(10, btnB01);
-    }//GEN-LAST:event_btnB10ActionPerformed
-
-    private void btnB13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB13ActionPerformed
-        // TODO add your handling code here:
-        xemMon(13, btnB01);
-    }//GEN-LAST:event_btnB13ActionPerformed
-
-    private void btnB06ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB06ActionPerformed
-        // TODO add your handling code here:
-        xemMon(6, btnB01);
-    }//GEN-LAST:event_btnB06ActionPerformed
-
-    private void btnB14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB14ActionPerformed
-        // TODO add your handling code here:
-        xemMon(14, btnB01);
-    }//GEN-LAST:event_btnB14ActionPerformed
-
-    private void btnB05ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB05ActionPerformed
-        // TODO add your handling code here:
-        xemMon(05, btnB01);
-    }//GEN-LAST:event_btnB05ActionPerformed
-
-    private void btnB07ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB07ActionPerformed
-        // TODO add your handling code here:
-        xemMon(07, btnB01);
-    }//GEN-LAST:event_btnB07ActionPerformed
-
-    private void btnB12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB12ActionPerformed
-        // TODO add your handling code here:
-        xemMon(12, btnB01);
-    }//GEN-LAST:event_btnB12ActionPerformed
-
-    private void btnB08ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB08ActionPerformed
-        // TODO add your handling code here:
-        xemMon(8, btnB01);
-    }//GEN-LAST:event_btnB08ActionPerformed
->>>>>>> 5d476523e5bd51089cbb14dfc492592bba09d0cf
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton btnB01;
-<<<<<<< HEAD
-    public static javax.swing.JButton btnB2;
-=======
-    public static javax.swing.JButton btnB02;
-    public static javax.swing.JButton btnB03;
-    public static javax.swing.JButton btnB04;
-    public static javax.swing.JButton btnB05;
-    public static javax.swing.JButton btnB06;
-    public static javax.swing.JButton btnB07;
-    public static javax.swing.JButton btnB08;
-    public static javax.swing.JButton btnB09;
-    public static javax.swing.JButton btnB10;
-    public static javax.swing.JButton btnB11;
-    public static javax.swing.JButton btnB12;
-    public static javax.swing.JButton btnB13;
-    public static javax.swing.JButton btnB14;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
->>>>>>> 5d476523e5bd51089cbb14dfc492592bba09d0cf
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lblBackground;
     // End of variables declaration//GEN-END:variables
 }

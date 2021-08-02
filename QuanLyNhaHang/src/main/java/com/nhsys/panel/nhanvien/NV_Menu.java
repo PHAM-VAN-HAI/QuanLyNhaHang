@@ -20,9 +20,9 @@ public class NV_Menu extends javax.swing.JPanel {
     /**
      * Creates new form QL_MenuMHC
      */
-    public NV_Menu(ManHinhChinh frm) {
+    public NV_Menu(ManHinhChinh parent) {
         initComponents();
-        fr = frm;
+        this.parent = parent;
     }
 
     /**
@@ -268,7 +268,7 @@ public class NV_Menu extends javax.swing.JPanel {
         // TODO add your handling code here:
         lblTieuDe.setText("SƠ ĐỒ BÀN");
     }//GEN-LAST:event_lblSoDoBanQLMouseClicked
-    public static ManHinhChinh fr;
+    public static ManHinhChinh parent;
 
     private void lblDatBanQLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDatBanQLMouseClicked
         lblTieuDe.setText("DANH SÁCH ĐẶT BÀN");
@@ -295,9 +295,9 @@ public class NV_Menu extends javax.swing.JPanel {
     private void lblDangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDangXuatMouseClicked
         // TODO add your handling code here:
         try {
-            if (MsgBox.confirm(this, "Bạn có muốn đăng xuất ?")) {
+            if (MsgBox.confirm(parent, "Bạn có muốn đăng xuất ?")) {
                 new HT_Login().setVisible(true);
-                fr.dispose();
+                parent.dispose();
             }
 
         } catch (Exception e) {

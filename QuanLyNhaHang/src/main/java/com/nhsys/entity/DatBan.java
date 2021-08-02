@@ -5,6 +5,8 @@
  */
 package com.nhsys.entity;
 
+import java.util.Date;
+
 /**
  *
  * @author anhha
@@ -14,13 +16,13 @@ public class DatBan {
     String MaDatBan;
     String HoTenKH;
     String SDTKH;
-    String NgayDatBan;
+    Date NgayDatBan;
     String GioDat;
     int SoNguoi;
     String GhiChu;
     String MaNV;
 
-    public DatBan(String MaDatBan, String HoTenKH, String SDTKH, String NgayDatBan, String GioDat, int SoNguoi, String GhiChu, String MaNV) {
+    public DatBan(String MaDatBan, String HoTenKH, String SDTKH, Date NgayDatBan, String GioDat, int SoNguoi, String GhiChu, String MaNV) {
         this.MaDatBan = MaDatBan;
         this.HoTenKH = HoTenKH;
         this.SDTKH = SDTKH;
@@ -58,11 +60,11 @@ public class DatBan {
         this.SDTKH = SDTKH;
     }
 
-    public String getNgayDatBan() {
+    public Date getNgayDatBan() {
         return NgayDatBan;
     }
 
-    public void setNgayDatBan(String NgayDatBan) {
+    public void setNgayDatBan(Date NgayDatBan) {
         this.NgayDatBan = NgayDatBan;
     }
 
@@ -98,6 +100,7 @@ public class DatBan {
         this.MaNV = MaNV;
     }
 
+    
    
 
 }

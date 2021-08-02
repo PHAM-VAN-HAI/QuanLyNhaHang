@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class DatBanDAO extends NHDAO<DatBan, String> {
 
-    String INSERT_SQL = "INSERT INTO DatBan(MaDatBan, HoTenKH, SDTKH, NgayDatBan, GioDat, SoNguoi, GhiChu, MaNV)VALUES(?,?,?,?,?,?,?,?)";
-    String UPDATE_SQL = "UPDATE DatBan SET HoTenKH=?, SDTKH=?, NgayDatBan=?, GioDat=?, SoNguoi=?, GhiChu=?, MaNV= ? where MaDatBan= ?";
+    String INSERT_SQL = "INSERT INTO DatBan(MaDatBan, TenKH, SDTKH, NgayDatBan, GioDat, SoNguoi, GhiChu, MaNV)VALUES(?,?,?,?,?,?,?,?)";
+    String UPDATE_SQL = "UPDATE DatBan SET TenKH=?, SDTKH=?, NgayDatBan=?, GioDat=?, SoNguoi=?, GhiChu=?, MaNV= ? where MaDatBan= ?";
     String DELETE_SQL = "DELETE FROM DatBan WHERE MaDatBan =?";
     String SELECT_ALL_SQL = "SELECT * FROM DatBan";
     String SELETE_BY_ID_SQL = "SELECT * FROM DatBan WHERE MaDatBan =?";
@@ -75,9 +75,9 @@ public class DatBanDAO extends NHDAO<DatBan, String> {
             while (rs.next()) {
                 DatBan entity = new DatBan();
                 entity.setMaDatBan(rs.getString("MaDatBan"));
-                entity.setHoTenKH(rs.getString("HoTenKH"));
+                entity.setHoTenKH(rs.getString("TenKH"));
                 entity.setSDTKH(rs.getString("SDTKH"));
-                entity.setNgayDatBan(rs.getString("NgayDatBan"));
+                entity.setNgayDatBan(rs.getDate("NgayDatBan"));
                 entity.setGioDat(rs.getString("GioDat"));
                 entity.setSoNguoi(rs.getInt("SoNguoi"));
                 entity.setGhiChu(rs.getString("GhiChu"));
