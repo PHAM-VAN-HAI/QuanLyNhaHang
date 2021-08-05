@@ -736,7 +736,6 @@ public class NV_DatBan extends javax.swing.JPanel {
         txtMaDatBan.setText(db.getMaDatBan());
         txtTenKH.setText(db.getHoTenKH());
         txtSDT.setText(db.getSDTKH());
-        System.out.println(db.getNgayDatBan());
         cldNgayDat.setDate(db.getNgayDatBan());
         txtGioDat.setText(db.getGioDat());
         txtSoNguoi.setText(String.valueOf(db.getSoNguoi()));
@@ -748,8 +747,6 @@ public class NV_DatBan extends javax.swing.JPanel {
         db.setMaDatBan(txtMaDatBan.getText());
         db.setHoTenKH(txtTenKH.getText());
         db.setSDTKH(txtSDT.getText());
-        SimpleDateFormat dt1 = new SimpleDateFormat("dd-MM-yyyy");
-//        System.out.println(dt1.format(cldNgaySinh.getDate()));
         db.setNgayDatBan(cldNgayDat.getDate());
         db.setGioDat(txtGioDat.getText());
         db.setSoNguoi(Integer.valueOf(txtSoNguoi.getText()));

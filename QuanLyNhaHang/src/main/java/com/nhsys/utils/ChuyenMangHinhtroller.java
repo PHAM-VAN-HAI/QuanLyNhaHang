@@ -8,6 +8,7 @@ package com.nhsys.utils;
 import com.nhsys.entity.DanhMucBean;
 import com.nhsys.panel.nhanvien.NV_DatBan;
 import com.nhsys.panel.nhanvien.NV_SoDoBan;
+import com.nhsys.panel.quanly.QL_HangHoa;
 import com.nhsys.panel.quanly.QL_NhanVien;
 import com.nhsys.panel.quanly.QL_NhanVienJPN;
 import com.nhsys.panel.quanly.QL_ThucDon;
@@ -101,7 +102,7 @@ public class ChuyenMangHinhtroller {
                     node = new QL_ThucDon();
                     break;
                 case "HangHoa":
-//                    node = new QL_HangHoa();
+                    node = new QL_HangHoa();
                     break;
             }
             root.removeAll();
