@@ -6,7 +6,6 @@
 package com.nhsys.dao;
 
 import com.nhsys.entity.HangHoa;
-import com.nhsys.entity.NhanVien;
 import com.nhsys.utils.XJdbc;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -74,11 +73,11 @@ public class HangHoaDAO extends NHDAO<HangHoa, String> {
                 HangHoa enity = new HangHoa();
                 enity.setMaHangHoa(rs.getString("MaHangHoa"));
                 enity.setTenHangHoa(rs.getString("TenHangHoa"));
-                enity.setNgayNhap(rs.getDate("NgayDat"));
+                enity.setNgayNhap(rs.getDate("NgayNhap"));
                 enity.setDonVi(rs.getString("DonVi"));
-                enity.setSoLuong(rs.getFloat("SoLuong"));
-                enity.setChiPhi(rs.getFloat("ChiPhi"));
-                enity.setTongChiPhi(rs.getFloat("TongChiPhi"));
+                enity.setSoLuong(rs.getDouble("SoLuong"));
+                enity.setChiPhi(rs.getDouble("ChiPhi"));
+                enity.setTongChiPhi(rs.getDouble("TongChiPhi"));
                 list.add(enity);
             }
             rs.getStatement().getConnection().close();

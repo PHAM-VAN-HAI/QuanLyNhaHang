@@ -8,6 +8,7 @@ package com.nhsys.panel.nhanvien;
 import com.nhsys.dao.HoaDonDAO;
 import com.nhsys.entity.HoaDon;
 import com.nhsys.panel.quanly.NV_XemMon;
+import com.nhsys.utils.XImage;
 
 import java.awt.Color;
 import java.util.List;
@@ -29,6 +30,7 @@ public class NV_SoDoBan extends javax.swing.JPanel {
 
     public NV_SoDoBan() {
         initComponents();
+        XImage.setHinh(lblBackground, "logos\\SoDoBan.jpg", lblBackground.getWidth(), lblBackground.getHeight());
         fillButtonBan();
     }
 
@@ -107,8 +109,11 @@ public class NV_SoDoBan extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
+        lblBackground = new javax.swing.JLabel();
 
         jPanel3.setLayout(null);
+        jPanel3.add(lblBackground);
+        lblBackground.setBounds(-9, -4, 1120, 590);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -135,5 +140,6 @@ public class NV_SoDoBan extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblBackground;
     // End of variables declaration//GEN-END:variables
 }

@@ -81,14 +81,9 @@ public class ChuyenMangHinhtroller {
                 case "SoDoBan":
                     node = new NV_SoDoBan();
                     break;
-                case "KhoaSo": {
-//                    try {
-//                        node =new NV_DoanhThuNgay();
-//                    } catch (ParseException ex) {
-//                        Logger.getLogger(ChuyenMangHinhtroller.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-                }
-                break;
+                case "KhoaSo":
+//                    node = new NV_DoanhThuNgay();
+                    break;
                 case "DatBan":
                     node = new NV_DatBan();
                     break;
@@ -107,7 +102,7 @@ public class ChuyenMangHinhtroller {
             }
             root.removeAll();
             root.setLayout(new BorderLayout());
-            root.add(node);
+            root.add(node); 
             root.validate();
             root.repaint();
             setChangeBackgroud(kind);

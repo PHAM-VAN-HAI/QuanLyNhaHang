@@ -105,6 +105,7 @@ public class ManHinhChinh extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         btnNV = new javax.swing.JButton();
         btnQL = new javax.swing.JButton();
+        lblExit = new javax.swing.JLabel();
         jpnTitle = new javax.swing.JPanel();
         lblTieuDe = new javax.swing.JLabel();
         jpnMenubar = new javax.swing.JPanel();
@@ -153,6 +154,13 @@ public class ManHinhChinh extends javax.swing.JFrame {
             }
         });
 
+        lblExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/close (1).png"))); // NOI18N
+        lblExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblExitMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpnSystemLayout = new javax.swing.GroupLayout(jpnSystem);
         jpnSystem.setLayout(jpnSystemLayout);
         jpnSystemLayout.setHorizontalGroup(
@@ -162,9 +170,11 @@ public class ManHinhChinh extends javax.swing.JFrame {
                 .addComponent(btnNV, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnQL)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 559, Short.MAX_VALUE)
                 .addComponent(jLabel10)
-                .addGap(567, 567, 567)
+                .addGap(542, 542, 542)
+                .addComponent(lblExit)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel11))
         );
         jpnSystemLayout.setVerticalGroup(
@@ -172,10 +182,13 @@ public class ManHinhChinh extends javax.swing.JFrame {
             .addComponent(btnQL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jpnSystemLayout.createSequentialGroup()
-                .addGroup(jpnSystemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 5, Short.MAX_VALUE))
+            .addGroup(jpnSystemLayout.createSequentialGroup()
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jpnTitle.setBackground(new java.awt.Color(255, 255, 255));
@@ -268,6 +281,10 @@ public class ManHinhChinh extends javax.swing.JFrame {
         initNV();
     }//GEN-LAST:event_btnQLActionPerformed
 
+    private void lblExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMouseClicked
+        System.exit(0);       // TODO add your handling code here:
+    }//GEN-LAST:event_lblExitMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -318,6 +335,7 @@ public class ManHinhChinh extends javax.swing.JFrame {
     public static javax.swing.JPanel jpnMenubar;
     private javax.swing.JPanel jpnSystem;
     private javax.swing.JPanel jpnTitle;
+    private javax.swing.JLabel lblExit;
     public static javax.swing.JLabel lblTieuDe;
     // End of variables declaration//GEN-END:variables
 

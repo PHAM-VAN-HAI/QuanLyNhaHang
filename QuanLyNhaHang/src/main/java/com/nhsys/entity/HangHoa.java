@@ -12,15 +12,16 @@ import java.util.Date;
  * @author anhha
  */
 public class HangHoa {
+
     String MaHangHoa;
     String TenHangHoa;
     Date NgayNhap;
     String DonVi;
-    float SoLuong;
-    float ChiPhi;
-    float TongChiPhi;
+    double SoLuong;
+    double ChiPhi;
+    double TongChiPhi;
 
-    public HangHoa(String MaHangHoa, String TenHangHoa, Date NgayNhap, String DonVi, float SoLuong, float ChiPhi, float TongChiPhi) {
+    public HangHoa(String MaHangHoa, String TenHangHoa, Date NgayNhap, String DonVi, double SoLuong, double ChiPhi, double TongChiPhi) {
         this.MaHangHoa = MaHangHoa;
         this.TenHangHoa = TenHangHoa;
         this.NgayNhap = NgayNhap;
@@ -65,29 +66,30 @@ public class HangHoa {
         this.DonVi = DonVi;
     }
 
-    public float getSoLuong() {
+    public double getSoLuong() {
         return SoLuong;
     }
 
-    public void setSoLuong(float SoLuong) {
+    public void setSoLuong(double SoLuong) {
         this.SoLuong = SoLuong;
     }
 
-    public float getChiPhi() {
+    public double getChiPhi() {
         return ChiPhi;
     }
 
-    public void setChiPhi(float ChiPhi) {
+    public void setChiPhi(double ChiPhi) {
         this.ChiPhi = ChiPhi;
     }
 
-    public float getTongChiPhi() {
-        return TongChiPhi;
+    public double getTongChiPhi() {
+        return getChiPhi() * getSoLuong();
     }
 
-    public void setTongChiPhi(float TongChiPhi) {
+    public void setTongChiPhi(double TongChiPhi) {
         this.TongChiPhi = TongChiPhi;
     }
-    
-    
+
+ 
+
 }
