@@ -10,12 +10,17 @@ import com.nhsys.utils.XJdbc;
 
 public class ChiTietHoaDonDAO extends NHDAO<ChiTietHoaDon, Integer> {
 
-    String INSERT_SQL = "INSERT INTO ChiTietHoaDon(MaTD, MaHD, SoLuong)VALUES(?,?,?)";
+    String INSERT_SQL = "INSERT INTO ChiTietHoaDon(MaHD, MaMon, SoLuong)VALUES(?,?,?)";
     String UPDATE_SQL = "UPDATE ChiTietHoaDon SET MaTD = ?,MaHD = ?,SoLuong = ? where maCTHD = ?";
     String DELETE_SQL = "DELETE FROM ChiTietHoaDon WHERE MaHD =?";
     String SELECT_ALL_SQL = "SELECT * FROM ChiTietHoaDon";
 
-    String SELETE_BY_SOBAN_SQL = "select MaCTHD,MaHD,TD.maTD, tenTD, soluong, giatien from ChiTietHoaDon CTHD inner join ThucDon TD on TD.MaTD = CTHD.MaTD where CTHD. = ?";
+    String SELETE_BY_SOBAN_SQL = "select MaCTHD,MaHD,TD.maTD, tenTD, soluong, giatien from ChiTietHoaDon CTHD inner join ThucDon TD on TD.MaTD = CTHD.MaTD where TD.MaBan= ?select MaHDCT,CTHD.MaHD,TD.MaMon, TenMon, soluong, giatien\n"
+            + " from(( \n"
+            + "ChiTietHoaDon CTHD\n"
+            + "inner join ThucDon TD on TD.MaMon = CTHD.MaMon )\n"
+            + "inner join  HoaDon HD on HD.MaHD = CTHD.MaHD) \n"
+            + "where HD.MaBan = ?";
     String SELETE_BY_ID_SQL = "select MaCTHD,CTHD.MaHD,TD.maTD, tenTD, soluong, giatien,ba.GhiChu from ChiTietHoaDon CTHD \n"
             + "inner join ThucDon TD on TD.MaTD = CTHD.MaTD \n"
             + "inner join HoaDon HD on HD.MaHD = CTHD.MaHD \n"
@@ -25,7 +30,7 @@ public class ChiTietHoaDonDAO extends NHDAO<ChiTietHoaDon, Integer> {
     @Override
     public void insert(ChiTietHoaDon entity) {
         try {
-            XJdbc.update(INSERT_SQL, entity.getMaTD(), entity.getMaHD(), entity.getSoLuong());
+            XJdbc.update(INSERT_SQL, entity.getMaHD(), entity.getMaMon(), entity.getSoLuong());
         } catch (Exception ex) {
             Logger.getLogger(ChiTietHoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -34,7 +39,7 @@ public class ChiTietHoaDonDAO extends NHDAO<ChiTietHoaDon, Integer> {
     @Override
     public void update(ChiTietHoaDon entity) {
         try {
-            XJdbc.update(UPDATE_SQL, entity.getMaTD(), entity.getMaHD(), entity.getSoLuong(), entity.getMaCTHD());
+            XJdbc.update(UPDATE_SQL, entity.getMaMon(), entity.getMaHD(), entity.getSoLuong(), entity.getMaCTHD());
         } catch (Exception ex) {
             Logger.getLogger(ChiTietHoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -89,10 +94,10 @@ public class ChiTietHoaDonDAO extends NHDAO<ChiTietHoaDon, Integer> {
             while (rs.next()) {
                 ChiTietHoaDon enity = new ChiTietHoaDon();
                 enity.setMaCTHD(rs.getInt("MaCTHD"));
-                enity.setMaTD(rs.getString("MaTD"));
+                enity.setMaMon(rs.getString("MaMon"));
                 enity.setMaHD(rs.getInt("MaHD"));
                 enity.setSoLuong(rs.getInt("SoLuong"));
-                enity.setTenTD(rs.getString("TenTD"));
+                enity.setTenMon(rs.getString("TenMon"));
                 enity.setGiatien(rs.getDouble("GiaTien"));
                 enity.setGhiChu(rs.getString("GhiChu"));
                 enity.setMaBan(rs.getInt("MaBan"));
@@ -104,5 +109,4 @@ public class ChiTietHoaDonDAO extends NHDAO<ChiTietHoaDon, Integer> {
             throw new RuntimeException(e);
         }
     }
-
 }

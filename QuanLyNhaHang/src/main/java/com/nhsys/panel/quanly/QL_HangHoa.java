@@ -78,7 +78,6 @@ public class QL_HangHoa extends javax.swing.JPanel {
         btnXuat = new javax.swing.JButton();
         txtSearchTenHH = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        btnSearch = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDSHangHoa = new javax.swing.JTable();
 
@@ -366,13 +365,14 @@ public class QL_HangHoa extends javax.swing.JPanel {
                 txtSearchTenHHMouseClicked(evt);
             }
         });
-
-        btnSearch.setBackground(new java.awt.Color(255, 255, 255));
-        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/loupe.png"))); // NOI18N
-        btnSearch.setBorder(null);
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+        txtSearchTenHH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
+                txtSearchTenHHActionPerformed(evt);
+            }
+        });
+        txtSearchTenHH.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSearchTenHHKeyPressed(evt);
             }
         });
 
@@ -417,22 +417,17 @@ public class QL_HangHoa extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnXuat)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSearchTenHH, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(805, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtSearchTenHH, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(846, Short.MAX_VALUE))
             .addComponent(jScrollPane2)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(txtSearchTenHH))
+                .addComponent(txtSearchTenHH, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -470,9 +465,6 @@ public class QL_HangHoa extends javax.swing.JPanel {
     private void txtSearchTenHHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSearchTenHHMouseClicked
         new mouseEvent().clear_text_click(txtSearchTenHH, "Tên hàng hóa");
     }//GEN-LAST:event_txtSearchTenHHMouseClicked
-
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void tblDSHangHoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDSHangHoaMouseClicked
         if (evt.getClickCount() == 2) {
@@ -520,10 +512,18 @@ public class QL_HangHoa extends javax.swing.JPanel {
         txtChiPhi.selectAll();
     }//GEN-LAST:event_txtChiPhiMouseClicked
 
+    private void txtSearchTenHHKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchTenHHKeyPressed
+        fillTableByName();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchTenHHKeyPressed
+
+    private void txtSearchTenHHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchTenHHActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchTenHHActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLamMoi;
-    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
@@ -769,7 +769,7 @@ public class QL_HangHoa extends javax.swing.JPanel {
         cldNgayNhap.setDate(hh.getNgayNhap());
         txtDonVi.setText(hh.getDonVi());
         txtSoLuong.setText(XNumber.convertToString(hh.getSoLuong(), patternNumber));
-        txtChiPhi.setText(XNumber.convertToString(hh.getChiPhi(), patternNumber));
+        txtChiPhi.setText(XNumber.convertToString(hh.getChiPhi(), patternNumber).replaceAll(",", ""));
         txtTongChiPhi.setText(XNumber.convertToString(hh.getTongChiPhi(), patternNumber));
     }
 

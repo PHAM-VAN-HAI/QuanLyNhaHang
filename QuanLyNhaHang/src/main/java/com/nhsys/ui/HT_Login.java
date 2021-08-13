@@ -22,6 +22,7 @@ public class HT_Login extends javax.swing.JFrame {
 
     NhanVienDAO dao = new NhanVienDAO();
     boolean sp = true;
+    public static String MANVLogin;
 
     /**
      * Creates new form HT_Login
@@ -269,12 +270,12 @@ public class HT_Login extends javax.swing.JFrame {
 
     private void lblThoatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseEntered
         // TODO add your handling code here:
-        lblThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/icons8_cancel_32px_red.png"))); 
+        lblThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/icons8_cancel_32px_red.png")));
     }//GEN-LAST:event_lblThoatMouseEntered
 
     private void lblThoatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseExited
         // TODO add your handling code here:
-        lblThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/icons8_cancel_32px_black.png"))); 
+        lblThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/icons8_cancel_32px_black.png")));
     }//GEN-LAST:event_lblThoatMouseExited
 
     /**

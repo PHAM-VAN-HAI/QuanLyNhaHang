@@ -2,21 +2,22 @@ package com.nhsys.entity;
 
 public class ChiTietHoaDon {
     private int maCTHD;
-    private String tenTD;
-    private String maTD;
+    private String TenMon;
+    private String MaMon;
     private int maHD;
     private int soLuong;
     private double giatien;
     private double tongTien;
     private String ghiChu;
     private int MaBan;
+
     public ChiTietHoaDon() {
     }
 
-    public ChiTietHoaDon(int maCTHD, String tenTD, String maTD, int maHD, int soLuong, double giatien, double tongTien, String ghiChu, int MaBan) {
+    public ChiTietHoaDon(int maCTHD, String TenMon, String MaMon, int maHD, int soLuong, double giatien, double tongTien, String ghiChu, int MaBan) {
         this.maCTHD = maCTHD;
-        this.tenTD = tenTD;
-        this.maTD = maTD;
+        this.TenMon = TenMon;
+        this.MaMon = MaMon;
         this.maHD = maHD;
         this.soLuong = soLuong;
         this.giatien = giatien;
@@ -33,20 +34,20 @@ public class ChiTietHoaDon {
         this.maCTHD = maCTHD;
     }
 
-    public String getTenTD() {
-        return tenTD;
+    public String getTenMon() {
+        return TenMon;
     }
 
-    public void setTenTD(String tenTD) {
-        this.tenTD = tenTD;
+    public void setTenMon(String TenMon) {
+        this.TenMon = TenMon;
     }
 
-    public String getMaTD() {
-        return maTD;
+    public String getMaMon() {
+        return MaMon;
     }
 
-    public void setMaTD(String maTD) {
-        this.maTD = maTD;
+    public void setMaMon(String MaMon) {
+        this.MaMon = MaMon;
     }
 
     public int getMaHD() {
@@ -96,9 +97,6 @@ public class ChiTietHoaDon {
     public void setMaBan(int MaBan) {
         this.MaBan = MaBan;
     }
-
     
-   
-
     
 }

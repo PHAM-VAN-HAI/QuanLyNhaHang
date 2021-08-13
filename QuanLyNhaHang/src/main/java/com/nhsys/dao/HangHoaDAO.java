@@ -88,7 +88,7 @@ public class HangHoaDAO extends NHDAO<HangHoa, String> {
     }
 
     public List<HangHoa> SearchByNameHH(String TenHangHoa) {
-        String sql = "SELECT * FROM HangHoa WHERE TenHangHoa LIKE N'%" + TenHangHoa + "%' ";
+        String sql = "SELECT * FROM KhoHang WHERE TenHangHoa LIKE N'%" + TenHangHoa + "%' ";
         return this.selectBySql(sql);
     }
 }
