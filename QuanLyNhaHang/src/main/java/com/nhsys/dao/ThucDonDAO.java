@@ -22,6 +22,7 @@ public class ThucDonDAO extends NHDAO<ThucDon, String> {
     String DELETE_SQL = "DELETE FROM ThucDon WHERE MaMon =?";
     String SELECT_ALL_SQL = "SELECT * FROM ThucDon";
     String SELETE_BY_ID_SQL = "SELECT * FROM ThucDon WHERE MaMon =?";
+    String SELECTE_BY_MTD = "select *from ThucDon where Loai =?";
 
     @Override
     public void insert(ThucDon entity) {
@@ -52,7 +53,7 @@ public class ThucDonDAO extends NHDAO<ThucDon, String> {
 
     @Override
     public ThucDon selectById(String id) {
-         List<ThucDon> list = this.selectBySql(SELETE_BY_ID_SQL, id);
+        List<ThucDon> list = this.selectBySql(SELETE_BY_ID_SQL, id);
         if (list.isEmpty()) {
             return null;
         }
@@ -66,7 +67,7 @@ public class ThucDonDAO extends NHDAO<ThucDon, String> {
 
     @Override
     protected List<ThucDon> selectBySql(String sql, Object... args) {
-           List<ThucDon> list = new ArrayList<ThucDon>();
+        List<ThucDon> list = new ArrayList<ThucDon>();
         try {
             ResultSet rs = XJdbc.query(sql, args);
             while (rs.next()) {
@@ -84,7 +85,7 @@ public class ThucDonDAO extends NHDAO<ThucDon, String> {
             throw new RuntimeException(e);
         }
     }
-    
+
     public List<ThucDon> selectByCategory(String category) {
         String sql = "SELECT * FROM ThucDon WHERE Loai like ?";
         return this.selectBySql(sql, "%" + category + "%");
@@ -93,5 +94,9 @@ public class ThucDonDAO extends NHDAO<ThucDon, String> {
     public List<ThucDon> SearchByDish(String TenMonAn) {
         String sql = "SELECT * FROM ThucDon WHERE TenMon LIKE N'%" + TenMonAn + "%' ";
         return this.selectBySql(sql);
+    }
+
+    public List<ThucDon> selectLoaiTD(String loaiTD) {
+        return this.selectBySql(SELECTE_BY_MTD, loaiTD);
     }
 }

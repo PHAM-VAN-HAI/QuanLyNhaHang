@@ -2,15 +2,17 @@ package com.nhsys.entity;
 
 public class BanAn {
     private int MaBan;
-    private String SoBan;
+    private int LoaiBan;
     private String TrangThai;
+    private String GhiChu;
     public BanAn() {
     }
 
-    public BanAn(int MaBan, String SoBan, String TrangThai) {
+    public BanAn(int MaBan, int LoaiBan, String TrangThai, String GhiChu) {
         this.MaBan = MaBan;
-        this.SoBan = SoBan;
+        this.LoaiBan = LoaiBan;
         this.TrangThai = TrangThai;
+        this.GhiChu = GhiChu;
     }
 
     public int getMaBan() {
@@ -21,12 +23,12 @@ public class BanAn {
         this.MaBan = MaBan;
     }
 
-    public String getSoBan() {
-        return SoBan;
+    public int getLoaiBan() {
+        return LoaiBan;
     }
 
-    public void setSoBan(String SoBan) {
-        this.SoBan = SoBan;
+    public void setLoaiBan(int LoaiBan) {
+        this.LoaiBan = LoaiBan;
     }
 
     public String getTrangThai() {
@@ -36,6 +38,17 @@ public class BanAn {
     public void setTrangThai(String TrangThai) {
         this.TrangThai = TrangThai;
     }
+
+    public String getGhiChu() {
+        return GhiChu;
+    }
+
+    public void setGhiChu(String GhiChu) {
+        this.GhiChu = GhiChu;
+    }
+    
+
+   
     
     
 }

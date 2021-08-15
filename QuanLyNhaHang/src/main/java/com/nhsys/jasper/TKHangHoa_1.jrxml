@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ThongKeHangHoaJasper" language="groovy" pageWidth="500" pageHeight="566" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="460" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ea43d4a7-7aa8-4e4c-ac63-c95bb2f1c856">
+	<property name="ireport.zoom" value="1.6105100000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="465"/>
+	<parameter name="MaHD" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TenNV" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT 
+	MaHD, 
+	NgayTao, 
+	MaNV, 
+	MaBan, 
+	TongTien, 
+	TrangThai
+FROM 
+	HOADON
+WHERE MaHD = $P{MaHD}]]>
+	</queryString>
+	<field name="MaHD" class="java.lang.Integer"/>
+	<field name="NgayTao" class="java.sql.Timestamp"/>
+	<field name="MaNV" class="java.lang.String"/>
+	<field name="MaBan" class="java.lang.Integer"/>
+	<field name="TongTien" class="java.lang.Double"/>
+	<field name="TrangThai" class="java.lang.String"/>
+	<variable name="TONGCHIPHI_SUM" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="309" splitType="Stretch">
+			<staticText>
+				<reportElement x="44" y="214" width="371" height="40" uuid="8b89fd4f-f84e-429a-971d-8bd9153ac6c9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nhà Hàng Vua Biển]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="0" width="75" height="20" uuid="bdb431ce-e8ed-46eb-9d3c-6349f7abf845"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<text><![CDATA[Thời gian: ]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="77" y="0" width="118" height="20" uuid="53a35499-bccd-4b1f-8788-8d7a1b90e872"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="137" y="29" width="181" height="180" uuid="776de256-3019-45c2-be12-7551992f677e"/>
+				<imageExpression><![CDATA["D:\\Documents\\Tai Lieu\\MonHoc-DuAn1\\Du-An-1\\QuanLyNhaHang\\logos\\logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="44" y="260" width="371" height="20" uuid="5b813809-c177-49fa-9904-848e467b5fca"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[12 Trấn Vũ, Ba Đình, Hà Nội Hà Nội 100000]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="283" width="177" height="20" uuid="10e5a61b-91f5-4d39-91be-0b1d561abdd7"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Điện Thoại: 091 481 33 33]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="387" splitType="Stretch">
+			<staticText>
+				<reportElement x="45" y="0" width="371" height="40" uuid="7808fb1d-215e-4857-a7aa-ec7c7e9aef05"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phiếu Thanh Toán]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="76" width="83" height="20" uuid="d7ac5358-0548-4f10-8fa3-b662a0b69a0b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14"/>
+				</textElement>
+				<text><![CDATA[Thu Ngân]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="109" width="83" height="20" uuid="fa7625e2-de57-4053-a145-bf7da8379cfb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14"/>
+				</textElement>
+				<text><![CDATA[Bàn Số:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="43" width="96" height="20" uuid="c8ea11c3-6043-4dec-a9d1-40713bfb67f4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14"/>
+				</textElement>
+				<text><![CDATA[Mã Hóa Đơn:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="135" width="460" height="1" uuid="b0da1993-449f-4949-af30-dbf30ffdbfc5"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="136" width="160" height="20" uuid="266cbdfd-f7fe-4122-adf2-8fd58db76819"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tên Món Ăn]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="136" width="59" height="20" uuid="de058ced-239e-4166-9d6f-a72c2e9661c4"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="219" y="136" width="114" height="20" uuid="cdaf5286-04a4-4b27-9bcf-bf1d4884e7c9"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Đơn Giá]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="136" width="126" height="20" uuid="ff5ea851-0d20-4614-9a69-cc970a1388cc"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thành Tiền]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="241" width="159" height="20" uuid="f88f8b9c-08f1-4708-9719-d3c6621ff6ed"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tổng Tiền:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="-4" width="460" height="1" uuid="26910801-dd52-4808-9384-aab602ea5388"/>
+			</line>
+			<line>
+				<reportElement x="0" y="272" width="460" height="1" uuid="c0291d78-b0ec-453a-bf4e-8d20c38374c5"/>
+			</line>
+			<line>
+				<reportElement x="0" y="383" width="460" height="1" uuid="27665a9d-82db-4c79-8702-806375b4623b"/>
+			</line>
+			<textField>
+				<reportElement x="84" y="76" width="100" height="20" uuid="acc3d4f1-6aac-422a-983e-f9e14e91b04e"/>
+				<textFieldExpression><![CDATA[$P{TenNV}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="97" y="43" width="100" height="20" uuid="581b542c-87bf-43eb-9c1f-37e6f48a462f"/>
+				<textFieldExpression><![CDATA[$P{MaHD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="84" y="109" width="100" height="20" uuid="7f0737bc-074c-4c8b-94cd-c4d55d2a8b9e"/>
+				<textFieldExpression><![CDATA[$F{MaBan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="165">
+			<staticText>
+				<reportElement x="44" y="0" width="371" height="40" uuid="f2ee13d9-6f60-4f65-a7e7-979e72a92c47"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Khách Thanh Toán]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="117" width="121" height="20" uuid="425af0ee-d31c-4a6f-acc5-367cbf2610be"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14"/>
+				</textElement>
+				<text><![CDATA[Tiền Khách Đưa:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="144" width="121" height="20" uuid="b991adb3-05b9-4c59-9911-460b696440f3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14"/>
+				</textElement>
+				<text><![CDATA[Tiền Thừa:]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

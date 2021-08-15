@@ -30,7 +30,7 @@ public class ChiTietHoaDonDAO extends NHDAO<ChiTietHoaDon, Integer> {
     @Override
     public void insert(ChiTietHoaDon entity) {
         try {
-            XJdbc.update(INSERT_SQL, entity.getMaHD(), entity.getMaMon(), entity.getSoLuong());
+            XJdbc.update(INSERT_SQL,  entity.getMaHD(),entity.getMaMon(), entity.getSoLuong());
         } catch (Exception ex) {
             Logger.getLogger(ChiTietHoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -109,4 +109,5 @@ public class ChiTietHoaDonDAO extends NHDAO<ChiTietHoaDon, Integer> {
             throw new RuntimeException(e);
         }
     }
+
 }

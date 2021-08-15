@@ -13,6 +13,7 @@ import com.nhsys.utils.MsgBox;
 import com.nhsys.utils.XImage;
 import com.nhsys.utils.mouseEvent;
 import java.awt.Color;
+import org.exolab.castor.types.DateTime;
 
 /**
  *
@@ -123,7 +124,7 @@ public class HT_Login extends javax.swing.JFrame {
         pnlBackground.add(lblQuenMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, -1, -1));
 
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/logo.png"))); // NOI18N
+        lblLogo.setIcon(new javax.swing.ImageIcon("D:\\Documents\\Tai Lieu\\MonHoc-DuAn1\\Du-An-1\\QuanLyNhaHang\\logos\\logo.png")); // NOI18N
         pnlBackground.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 468, 251));
         pnlBackground.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 402, 10));
 
@@ -206,7 +207,7 @@ public class HT_Login extends javax.swing.JFrame {
         String maNV = txtTenDangNhap.getText();
         String matKhau = new String(txtMatKhau.getPassword());
         NhanVien nhanVien = dao.selectById(maNV);
-
+        MANVLogin = maNV;
         if (nhanVien == null) {
             MsgBox.alert(this, "Sai tên đăng nhập!");
         } else if (!matKhau.equalsIgnoreCase(nhanVien.getMatKhau())) {

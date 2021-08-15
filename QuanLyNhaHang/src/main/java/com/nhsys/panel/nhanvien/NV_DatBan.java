@@ -627,6 +627,12 @@ public class NV_DatBan extends javax.swing.JPanel {
             MsgBox.alert(this, "Bạn chưa nhập mã đặt bàn!");
             return false;
         }
+        for (int i = 0; i < tblDatBan.getRowCount(); i++) {
+            if (tblDatBan.getValueAt(i, 0).equals(txtMaDatBan.getText())) {
+                MsgBox.alert(this, "Mã Đặt Bàn Này Đã Tồn Tại");
+                return false;
+            }
+        }
         if (txtTenKH.getText().isEmpty() || txtTenKH.getText().equalsIgnoreCase("")) {
             MsgBox.alert(this, "Bạn chưa nhập tên khách hàng!");
             return false;
@@ -645,8 +651,8 @@ public class NV_DatBan extends javax.swing.JPanel {
             MsgBox.alert(this, "Số điện thoại không hợp lệ!");
             e.printStackTrace();
         }
-        if (!ngayNhap.before(ngayHT)) {
-            MsgBox.alert(this, "Ngày đăng ký không được lớn hơn ngày hiện tại!");
+        if (ngayNhap.before(ngayHT)) {
+            MsgBox.alert(this, "Ngày đăng ký không được nhỏ hơn ngày hiện tại!");
             return false;
         }
         if (txtGioDat.getText().isEmpty() || txtGioDat.getText().equalsIgnoreCase("")) {

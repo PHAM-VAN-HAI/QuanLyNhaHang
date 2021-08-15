@@ -5,26 +5,48 @@
  */
 package com.nhsys.panel.nhanvien;
 
+
+
+
 import com.nhsys.dao.BanAnDAO;
 import com.nhsys.dao.HoaDonDAO;
 import com.nhsys.entity.BanAn;
+import com.nhsys.entity.ChiTietHoaDon;
 import com.nhsys.entity.HoaDon;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH2;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH3;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH4;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH5;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH6;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH7;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH8;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH9;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH10;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH11;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH12;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH13;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH14;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn.fillTableGoiMon;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn.hdChuaThanhToan;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH1;
 
 /**
  *
  * @author Hai Tran
  */
 public class NV_SoDoBan extends javax.swing.JPanel {
-
+    public static List<ChiTietHoaDon> DuPhong1 = new ArrayList<>(DSCTHDKH1);
     public static int MABANKH;
     BanAnDAO BaDao = new BanAnDAO();
+    public static boolean DaDat = true;
 
-    List<BanAn> ban = new ArrayList<>();
+//    List<BanAn> ban = new ArrayList<>();
     int i;
 
     void xemMon(int MaBAn, JButton bt) {
@@ -41,9 +63,21 @@ public class NV_SoDoBan extends javax.swing.JPanel {
     public NV_SoDoBan() {
         initComponents();
 //        fillButtonBan();
+        TrangThaiBan();
+    }
+
+    ;
+
+    void TrangThaiBan() {
+        List<BanAn> ban = new ArrayList<>();
+        ban = new BanAnDAO().selectAll();
+        if (ban.get(1).getTrangThai().equals("Đang phục vụ")) {
+            btnB01.setBackground(Color.decode("#66ff66"));
+        }
     }
 
     public static void fillButtonBan() {
+
         //dshd = danh sách hóa đơn
         List<HoaDon> DSHD = new HoaDonDAO().selectAll();
         for (HoaDon hd : DSHD) {
@@ -51,6 +85,7 @@ public class NV_SoDoBan extends javax.swing.JPanel {
                 case 1:
                     btnB01.setBackground(new Color(255, 153, 51));
                     btnB01.setForeground(Color.white);
+
                     break;
                 case 2:
                     btnB02.setBackground(new Color(255, 153, 51));
@@ -133,16 +168,16 @@ public class NV_SoDoBan extends javax.swing.JPanel {
         btnB12 = new javax.swing.JButton();
         btnB08 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
         lblSODOIMG = new javax.swing.JLabel();
 
         jPanel3.setLayout(null);
@@ -157,7 +192,7 @@ public class NV_SoDoBan extends javax.swing.JPanel {
             }
         });
         jPanel3.add(btnB09);
-        btnB09.setBounds(920, 380, 170, 100);
+        btnB09.setBounds(920, 330, 170, 100);
 
         btnB04.setBackground(new java.awt.Color(204, 204, 204));
         btnB04.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -313,29 +348,11 @@ public class NV_SoDoBan extends javax.swing.JPanel {
             }
         });
         jPanel3.add(btnB08);
-        btnB08.setBounds(920, 190, 170, 140);
+        btnB08.setBounds(920, 190, 170, 110);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jPanel3.add(jLabel1);
         jLabel1.setBounds(10, 0, 1100, 0);
-
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 153, 0));
-        jLabel9.setText("Nước uống");
-        jPanel3.add(jLabel9);
-        jLabel9.setBounds(630, 450, 120, 29);
-
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 153, 0));
-        jLabel10.setText("Thức ăn");
-        jPanel3.add(jLabel10);
-        jLabel10.setBounds(870, 550, 100, 29);
-
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Bếp");
-        jPanel3.add(jLabel12);
-        jLabel12.setBounds(220, 520, 40, 21);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jPanel3.add(jLabel2);
@@ -369,19 +386,29 @@ public class NV_SoDoBan extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Bếp");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(218, 218, 218)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(232, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addComponent(jLabel12)
+                .addGap(37, 37, 37))
         );
 
         jPanel3.add(jPanel2);
-        jPanel2.setBounds(0, 480, 490, 0);
+        jPanel2.setBounds(0, 480, 490, 100);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -417,6 +444,33 @@ public class NV_SoDoBan extends javax.swing.JPanel {
         jPanel3.add(jPanel4);
         jPanel4.setBounds(160, 430, 330, 50);
 
+        jPanel5.setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("Nhà Vệ Sinh");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addComponent(jLabel13)
+                .addGap(37, 37, 37))
+        );
+
+        jPanel3.add(jPanel5);
+        jPanel5.setBounds(610, 480, 490, 100);
+
         lblSODOIMG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/SoDoIMG.png"))); // NOI18N
         jPanel3.add(lblSODOIMG);
         lblSODOIMG.setBounds(0, 0, 1110, 590);
@@ -446,72 +500,115 @@ public class NV_SoDoBan extends javax.swing.JPanel {
     private void btnB08ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB08ActionPerformed
         // TODO add your handling code here:
         xemMon(8, btnB08);
+        DuPhong1 = new ArrayList<>(DSCTHDKH8);
+        fillTableGoiMon(false, DSCTHDKH8);
+        if(btnB08.getBackground() == Color.green) DaDat = false;
     }//GEN-LAST:event_btnB08ActionPerformed
 
     private void btnB12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB12ActionPerformed
         // TODO add your handling code here:
         xemMon(12, btnB12);
+        DuPhong1 = new ArrayList<>(DSCTHDKH12);
+        fillTableGoiMon(false, DSCTHDKH12);
+        if(btnB12.getBackground() == Color.green) DaDat = false;
     }//GEN-LAST:event_btnB12ActionPerformed
 
     private void btnB07ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB07ActionPerformed
         // TODO add your handling code here:
         xemMon(07, btnB07);
+        DuPhong1 = new ArrayList<>(DSCTHDKH7);
+        fillTableGoiMon(false, DSCTHDKH7);
+        if(btnB07.getBackground() == Color.green) DaDat = false;
     }//GEN-LAST:event_btnB07ActionPerformed
 
     private void btnB05ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB05ActionPerformed
         // TODO add your handling code here:
         xemMon(05, btnB05);
+        DuPhong1 = new ArrayList<>(DSCTHDKH5);
+        fillTableGoiMon(false, DSCTHDKH5);
+        if(btnB05.getBackground() == Color.green) DaDat = false;
     }//GEN-LAST:event_btnB05ActionPerformed
 
     private void btnB14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB14ActionPerformed
         // TODO add your handling code here:
         xemMon(14, btnB14);
+        DuPhong1 = new ArrayList<>(DSCTHDKH14);
+        fillTableGoiMon(false, DSCTHDKH14);
+        if(btnB14.getBackground() == Color.green) DaDat = false;
     }//GEN-LAST:event_btnB14ActionPerformed
 
     private void btnB06ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB06ActionPerformed
         // TODO add your handling code here:
         xemMon(6, btnB06);
+        DuPhong1 = new ArrayList<>(DSCTHDKH6);
+        fillTableGoiMon(false, DSCTHDKH6);
+        if(btnB06.getBackground() == Color.green) DaDat = false;
     }//GEN-LAST:event_btnB06ActionPerformed
 
     private void btnB13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB13ActionPerformed
         // TODO add your handling code here:
         xemMon(13, btnB13);
+        DuPhong1 = new ArrayList<>(DSCTHDKH13);
+        fillTableGoiMon(false, DSCTHDKH13);
+        if(btnB13.getBackground() == Color.green) DaDat = false;
     }//GEN-LAST:event_btnB13ActionPerformed
 
     private void btnB10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB10ActionPerformed
         // TODO add your handling code here:
         xemMon(10, btnB10);
+        DuPhong1 = new ArrayList<>(DSCTHDKH10);
+        fillTableGoiMon(false, DSCTHDKH10);
+        if(btnB10.getBackground() == Color.green) DaDat = false;
     }//GEN-LAST:event_btnB10ActionPerformed
 
     private void btnB11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB11ActionPerformed
         // TODO add your handling code here:
         xemMon(11, btnB11);
+        DuPhong1 = new ArrayList<>(DSCTHDKH11);
+        fillTableGoiMon(false, DSCTHDKH11);
+        if(btnB11.getBackground() == Color.green) DaDat = false;
     }//GEN-LAST:event_btnB11ActionPerformed
 
     private void btnB03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB03ActionPerformed
         // TODO add your handling code here:
         xemMon(3, btnB03);
+        DuPhong1 = new ArrayList<>(DSCTHDKH3);
+        fillTableGoiMon(false, DSCTHDKH3);
+        if(btnB03.getBackground() == Color.green) DaDat = false;
     }//GEN-LAST:event_btnB03ActionPerformed
 
     private void btnB02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB02ActionPerformed
         // TODO add your handling code here:
         xemMon(2, btnB02);
+        DuPhong1 = new ArrayList<>(DSCTHDKH2);
+        fillTableGoiMon(false, DSCTHDKH2);
+        if(btnB02.getBackground() == Color.green) DaDat = false;
     }//GEN-LAST:event_btnB02ActionPerformed
 
     private void btnB01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB01ActionPerformed
         // TODO add your handling code here:
         xemMon(1, btnB01);
+        DuPhong1 = new ArrayList<>(DSCTHDKH1);
+        fillTableGoiMon(false,DSCTHDKH1);
+        if(btnB01.getBackground() == Color.green) DaDat = false;
+
     }//GEN-LAST:event_btnB01ActionPerformed
 
     private void btnB04ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB04ActionPerformed
         // TODO add your handling code here:
 
         xemMon(4, btnB04);
+        DuPhong1 = new ArrayList<>(DSCTHDKH4);
+        fillTableGoiMon(false, DSCTHDKH4);
+        if(btnB04.getBackground() == Color.green) DaDat = false;
     }//GEN-LAST:event_btnB04ActionPerformed
 
     private void btnB09ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB09ActionPerformed
         // TODO add your handling code here:
         xemMon(9, btnB09);
+        DuPhong1 = new ArrayList<>(DSCTHDKH9);
+        fillTableGoiMon(false, DSCTHDKH9);
+        if(btnB09.getBackground() == Color.green) DaDat = false;
     }//GEN-LAST:event_btnB09ActionPerformed
 
 
@@ -531,17 +628,17 @@ public class NV_SoDoBan extends javax.swing.JPanel {
     public static javax.swing.JButton btnB13;
     public static javax.swing.JButton btnB14;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lblSODOIMG;
     // End of variables declaration//GEN-END:variables
 }

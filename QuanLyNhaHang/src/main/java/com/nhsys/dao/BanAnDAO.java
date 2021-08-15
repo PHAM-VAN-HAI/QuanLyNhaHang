@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 public class BanAnDAO extends NHDAO<BanAn, Integer> {
 
-    String INSERT_SQL = "INSERT INTO BanAn(MaBan, SoBan,TrangThai)VALUES(?,?,?)";
+    String INSERT_SQL = "INSERT INTO BanAn(MaBan,SoBan,TrangThai)VALUES(?,?,?)";
     String UPDATE_SQL = "UPDATE BanAn SET SoBan = ?,TrangThai =? where MaBan = ?";
     String UPDATE_GC_SQL = "UPDATE BanAn SET TrangThai =? where MaBan = ?";
     String DELETE_SQL = "DELETE FROM BanAn WHERE MaBan =?";
@@ -29,7 +29,7 @@ public class BanAnDAO extends NHDAO<BanAn, Integer> {
     @Override
     public void insert(BanAn entity) {
         try {
-            XJdbc.update(INSERT_SQL, entity.getMaBan(), entity.getSoBan(), entity.getTrangThai());
+            XJdbc.update(INSERT_SQL, entity.getMaBan(), entity.getLoaiBan(), entity.getTrangThai());
         } catch (Exception ex) {
             Logger.getLogger(BanAnDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -38,7 +38,7 @@ public class BanAnDAO extends NHDAO<BanAn, Integer> {
     @Override
     public void update(BanAn entity) {
         try {
-            XJdbc.update(UPDATE_SQL, entity.getSoBan(), entity.getTrangThai(), entity.getMaBan());
+            XJdbc.update(UPDATE_SQL, entity.getLoaiBan(), entity.getTrangThai(), entity.getMaBan());
         } catch (Exception ex) {
             Logger.getLogger(BanAnDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -83,7 +83,7 @@ public class BanAnDAO extends NHDAO<BanAn, Integer> {
             while (rs.next()) {
                 BanAn enity = new BanAn();
                 enity.setMaBan(rs.getInt("MaBan"));
-                enity.setSoBan(rs.getString("SoBan"));
+                enity.setLoaiBan(rs.getInt("LoaiBan"));
                 enity.setTrangThai(rs.getString("TrangThai"));
                 list.add(enity);
             }

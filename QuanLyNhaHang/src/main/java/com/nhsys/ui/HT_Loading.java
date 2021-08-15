@@ -49,7 +49,7 @@ public class HT_Loading extends javax.swing.JFrame {
         Loading.setForeground(new java.awt.Color(255, 0, 0));
         jPanel1.add(Loading, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 813, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/logo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Documents\\Tai Lieu\\MonHoc-DuAn1\\Du-An-1\\QuanLyNhaHang\\logos\\logo.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 290, 270));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/Wellcome.png"))); // NOI18N

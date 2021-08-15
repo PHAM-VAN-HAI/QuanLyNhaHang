@@ -687,6 +687,12 @@ public class QL_HangHoa extends javax.swing.JPanel {
             MsgBox.alert(this, "Bạn chưa nhập mã hàng hóa!");
             return false;
         }
+        for (int i = 0; i < tblDSHangHoa.getRowCount(); i++) {
+            if (tblDSHangHoa.getValueAt(i, 0).equals(txtMaHH.getText())) {
+                MsgBox.alert(this, "Mã Hàng Hóa Này Đã Tồn Tại");
+                return false;
+            }
+        }
         if (txtTenHH.getText().isEmpty() || txtTenHH.getText().equalsIgnoreCase("")) {
             MsgBox.alert(this, "Bạn chưa nhập tên hàng hóa!");
             return false;

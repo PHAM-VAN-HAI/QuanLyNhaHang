@@ -17,15 +17,19 @@ public class HoaDon {
     String TenKH;
     String MaNV;
     int MaBan;
-    float TongTien;
+    double TongTien;
+    String TrangThai;
+    private String tenNV;
 
-    public HoaDon(int MaHD, String NgayTao, String TenKH, String MaNV, int MaBan, float TongTien) {
+    public HoaDon(int MaHD, String NgayTao, String TenKH, String MaNV, int MaBan, double TongTien, String TrangThai, String tenNV) {
         this.MaHD = MaHD;
         this.NgayTao = NgayTao;
         this.TenKH = TenKH;
         this.MaNV = MaNV;
         this.MaBan = MaBan;
         this.TongTien = TongTien;
+        this.TrangThai = TrangThai;
+        this.tenNV = tenNV;
     }
 
     public HoaDon() {
@@ -71,11 +75,32 @@ public class HoaDon {
         this.MaBan = MaBan;
     }
 
-    public float getTongTien() {
+    public double getTongTien() {
         return TongTien;
     }
 
-    public void setTongTien(float TongTien) {
+    public void setTongTien(double TongTien) {
         this.TongTien = TongTien;
     }
+
+    public String getTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(String TrangThai) {
+        this.TrangThai = TrangThai;
+    }
+
+    public String getTenNV() {
+        return tenNV;
+    }
+
+    public void setTenNV(String tenNV) {
+        this.tenNV = tenNV;
+    }
+
+
+  
+
+  
 }

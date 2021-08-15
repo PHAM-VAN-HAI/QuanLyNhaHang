@@ -78,7 +78,7 @@ public class NV_Menu extends javax.swing.JPanel {
         );
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/logo.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon("D:\\Documents\\Tai Lieu\\MonHoc-DuAn1\\Du-An-1\\QuanLyNhaHang\\logos\\logo.png")); // NOI18N
         jLabel9.setMaximumSize(new java.awt.Dimension(250, 250));
         jLabel9.setMinimumSize(new java.awt.Dimension(250, 250));
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {

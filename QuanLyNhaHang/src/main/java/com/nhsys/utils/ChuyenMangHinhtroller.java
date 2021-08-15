@@ -7,19 +7,17 @@ package com.nhsys.utils;
 
 import com.nhsys.entity.DanhMucBean;
 import com.nhsys.panel.nhanvien.NV_DatBan;
+import com.nhsys.panel.nhanvien.NV_DoanhThu;
 import com.nhsys.panel.nhanvien.NV_SoDoBan;
+import com.nhsys.panel.quanly.QL_DoanhThuThang;
 import com.nhsys.panel.quanly.QL_HangHoa;
 import com.nhsys.panel.quanly.QL_NhanVien;
-import com.nhsys.panel.quanly.QL_NhanVienJPN;
 import com.nhsys.panel.quanly.QL_ThucDon;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.text.ParseException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -82,16 +80,16 @@ public class ChuyenMangHinhtroller {
                     node = new NV_SoDoBan();
                     break;
                 case "KhoaSo":
-//                    node = new NV_DoanhThuNgay();
+                    node = new NV_DoanhThu();
                     break;
                 case "DatBan":
                     node = new NV_DatBan();
                     break;
                 case "NhanVien":
-                    node = new QL_NhanVienJPN();
+                    node = new QL_NhanVien();
                     break;
                 case "DoanhThu":
-//                    node = new QL_DoanhThuThang();
+                    node = new QL_DoanhThuThang();
                     break;
                 case "ThucDon":
                     node = new QL_ThucDon();

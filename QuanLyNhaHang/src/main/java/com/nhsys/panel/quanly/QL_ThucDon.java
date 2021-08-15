@@ -135,11 +135,19 @@ public class QL_ThucDon extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/restaurant.png"))); // NOI18N
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/coding.png"))); // NOI18N
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/price-tag.png"))); // NOI18N
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhsys/icon/food.png"))); // NOI18N
+
         cboLoai.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         cboLoai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Loại", "Món ăn", "Món uống", "Khác" }));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         btnSua.setBackground(new java.awt.Color(255, 153, 51));
         btnSua.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -207,8 +215,6 @@ public class QL_ThucDon extends javax.swing.JPanel {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel2)
                                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,7 +222,10 @@ public class QL_ThucDon extends javax.swing.JPanel {
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtMaMonAn))
-                                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 10, Short.MAX_VALUE)))
                         .addGap(272, 272, 272))))
         );
@@ -231,9 +240,10 @@ public class QL_ThucDon extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addGap(146, 146, 146))
-                    .addComponent(lblHinh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(152, 152, 152))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMaMonAn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -259,7 +269,7 @@ public class QL_ThucDon extends javax.swing.JPanel {
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         tabs.addTab("Cập nhật", jPanel2);
@@ -313,7 +323,7 @@ public class QL_ThucDon extends javax.swing.JPanel {
             }
         });
 
-        cboSearchByCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Loại", "Món ăn", "Món uống", "Khác" }));
+        cboSearchByCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Món ăn", "Món uống", "Khai vị", "Sashimi", "Cua", "Lẩu", "Súp", "Món Khác" }));
         cboSearchByCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboSearchByCategoryActionPerformed(evt);
@@ -341,7 +351,7 @@ public class QL_ThucDon extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(txtTimTenMA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(cboSearchByCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -409,6 +419,9 @@ public class QL_ThucDon extends javax.swing.JPanel {
     }//GEN-LAST:event_btnThemMouseClicked
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        if (!checkVal()) {
+            return;
+        }
         insert();
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -576,6 +589,12 @@ public class QL_ThucDon extends javax.swing.JPanel {
         } else if (txtMaMonAn.getText().length() > 15) {
             MsgBox.alert(this, "Mã món ăn tối đa chỉ 15 ký tự!");
             return false;
+        }
+        for (int i = 0; i < tblDSMonAn.getRowCount(); i++) {
+            if (tblDSMonAn.getValueAt(i, 0).equals(txtMaMonAn.getText())) {
+                MsgBox.alert(this, "Mã Món Ăn Này Đã Tồn Tại");
+                return false;
+            }
         }
         if (txtTenMonAn.getText().isEmpty() || txtTenMonAn.getText().equalsIgnoreCase("")) {
             MsgBox.alert(this, "Bạn chưa nhập tên món ăn!");
