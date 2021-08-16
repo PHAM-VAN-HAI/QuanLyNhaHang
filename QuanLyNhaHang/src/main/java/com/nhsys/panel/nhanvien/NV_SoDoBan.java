@@ -13,28 +13,27 @@ import com.nhsys.dao.HoaDonDAO;
 import com.nhsys.entity.BanAn;
 import com.nhsys.entity.ChiTietHoaDon;
 import com.nhsys.entity.HoaDon;
-import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH2;
-import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH3;
-import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH4;
-import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH5;
-import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH6;
-import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH7;
-import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH8;
-import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH9;
-import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH10;
-import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH11;
-import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH12;
-import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH13;
-import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH14;
-import static com.nhsys.panel.nhanvien.NV_FillMonAn.fillTableGoiMon;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
-import static com.nhsys.panel.nhanvien.NV_FillMonAn.hdChuaThanhToan;
-import static com.nhsys.panel.nhanvien.NV_FillMonAn.DSCTHDKH1;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn1.DSCTHDKH1;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn1.DSCTHDKH10;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn1.DSCTHDKH11;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn1.DSCTHDKH12;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn1.DSCTHDKH13;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn1.DSCTHDKH14;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn1.DSCTHDKH2;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn1.DSCTHDKH3;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn1.DSCTHDKH4;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn1.DSCTHDKH5;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn1.DSCTHDKH6;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn1.DSCTHDKH7;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn1.DSCTHDKH8;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn1.DSCTHDKH9;
+import static com.nhsys.panel.nhanvien.NV_FillMonAn1.fillTableGoiMon;
 
 /**
  *
@@ -51,8 +50,8 @@ public class NV_SoDoBan extends javax.swing.JPanel {
 
     void xemMon(int MaBAn, JButton bt) {
         MABANKH = MaBAn;
-        NV_FillMonAn monan;
-        monan = new NV_FillMonAn(MaBAn);
+        NV_FillMonAn1 monan;
+        monan = new NV_FillMonAn1(MaBAn);
         jPanel3.removeAll();
         jPanel3.setLayout(new BorderLayout());
         jPanel3.add(monan);

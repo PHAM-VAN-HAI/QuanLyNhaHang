@@ -215,7 +215,7 @@ public class NV_DoanhThu extends javax.swing.JPanel {
     private static String[] columns = {"Mã Hóa Đơn", "Ngày Tạo", "MaNV", "Mã Bàn", "Tổng tiền", "Trạng Thái"};
 
     public static void xuatExcel() throws IOException {
-        FileOutputStream file = new FileOutputStream("Doanh thu\\DoanhThuNgay.xlsx");
+        FileOutputStream file = new FileOutputStream("doanh-thu\\DoanhThuNgay.xlsx");
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet workSheet = workbook.createSheet("name");
         XSSFRow row;
